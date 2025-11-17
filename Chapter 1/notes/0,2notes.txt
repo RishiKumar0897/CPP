@@ -1,0 +1,52 @@
+- A computer program is a sequence of instructions that directs a computer to perform certain actions in a specified order
+    - typically written in a programming language
+- when a computer is performing the actions described the instructions in a computer program, we say it is running/executing
+
+- programs are executed on a computer's hardware (physical components)
+- software refers to programs on a system designed to executed on hardware
+
+- platform refers to a compatible set of hardware and software that provides an environment for software to running
+
+- a program that can be easily transferred from one platform to another is said to be portable
+    - act of modifying a program so it runs on diff platforms is porting
+
+
+
+- a computer's CPU is incapable of understanding C++
+- only capable of processing instructions written in machine code
+    - ISA (instruction set)
+    - made up of binary digits (bits)
+
+- assembly language is a programming language that essentially functions as a more human-readable machine language
+    - assembly programs are translated into machine language before execution by an assembler
+
+
+- Low Level languages
+    - provide minimal abstraction from the architecture of the machine
+    - lots of downsides
+        - not portable
+        - requires detailed knowledge of ISA and architecture
+        - hard to understanding
+        - hard to write programs of significant complexity, primitive capabilities
+
+    - upside
+        - super fast
+
+
+- High Level languages
+    - also must be translated into machine language
+        - 2 ways: compiling and interpreting
+
+    - Compilers
+        - a program that reads source code of a high level language and translates into machine code
+    - Interpreter
+        - directly executes instructions in the source code without compilation first
+        - more flexible, but much less efficient
+
+
+    - high level of abstraction from underlying architecture
+    - easier to read write and learn
+    - include additional capabilities that make it easier to perform common programming tasks
+
+
+
