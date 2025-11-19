@@ -1,0 +1,21 @@
+- a build configuration is a collection of project settings that determines how your IDE will build your project
+    - includes things like what exe will be named, what directories IDE will look in, etc
+
+- when you create a new project in IDE, most IDEs will set up two different build configurations for you
+    - release configuration
+        - designed to be used when releasing program to public
+        - optimized for size and performance and doesn't contain extra debugging information
+
+    - debugging configuration
+        - designed to help debug program, one we use when actually writing programs
+        - turns off all optimizations and includes debugging information
+
+
+
+- Add -ggdb to the command line for debug builds and -O2 -DNDEBUG for release builds. Use the debug build options for now.
+
+For GCC and Clang, the -O# option is used to control optimization settings. The most common options are as follows:
+
+-O0 is the recommended optimization level for debug builds, as it disables optimization. This is the default setting.
+-O2 is the recommended optimization level for release builds, as it applies optimizations that should be beneficial for all programs.
+-O3 adds additional optimizations that may or may not perform better than -O2 depending on the specific program. Once your program is written, you can try compiling your release build with -O3 instead of -O2 and measure to see which is faster.
