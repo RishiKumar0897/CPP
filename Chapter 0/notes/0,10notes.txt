@@ -1,0 +1,10 @@
+- C++ standard defines rules about how programs should behave in specific circumstances. 
+- In most cases, compilers follow these rules
+- some compilers, however, will implement their own changes to the language to enhance compatibility with other versions of the language
+    - these compiler-specific behaviors are called compiler extensions
+
+
+- writing a program that uses a compiler extension lets you write programs that are incompatible with the C++ standard
+- programs using non standard extensions generally will not compile on other compilers
+
+

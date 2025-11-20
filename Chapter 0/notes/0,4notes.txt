@@ -1,0 +1,11 @@
+How do C++ programs get developed?
+    - Step 1: Define a problem to solve
+        - come up with initial idea of what you want to solve
+    - Step 2: Design a solution
+        - make sure its straightforward, well documented, built modularly, and can recover gracefully
+    - Step 3: Write program that implements solution
+    - Step 4: Compile program
+    - Step 5: Link object files
+    - Step 6: Test program
+
+
