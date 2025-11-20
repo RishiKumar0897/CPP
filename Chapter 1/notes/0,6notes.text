@@ -1,8 +1,0 @@
-- An integrated Development environment (IDE) is a piece of software designed to make it easy to develop, build, and test programs
-- typical modern IDE includes
-    - some way to easily load and save files
-    - code editor that has programming-friendly features
-    - basic build system that allows you to compile and link program into an executable and run it
-    - an integrated debugger to make it easier to find and fix software defects
-    - a way to install plugins to modify and customize IDE
-
