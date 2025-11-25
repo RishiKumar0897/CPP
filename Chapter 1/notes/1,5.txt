@@ -1,0 +1,31 @@
+- input/output library is part of the C++ standard library that deals with basic input and output
+- use this library to get input from the keyboard and output data to the console
+
+
+- #include iostream at the top of your file
+
+- the library has a few predefined variables for us to use.
+    - most common one is std::cout
+        - lets us send data to the console, printed as text
+
+- for std::cout
+    - statements in our program request that the output be sent to console
+    - the requested output "gets in line", and is stored in a region of memory that is set aside to handle these requests (a buffer)
+
+    - periodically, we flush the buffer, and send all of the data in it to the console.
+    - this also means that if program crashes, aborts, or is paused before buffer is flushed, any output still waiting in buffer will not be displayed
+
+
+- using std::endl is inefficient because it outputs a newline and flushes the buffer
+    - instead we can use \n 
+
+
+
+- std::cin reads input from the keyboard
+    - use >> instead of << to read input
+
+    - 2 step process
+        - 1. the individual characters that are entered as input are added to the end of an input buffer (including enter key)
+        - 2. extraction operator >> removes characters from the front of the input buffer and converts them into a value that is assigned to the associated variable
+
+    
