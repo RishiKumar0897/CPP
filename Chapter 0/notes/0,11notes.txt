@@ -1,0 +1,12 @@
+- when you write programs, compiler will check to ensure you are following the rules of C++
+- If you write something that violates these rules, your program is ill-formed
+
+- in most cases, it will emit some sort of diagnostic message. 
+    - a diagnostic error means the compiler halts compilation due to not being able to proceeed or the error is serious enough to stop
+    - a diagnostic warning means the compiler has decided not to halt compilation
+        - issue is ignored and compilation proceeds
+
+- diagnostic messages typically contain both the filename and line number where the compiler found the issue.
+    - also includes some text for context about what was found
+
+

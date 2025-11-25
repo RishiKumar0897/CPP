@@ -1,0 +1,22 @@
+- C++ is based off C
+- first high level language that provided what many devs were looking for
+
+
+C++
+- adds many new features to C
+- supports OOP
+
+
+- underlying design philosophy can be summed up as "trust the dev"
+- designed to allow the programmer a high degree of freedom to do what they want
+
+- C++ is good at 
+    - video games
+    - real time systems
+    - high performance financial applications
+    - graphical applications and simulations
+    - productivity and office applications
+    - embedded software
+    - audio and video processing
+    - AI and neural nets
+
