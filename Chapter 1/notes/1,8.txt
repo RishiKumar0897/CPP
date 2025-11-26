@@ -1,0 +1,20 @@
+- whitespace refers to characters used for formatting purposes
+    - i.e. spaces, tabs, and newlines
+
+- in C++ whitespace is used for 3 things
+    1. separating language elements
+    2. inside text
+    3. formatting code
+
+
+- syntax of the language requires that some elements are separated by whitespace.
+    - mostly occurs when two keywords or identifiers must be placed consecutively
+
+- the amount of whitespace does not matter EXCEPT for inside quoted text.
+- whitespace otherwise is ignored, so we use it to format our code and make it easy to read
+
+
+- C++ does not enforce any kind of formatting restrictions
+    - whitespace independent language
+
+- most modern IDEs have automatic formatting as you type
