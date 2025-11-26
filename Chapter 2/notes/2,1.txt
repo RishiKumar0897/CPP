@@ -1,0 +1,23 @@
+- a function is not just a collection of statements that execute sequentially
+- it's also a reusable sequence of statements, designed to do a particular job
+
+
+- functions written by the user are user-defined functions
+- a function call tells the CPU to interrupt the current function and execute another function
+- CPU essentially puts a bookmark at the current point of execution, executes the function named in the function call, and then returns to the original point to resume
+
+- the function initiating the function call is the caller, the function being called is the callee
+
+- basic syntax for a user-defined function 
+    - returnType functionName() {
+        #some logic
+    }
+
+
+    - first line is called the function header
+        - tells the compiler about function's existence, name, and return type
+    - the statements between the curly braces are called the function body
+
+    
+
+- in C++, nested functions are not supported
