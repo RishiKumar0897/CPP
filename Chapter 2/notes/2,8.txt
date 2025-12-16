@@ -1,0 +1,10 @@
+- as programs get larger, it is common to split them into multiple files for reusability and organizational purposes
+- make sure to use forward declarations to avoid compiler errors
+
+- compiler compiles each file individually, so it doesn't know about contents of other files or remember anything it has seen from previously compiled files
+- limited visibility and short memory is intentional
+    - allows source files to be compiled in any order
+    - when we change a source file, only that specific file needs to be recompiled
+    - reduces the possibility of naming conflicts between identifiers in different files
+
+

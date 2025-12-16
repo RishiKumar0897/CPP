@@ -1,0 +1,97 @@
+- header guards are conditional compilation directives that prevent compilation errors via #includes
+    - they look like this
+    #ifndef SOME_UNIQUE_NAME
+    #define SOME_UNIQUE_NAME
+
+    //declarations here 
+
+    #endif
+
+
+example
+
+square.h 
+    #ifndef SQUARE_H
+    #define SQUARE_H
+
+    int getSquareSides() {
+        return 4;
+    }
+    #endif
+
+
+wave.h 
+    #ifndef WAVE_H
+    #define WAVE_H
+
+    #include "square.h"
+
+    int getSquareSides() {
+        return 4;
+    }
+
+
+    #endif
+
+
+
+main.cpp
+    #include "square.h"
+    #include "wave.h"
+
+    int main() {
+        return 0;
+    }
+
+
+
+- header guards do not prevent a header from being included once into different code files
+
+
+another example
+
+
+square.h
+    #ifndef SQUARE_H
+    #define SQUARE_H
+    int getSquareSides();
+    int getSquarePerimeter(int sideLength);
+
+    #endif
+
+
+square.cpp
+    #include "square.h"
+
+    int getSquareSides() {
+        return 4;
+    }
+
+    int getSquarePerimeter(int sideLength) {
+        return sideLength * getSquareSides();
+    }
+
+
+main.cpp 
+    #include "square.h"
+    #include <iostream>
+
+    int main() {
+        std::cout << "a square has " << getSquareSides() << "sides\n";
+        std::cout << " a square of length 5 has perimeter " << getSquarePerimeter(5) << '\n'
+
+        return 0
+    }
+
+
+
+- #pragma once
+    - does the same thing as the series of directives (#ifndef, #define, #endif)
+
+
+
+
+
+
+
+    

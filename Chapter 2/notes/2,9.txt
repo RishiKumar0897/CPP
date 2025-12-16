@@ -1,0 +1,23 @@
+- C++ requires that all identifiers be non-ambiguous
+- if two identical identifiers are introduced into the same program in a way that the compiler or linker can't tell them apart, it will produce an error
+    - this is referred to as a naming collision or naming conflict
+    - if the conflict occurs in the same file it's a compiler error, and if the conflict occurs in separate files belonging to the same program, it's a linker error
+
+
+- most naming collisions occur in two cases
+    - two or more identically names functions (or globla variables) introduced into separate files belonging to the same program
+    - two or more identically names functions (or global variables) introduced into the same file
+
+- a scope region is an area of source code where all declared identifiers are distinct from names declared in other scopes
+
+- a namespace allows you to declare or define names inside of it for the purpose of disambiguation
+    - names declared in a namespace are isolated from names declared in other scopes
+    - namespaces can only contain declarations and definitions
+
+
+- any name that is not defined inside a class, function, or namespace is considered to be part of the global namespace (global scope)
+    - identifiers declared inside the global scope are in scope from the point of declaration to the end of the file
+    - although variables can be defined in the global namespace, it should be generally avoided
+
+- :: is a scope resolution operator
+    - for example in std::cout, it tells compiler that the identifier on the left is a namespace, and the identifier on the right is the variable/function being referenced

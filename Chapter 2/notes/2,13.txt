@@ -1,0 +1,17 @@
+- Design your program in steps
+
+Step 1: Define your goal
+Step 2: Define requirements
+Step 3: Define Tools, targets, and backup plan
+Step 4: break hard problems down into easy problems
+Step 5: figure out sequence of events
+
+
+- You should also implemnent your program in steps
+
+Step 1: outline main function
+Step 2: implement each function
+Step 3: test and keep testing
+
+
+- after this, keep editing and refining and updating your program

@@ -1,0 +1,15 @@
+- void return type is used to tell the comiler that a function does not return a value
+    -ex:
+
+    void printHi() {
+        std::cout << "Hi" << '\n';
+    }
+
+
+- the function will have a useful behavior to the caller, but won't have to return anything upon function end
+- this means that void functions do not need a return statement
+    - alternatively, you can use "return;" with no return value
+
+- void functions cannot be used in expressions that reauire a value
+- returning a value from a void function is a compile error
+

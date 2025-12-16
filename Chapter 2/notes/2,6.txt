@@ -1,0 +1,25 @@
+- functions provide a number of benefits that make them usefil in programs of longer length and complexity
+
+- Organization
+    - as programs grow in complexity, using functions helps to simplify understanding and compartmentalization, making it more manageable and less complex
+
+- Reusability
+    - once a function is written, it can be called anh number of times. reduces duplications and unnecessary copy/paste errors
+
+- Testing
+    - makes it easier to test code, as you can unit test your functions and ensure it works
+
+- Extensibility
+    - makes it easier to extend our program to handle a case it hasn't handled before
+
+- Abstraction
+    - to use a function, you only need to know its name, inputs, outputs, and where it lives
+
+
+- groups os statements that appear more than once in a program should be made into a function
+- code that has a well-defined set of inputs and outputs should be made into a function
+
+- a function performs one task
+- when a function becomes too long/too complicated, it should be split into multiple sub-functions
+    - this is known as refactoring
+
