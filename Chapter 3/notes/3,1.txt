@@ -1,0 +1,25 @@
+- errors generally fall into one of two categories
+    - syntax errors, or semantic/logic errors
+
+
+- a syntax error occurs when you write a statement that is not valid according to C++ language grammar rules
+    - this includes things like missing semicolons, mismatched parentheses or braces, etc..
+
+- the compiler will detect syntax errors and issue warnings or halt your program's compilation
+    - makes it easy to identify and fix problems
+
+
+- a semantic error is an error in logic
+- these occur when a statement is syntactically valid, but doesn't quite do what the programmer intended.
+- some types of logic errors are caught by the compiler
+    - for example: undeclared variable, type mismatches
+
+- other semantic errors only show at runtime.
+    - these errors could result in a wide variety of outcomes
+        - crashing the program
+        - providing a different output than expected
+        - behaving differently 
+    
+- semantic errors are easy to spot (once you run the program and see that something is wrong)
+- however, they are much harder to find and fix
+

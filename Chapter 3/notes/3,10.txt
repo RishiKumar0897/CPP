@@ -1,0 +1,20 @@
+- list of best practices
+    - understand common pitfalls in a given language
+    - don't let functions get too long
+    - prefer using libraries to writing your own code
+    - comment code liberally
+    - start with simple solutions, them layer in complexity incrementally
+    - optimize for readability and maintainability
+
+- break long functions into multiple shorter functions
+
+- process of making structural changes to code without changing actual functionality is called refactoring
+
+- defensive programming is a practice where the programming tries to anticipate all the ways the software could be misused
+
+- test early and often
+
+- use linters
+    - linters: analyze source code to identify specific semantic issues
+
+

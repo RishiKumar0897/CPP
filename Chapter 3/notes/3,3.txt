@@ -1,0 +1,23 @@
+- finding problems via eyeballing and manually inspecting the code is inefficient and often fruitless
+    - this is especially true as the complexity of your files and programs grow
+
+
+- a better way to find the source of problems is to run your program and observe its behavior
+    -a generalized way to do this:
+        1. figure out how to reproduce the problem
+        2. run the program and gather information to narrow down where the problem is
+        3. repeat the prior step until you find the problem
+    
+
+- reproducing the problem means making the problem appear in a consistent manner.
+- generating a set of reproduction steps can be helpful
+    - reproduction steps are a list of clear and precise steps that can be followed to reproduce an issue with
+        a high level or predictability
+    - the goal is to be able to cause the issue to reoccur as exactly as possible over and over again
+    - we find clues to determine the issue by observing behavior
+
+
+- once we are able to reproduce the problem, the next step is to figure out where in the code the problem actually is
+    - by reproducing the issue over and over again, we can figure out where exactly the issue arises, and thus find the source
+
+

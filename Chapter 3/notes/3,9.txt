@@ -1,0 +1,7 @@
+- when the program calls a function, it bookmarks the current location, makes the function call, and then returns
+
+- the call stack is a list of all active functions that have been called to get to the current point of execution
+- the call stack includes an entry for each function called, as well as which line of code the function will return to
+- when a new function is called, it's added to the top of the call stack
+- when the current function returns to the caller, it's removed from the top of the call stack, and control returns to the function just below it
+- the call stack window is a debugger window that shows the current call stack

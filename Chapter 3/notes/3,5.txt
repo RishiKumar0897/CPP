@@ -1,0 +1,14 @@
+- there are ways to mitigate the cluttering that debugging statements can cause
+
+- we can conditionalize our debugging code using if statements (or preprocessor directives)
+    - ensures that these statements only run when we are in "debug mode"
+
+- a more modernized approach, and one that clutters your code less, is logging
+    - a log is a sequential record of events that have happened, and are usually time-stamped
+    - logs are written to a file on disk (a log file) so they can be reviewed later
+
+- log files have a few advantages
+    - since its a separate file, there is no clutter in your main source code
+    - they can also easily be sent to other people for review
+
+- it's better to use a 3rd party logging library
