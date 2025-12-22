@@ -1,0 +1,38 @@
+- a floating point type variable is a variable that holds a number with a fractional component
+
+- there are types of floating point data types 
+    - single precision float -> 4 bytes
+    - double precision double -> 8 bytes
+    - longer precision double -> 8-16 bytes
+
+- we should avoid using the long double (double double) if possible 
+
+- when creating and initializing a float variable, make sure you include at least one decimal place
+    - this is to avoid unnecessary type conversions that may result in loss of data and precision
+
+
+- the precision of a floating point type refers to how many significant digits it can represent without information loss
+    - i.e. a float has 6-9 digits of precision, meaning it can exactly represent any number with up to 6 sig figs, and definitely nothing over 9
+
+- when outputting floating point numbers, std::cout has a default precision of 6
+    - it assumes all floating point variables are only significant to 6 digits
+    - it will truncate anything after that
+
+- you can use an output manipulator function to alter how data is output
+    - you can override the default precision for std::cout using std::setprecision()
+    - once you set an output manipulator it remains set
+
+- favor double over a float unless space is a constraint
+- rounding errors occur when a number can't be stored precisely
+    - BE WARY USING FLOATS FOR FINANCIAL DATA 
+
+
+- posinf and neginf represent positive and negative infinity
+- NaN stands for not a number
+
+
+
+
+
+
+

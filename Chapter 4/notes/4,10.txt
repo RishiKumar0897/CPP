@@ -1,0 +1,20 @@
+- if statements allow us to execute one or more lines of code only if some condition is true
+
+syntax
+    - if (condition)
+        statements;
+
+- a condition (or conditional expression) is an expression that evaluates to a Boolean value
+
+- if the condition evalues to true, we executes the statement, if it evaluates to false then we skip it
+
+- you can add an else clause if you want a series of statements to execute if the condition is false
+    - this gets into chaining -> if, else if (as many as you want), else
+
+
+- a return statement that idn't the last sttement in a function is called an early return
+    - we can use if statements to cause early returns in functions for efficiency or recursion purposes or error conditions
+
+
+
+

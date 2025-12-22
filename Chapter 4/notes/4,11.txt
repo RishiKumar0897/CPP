@@ -1,0 +1,25 @@
+- the char data type was designed to hold a single character 
+    - a character is a single letter, number, symbol, or whitespace
+
+- char data type is an integral type, meaning the underlying value is stored as an integer
+
+- the integer stored by a char variable is interpreted according to the ASCII table
+
+- char ch{'a'};
+    - alternatively can initialized using ASCII code number, but generally frowned upon
+
+
+- it is inputted and outputted as a character, not the code number
+
+- when input is extracted, whitespace is ignored
+    - we can use std::cin.get(ch) to not ignore whitespace
+
+- a char is 1 byte in size
+- some chars have meaning as escape sequences
+    - an example of this is '\n' for newline
+    - another example is '\t' for tab 
+
+- there is a whole table full of escape characters with many different Users
+
+- single characters should be single-quoted
+- avoid multicharacter literals

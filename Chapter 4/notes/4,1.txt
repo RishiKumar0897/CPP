@@ -1,0 +1,25 @@
+- the smallest unit of memory is a binary digit (bit).
+    - holds a value of 0 or 1
+
+- memory is organized into sequential units called memory addresses
+    - each memory address holds 1 byte of data
+        - a byte has 8 bits
+
+
+- we use a data type to tell the compiler how to interpret the contents of memory in some meaningful way
+
+- primitive data types:
+    - float
+    - bool
+    - char 
+    - int 
+    - std::nullptr_t (null pointer)
+    - void
+
+
+- C++ contains 3 sets of types
+    - primitive types (as listed above)
+    - compound types are more complex, and include user-created types
+    - standard library types
+
+

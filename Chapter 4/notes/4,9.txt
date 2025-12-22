@@ -1,0 +1,20 @@
+- a Boolean type has only two possible outcomes (true or false)
+    - bool b
+
+- initialized boolean variable -> bool b {true};
+    - we use ! operator to flip sign -> bool b {!true};
+
+- when we print Boolean values, it spits out 0 for false, and 1 for true
+    - use std::boolalpha to print true or false
+
+- this means we need to be careful when inputting Boolean values as well
+    - by default, std::cin only accepts numeric input for Boolean values
+    - 0 is false, 1 is true
+    - any other numeric value -> true
+    - any non-numeric value -> false
+    - to let std::cin accept the words true and false,. we have to input to std::boolalpha
+        - std::cin >> std::boolalpha
+        - however, when this is enabled, you will no longer be able to input 0 and 1
+        - it also only allows for lowercase true and false
+
+- boolean values are used as the return values for functions that check whether or not something is true
