@@ -1,0 +1,32 @@
+- a constant is a value that cannot be changed during program execution
+
+- C++ supports two kinds of constants
+    - named constants are constants associated with an identifier (also known as symbolic constants)
+    - literal constants are constant values that are NOT associated with an identifier
+
+- there are 3 ways to define a named constant in C++
+    - constant variables
+    - object-like macros with substitution text (preprocessor directives)
+    - enumerated constants
+
+
+- a constant variable is a variable whose value cannot change after initialization
+
+- declaration
+    - const double gravity {9.8};
+
+- constant variables MUST be initialized when defining them
+
+- most const variables are often named using all caps -> const double EARTH_GRAVITY
+
+- DO NOT use const for value parameters
+- DO NOT use const when returning by value
+
+- benefits of making variables constant
+    - reduces chance of bugs
+    - provides more opportunity for compiler to optimize programs
+    - reduces overall complexity of the program
+
+
+- prefer using constant variables to preprocessor macros
+

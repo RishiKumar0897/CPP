@@ -1,0 +1,38 @@
+- using the "const" keyword does not make it immediately clear whether the variable is usable in a constant expression or not
+- the use of "const" doesn't provide a way to let the compiler know that we require a variable that is usable in a constant expression
+- the use of "const" to creat compile-time constants doesn't extend to non-integral variables (i.e. strings)
+
+- the "constexpr" keyword is used to create a compile-time constant
+    - must be initialized with a constant expression
+
+-ex: constexpr double gravity {9.8}
+
+- ex of invalid: constexpr int myAge {age}
+
+- constexpr works for non-integral types as well
+
+- for variables 
+    - const means that the value of an object cannot be changed after initialization
+    - constexpr means that the object can be used in a constant expression, but value of initializer must be known at compile-time
+
+- constexpr variables are implicitly const. but the opposite is not true
+
+Best practice
+    - any constant var whose initializer is a constant expression should be declared as a constexpr
+    
+- const function parameters are treated a runtime constants
+- you cannot declare a function parameter as constexpr
+
+
+-  a constexpr function is a function that can be called in a constant expression
+ - i.e.
+
+constexpr int cmax(int x, int y) {
+    if (x>y)
+        return x;
+    else
+        return y;
+
+}
+
+

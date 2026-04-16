@@ -1,0 +1,36 @@
+- optimization is the process of modifying software to make it work more efficiently
+    - run faster
+    - use fewer resources
+
+- a profiler is a program used to see how long various parts of the program are taking to run
+- a program that optimizes another program is called an optimizer
+
+- most compilers optimize automatically
+    - allows for us to focus on writing code that is readable and maintainable
+
+- the as-if rule says that the compiler can modify a program however it likes in order to produce more optimized code
+    as long as those changes don't affect the program's observable behavior
+
+- compile'time evaluation allows the compiler to do work at compile time that would otherwise be done at runtime
+    - the resulting executables are faster and smaller
+
+- constant folding is an optimization technique where the compiler replaces expressions that have literal operands with the result of the expression
+    - i.e. compiler would recognize that 3 + 4 has constant operands, and replace the expression with 7
+    - constant folding is also applied to subexpressions
+
+- constant propagation is an optimization technique where the compiler replaces variables known to have constant values with their values
+
+- dead code elimination is pretty straightforward; compiler removes code that may be executed but has no effect on program's behavior
+
+- const variables are easier to optimize
+
+- optimized programs are harder to debug, since there will be lots of small changes and moving parts that can be hard to keep track off
+
+- constants in C++ are sometimes divided into two informal categories
+    - compile-time constant is one whose value is known at compile-time 
+        - literals
+        - const objects whose initializers are compile-time constants
+    - runtime constants are constants whose value is determined in a runtime context
+        - constant function parameters 
+    
+    
