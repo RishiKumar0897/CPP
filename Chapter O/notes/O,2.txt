@@ -1,0 +1,19 @@
+- C++ provides 6 bit manipulation operators (bitwise operators)
+    1. left shift x<<n, bits of x are shifted left by n positions, new bits are 0
+    2. right shift x>>n, bits of x are shifted right by n posititions, new bits are 0
+    3. bitwise not ~x, each bit in x is flipped
+    4. bitwise AND x&y, each bit is set when both corresponding bits in x and y are 1  
+    5. bitwise OR x|y, each bit is set when either of the corresponding bits in x and y are 1
+    6. bitwise XOR ^, each bit is set when the corresponding bits in x and y are different
+
+
+- these are non-modifying operators
+- best practice: use these operators with unsigned integral operands or std::bitset 
+
+WARNING
+    - bitwise operators will promote operands with narrower integral types to int or unsigned int
+    - ~ and << are width-sensitive and may produce different results depending on the width of the operands
+    - static_cast the result of these operations back to the narrower integral type before using the result
+
+- best practice is to avoid bit shifting on integral types smaller than int whenever possible
+

@@ -1,0 +1,27 @@
+- conditional operator "?:" is a ternary operator that takes 3 operands
+- it's C++'s only ternary operator
+- provides a shorthand method for if-else statement
+
+
+- form:
+    - condition ? expression1 : expression2;
+
+
+- evaluates as part of an expression1
+    - can be used anywhere an expression is accepted
+    - in cases where the condition's operands are constexprs, the operator can also be used in a constant expression
+
+- Best practice: parenthesize the entire conditional operation (including operands) when using it in a compound expression
+
+- to comply with C++ type checking rules, one of the following must be true
+    - type of second and third operands must match
+    - compiler must be able to find a way to convert one or both of the second and third operands to match types
+
+- when to use
+    - initializing an object with one of two values
+    - assigning one of two values to an object
+    - passing one of two values to a function
+    - returning one of two values from a function
+    - printing one of two values
+
+

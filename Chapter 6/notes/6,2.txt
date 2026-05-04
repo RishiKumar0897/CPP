@@ -1,0 +1,52 @@
+- only 2 unary arithmetic operators (+, -)
+
+- unary minus returns operand * -1.
+    - ex: -5
+- unary plus returns value of the operand
+    - ex: +5 = 5
+
+- you usually never need to use unary plus
+
+- binary arithmetic operators
+    1. +
+    2. -
+    3. *
+    4. /
+    5. %
+
+- floating point division returns a float value, integer division drops any decimal and returns an integer value
+
+
+- use static_cast<> to do floating point division with integers
+
+#include <iostream>
+
+int main()
+{
+    constexpr int x{ 7 };
+    constexpr int y{ 4 };
+
+    std::cout << "int / int = " << x / y << '\n';
+    std::cout << "double / int = " << static_cast<double>(x) / y << '\n';
+    std::cout << "int / double = " << x / static_cast<double>(y) << '\n';
+    std::cout << "double / double = " << static_cast<double>(x) / static_cast<double>(y) << '\n';
+
+    return 0;
+}
+
+
+
+- cannot divide by 0 or 0.0, results in an exception being thrown or NaN/Inf being returned
+
+
+- arithmetic assignment
+    1. +=
+    2. -=
+    3. *=
+    4. /=
+    5. %=
+
+- modifying operators: can modify the value of one of its operands
+    - assignment operators and increment/decrement operators are the only 2 types of modifying operators
+
+
