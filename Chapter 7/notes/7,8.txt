@@ -1,0 +1,22 @@
+- many devs believe non-const global variables should be avoided completely
+- biggest reason they are dangerous is because their values can be changed by any function that is called, and there's no easy way for the programmer to know that this will happen
+
+- global variables make the program's state unpredictable
+    - every function call becomes potentially dangerous
+
+- use local variables instead of global variables whenever possible
+
+- initialization order problem for global variables
+    - 2 phases
+        1. static initialization
+            - global variables with constexpr intializers (includign literals) are intialized to those values -> constant initialization
+            - global variables without intitializers are zero-initialized
+        
+        2. dynamic initialization
+            - global variables with non-constexpr intitializers are initialized
+
+- good reasons to use non-const global variables
+    - log file
+    - random number generator
+
+

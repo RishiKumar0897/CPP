@@ -1,0 +1,10 @@
+- compound statement is a group of zero or more statements that is treated by the compiler as if it were a single statement (also known as blocks)
+- blocks are bracketed by {} and statements in between are to be executed
+- no semicolon needed at the end of a blocks
+- example of a block is a function body
+
+- most common use case for blocks is if-else statements
+- you can nest blocks inside of other blocks
+- nesting level of a function is the max num of nested blocks you can be inside at any point in the function
+- best practice is to keep nesting level of functions to 3 or less
+

@@ -1,0 +1,54 @@
+- inline expansion: a process where a function call is replaced by the code from the called function's definition
+- reduces overhead greatly
+
+- best suited to simple, short functions 
+
+- in modern C++, the inline keyword has evolved to mean "multiple definitions are allowed"
+    - an inline function is one that is allowed to be defined in multiple translation units without violating ODR 
+
+- inline functions have 2 primary requirements
+    1. compiler needs to be able to see the full definition of an inline function in each translation unit where the function is used
+        - a forward declaration will not suffice on its own
+        - only one such definition can occur per translation unit
+    2. the definition can occur after the point of use if a forward declaration is also provided
+        - compiler will likely not be abl eto perform inline expansion until it has seen the definition
+    
+    - every definition for an inline function must be identical
+
+
+example:
+
+____________
+#include <iostream>
+
+double circumference(double radius); // forward declaration
+
+inline double pi() { return 3.14159; }
+
+int main()
+{
+    std::cout << pi() << '\n';
+    std::cout << circumference(2.0) << '\n';
+
+    return 0;
+}
+
+____________________________________________________________________________________________________________
+inline double pi() { return 3.14159; }
+
+double circumference(double radius)
+{
+    return 2.0 * pi() * radius;
+}
+
+
+- inline functions are typically defined in header files, where they can be #included into the top of any code file that needs to see the full definition
+    - ensures that all inline definitions for an identifier are identical 
+    - particularly useful for header-only libraries
+        - one of more header files that implement some capability
+        - popular because there are no source files that need to be added to a project to use them and nothing that needs to be linked
+        - can just #include the header-only library and then use it 
+    
+
+- best practice is to avoid the use of the inline keyword unless youre defining those functions/variables in a header file 
+

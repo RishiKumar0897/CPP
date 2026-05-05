@@ -1,0 +1,131 @@
+- global constants as internal variables
+    - create header file to hold these constants
+    - inside header file, define namespace
+    - add all constants inside namespace (making sure they are constexpr)
+    - you can #include the header file wherever it's needed
+
+
+- example:
+
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+// Define your own namespace to hold constants
+namespace constants
+{
+    // Global constants have internal linkage by default
+    constexpr double pi { 3.14159 };
+    constexpr double avogadro { 6.0221413e23 };
+    constexpr double myGravity { 9.2 }; // m/s^2 -- gravity is light on this planet
+    // ... other related constants
+}
+#endif
+
+
+#include "constants.h" // include a copy of each constant in this file
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "Enter a radius: ";
+    double radius{};
+    std::cin >> radius;
+
+    std::cout << "The circumference is: " << 2 * radius * constants::pi << '\n';
+
+    return 0;
+}
+
+
+- when the header gets #included into a .cpp file, each of the variables defined in the header will be copied into that code file at the point of inclusion
+- bc these vars live outside of a function, they're treated as global variables within the file they are included into
+- 2 issues
+    1. changing a single constant value would require recompiling every file that includes the constants header
+    2. if constants are large in size and can't be optimized away, this can use a lot of memory
+
+- one way to avoid these problems is by turning these constants into external variables
+- example
+
+#include "constants.h"
+
+namespace constants
+{
+    // We use extern to ensure these have external linkage
+    extern constexpr double pi { 3.14159 };
+    extern constexpr double avogadro { 6.0221413e23 };
+    extern constexpr double myGravity { 9.2 }; // m/s^2 -- gravity is light on this planet
+}
+
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+namespace constants
+{
+    // Since the actual variables are inside a namespace, the forward declarations need to be inside a namespace as well
+    // We can't forward declare variables as constexpr, but we can forward declare them as (runtime) const
+    extern const double pi;
+    extern const double avogadro;
+    extern const double myGravity;
+}
+
+#endif
+
+#include "constants.h" // include all the forward declarations
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "Enter a radius: ";
+    double radius{};
+    std::cin >> radius;
+
+    std::cout << "The circumference is: " << 2 * radius * constants::pi << '\n';
+
+    return 0;
+}
+
+
+- in order for vars to be usable in compile-time contexts, compiler has to see the variable's definition
+- bc compiler compiles each source file individually, it can only see variable definitions that appear in the source file being compiled
+
+- prefer defining your constants in a header file
+
+
+- by making constexpr vars inline, we can define them in a header file and then #include them into any cpp file that needs them
+- inline variables have external linkage by default, so they are visible to the linker 
+    - necessary so the linker can deduplicate the definitions 
+
+- non-inline constexpr variables have internal linkage
+    - if included into multiple translation units, each translation unit will get its own copy of the variable 
+
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
+
+// define your own namespace to hold constants
+namespace constants
+{
+    inline constexpr double pi { 3.14159 }; // note: now inline constexpr
+    inline constexpr double avogadro { 6.0221413e23 };
+    inline constexpr double myGravity { 9.2 }; // m/s^2 -- gravity is light on this planet
+    // ... other related constants
+}
+#endif
+
+#include "constants.h"
+
+#include <iostream>
+
+int main()
+{
+    std::cout << "Enter a radius: ";
+    double radius{};
+    std::cin >> radius;
+
+    std::cout << "The circumference is: " << 2 * radius * constants::pi << '\n';
+
+    return 0;
+}
+
+- best practice: if you need global constants, prefer defining inline constexpr global variables in a header file

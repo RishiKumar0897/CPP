@@ -1,0 +1,39 @@
+- an identifier with external linkage can be seen an dused both from the file in which it is defined and from other code files via a forward declaration
+    - identifiers with external linkage are truly global in that they can be used anywhere in your program
+
+- identifiers with external linkage are visible to the sender, which allows the linker to do 2 things
+    1. connect an identifier used in one translation unit with the approriate definition in another translation unit
+    2. deduplicate inline identifiers such that one canonical definition remains
+
+- functions have external linkage by default
+    - in order to call a function defined in anotehr file, you must place a forward declaration for the function in any other file you want to use it in
+
+
+void sayHi(); // forward declaration for function sayHi, makes sayHi accessible in this file
+
+int main()
+{
+    sayHi(); // call to function defined in another file, linker will connect this call to the function definition
+
+    return 0;
+}
+
+
+- global variables with external linkage are called external variables
+    - use extern keyword to make a global variable external and accessible by other files 
+
+int g_x { 2 }; // non-constant globals are external by default (no need to use extern)
+
+extern const int g_y { 3 }; // const globals can be defined as extern, making them external
+extern constexpr int g_z { 3 }; // constexpr globals can be defined as extern, making them external (but this is pretty useless, see the warning in the next section)
+
+int main()
+{
+    return 0;
+}
+
+
+- function forward declarations do not need the extern keyword, but variables do 
+
+- only use extern for global variable forward declarations or const global variable definitions
+- don't use extern for non-const global variable definitions (they are implicitly extern)

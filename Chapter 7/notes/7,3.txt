@@ -1,0 +1,24 @@
+- local variables have block scope
+    - in scope from point of definition to the end of the block they are defined in
+    - function parameters aren't defined in the body, but are considered part of the function body block scope
+
+- all var names within a scope must be unique
+
+- local variables have automatic storage duration
+    - duration: what rules govern when and how a var will be created and destroyed
+    - duration directly determines a variables lifetime
+    - for local vars, they are created at the point of definition and destroyed at the end of the block they are defined in
+
+
+- local variables can be defined inside nested blocks
+    - goes out of scope when the end of the nested block is reached
+
+
+- local variables have no linkage
+    - linkage: determines whether a declaration of that same identifier in a diff scope refers to the same object/function
+    - each declaration of an identifier with no linkage refers to a unique object or function
+
+- variables should be defined in the most limited scope
+    - limiting the scope of a variable reduces the complexity of the program
+
+

@@ -1,0 +1,7 @@
+- name hiding/shadowing: variable inside a nested block has the same name as a variable in an outer block, hides the outer variable when they're both in scope
+
+- local variables with the sam ename as a global variable will shadow the global variable wherever the local variable is in scope
+    - use scope operator :: with no prefix to tell compiler we want the global variable and not the local one
+
+
+- using "g" or "g_" prefix helps avoid name shadowing
