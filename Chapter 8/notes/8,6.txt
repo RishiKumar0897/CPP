@@ -1,0 +1,30 @@
+- when a switch matches a case label or optional default label, execution begins at the first statement following the matching label
+- execution then continues sequentially until one of the following termination conditions is hit 
+    - end of switch block reached 
+    - another control flow statement causes switch block or function to exit 
+    - something else interrupts normal flow of program 
+
+- fallthrough: when execution flows from a statement underneath a label into statements underneath a subsequent label
+
+
+
+-attribute: modern C++ feature that allows the programmer to provide the compiler with additional data about the code 
+    - specified by placing the attribute name between double brackets 
+    - not statements, can be used anywhere where contextually relevant 
+
+
+- [[fallthrough]] attribute 
+    - modifies a null statement to indicate that fallthrough is intentional and no warnings should be triggered
+    - use to indicate intentional fallthrough 
+
+
+
+- labels do not define a new scope (all cases scoped to the switch block)
+
+- you can declare or define variables inside the switch both before and after case labels
+- you cannot initialize inside the switch
+
+
+- if defining variables used in a case statement, do so in a block inside the case 
+
+

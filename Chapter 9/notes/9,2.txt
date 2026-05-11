@@ -1,0 +1,14 @@
+- code coverage: percentage of statements in your code that have been exercised by testing routines 
+
+- statement coverage: percentage of statements in your code that have been exercised by your testing routines 
+
+- branch coverage: percentage of branches that have been executed, with each possible branch counted separately 
+    - i.e. if statement has 2 branches, switch statement has many branches 
+    - aim for 100% branch coverage when testing code 
+
+
+- loop coverage: if you have a loop in your code, ensure it works properly when it iterates 0, 1, and 2 times. 
+    - if it works for the 2-iteration case, it should work correctly for all iterations 
+
+
+- test different categories of input 

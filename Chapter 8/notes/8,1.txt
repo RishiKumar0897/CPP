@@ -1,0 +1,17 @@
+- specific sequence of statements that the CPU executes is called the program's execution path
+
+- straight-line program: take the same path every time they are run
+    - often not what we desire
+
+- C++ offers several different control flow statements that allow dev to change normal path of execution through the program
+    - when a control flow statement causes point of execution to change to a non-sequential statement, this is called branching 
+
+
+Categories of flow control statements 
+
+Conditional statements -> cause a sequence of code toe xecute only if some condition is met
+Jumps -> tells CPU to start executing the statements at some other location
+Function calls -> jump to some other location, execute, then come back
+Loops -> repeatedly execute some sequence of code zero or more times until some condition met
+Halts -> terminate program 
+Exceptions -> error handling

@@ -1,0 +1,57 @@
+- scope
+
+    - determines where the identifier can be accessed within the source code 
+    - variables with local scope can only be accessed from point of declaration till the end of the block in which they are declared 
+        - local variables 
+        - function params 
+        - program-defined type definitions (i.e. enums, classes) defined inside a block 
+    
+    - variables with global scope can be accessed from the point of declaration until the end of the file 
+        - global variables
+        - functions
+        - program-defined type definitions (i.e. enums, classes) declared inside a namespace or in the global scope 
+
+    
+
+- duration 
+    - determines when it is created and destroyed 
+    - automatic duration: created at point of definition, destroyed when the block they are part of is exited
+        - local variables
+        - function parameters 
+    
+    - static duration: created when program begins, destroyed when program ends
+        - global variables
+        - static local variables 
+    
+    - dynamic duration: created and destroyed by programmer request
+        - dynamically allocated variables 
+    
+
+
+- linkage 
+    - determines whether a declaration of that same identifier in a different scope refers to the same entity or not 
+    - local variables have no linkage: another declaration of the same identifier refers to a unique entity 
+        - local variables 
+        - program-defined type definitions (i.e. enums, classes) declared inside a block
+    
+    - internal linkage: declaration of the same identifier within the same translation unit refers to the same object or function.
+        - static global variables 
+        - static functions
+        - const global variables 
+        - unnamed namespaces and anything defined within them
+    
+    - external linkage: declaration of the same identifier within the entire program refers to the same object or function 
+        - non-static functions 
+        - non const global variables
+        - extern const global variables 
+        - inline const global variables 
+        - namespaces 
+
+
+- you can use a forward declaration to access a function or variable in another file 
+
+
+- storage class specifier: set the duration and linkage of the identifier 
+    - ex: static, extern 
+
+

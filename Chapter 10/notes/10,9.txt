@@ -1,0 +1,29 @@
+- you can do type deduction with auto for function return types too 
+
+auto add(int x, int y)
+{
+    return x + y;
+}
+
+
+- benefit of return type deduction: negates the risk of a mismatched return type (unexpected conversions)
+
+- downside: functions that use an auto return type must be fully defined before they can be used
+
+- prefer explicit return types over return type deduction 
+
+
+- trailing return type: return type is specified after the rest of the function prototype 
+
+auto add(int x, int y) -> int
+{
+  return (x + y);
+}
+
+
+    - why do this
+        - functions with complex return types are easier to read 
+        - can be used to align the names of your functions 
+    
+
+- type deduction cannot be used for parameter types 

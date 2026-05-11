@@ -128,4 +128,4 @@ int main()
     return 0;
 }
 
-- best practice: if you need global constants, prefer defining inline constexpr global variables in a header file
+- best practice: if you need global constants, prefer defining inline constexpr global variables in a header file 

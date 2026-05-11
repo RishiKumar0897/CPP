@@ -1,0 +1,57 @@
+- switch statement: an expression is evaluated to produce a value 
+    - if expression value = any of the case labels, statements under the case label are executed 
+    - if no matching value is found and there's a default label, the statements under the default label will execute 
+    - if no matching value and no default label, the switch is skipped
+
+
+#include <iostream>
+
+void printDigitName(int x)
+{
+    switch (x)
+    {
+    case 1:
+        std::cout << "One";
+        return;
+    case 2:
+        std::cout << "Two";
+        return;
+    case 3:
+        std::cout << "Three";
+        return;
+    default:
+        std::cout << "Unknown";
+        return;
+    }
+}
+
+int main()
+{
+    printDigitName(2);
+    std::cout << '\n';
+
+    return 0;
+}
+
+
+
+
+
+- each set of statements underneath a label should end in a break-statement or return-statement
+
+
+
+- switch vs if-else
+    - switch is best when there's a single expression we want to evaluate for equality against a small number of values 
+    - if no. of cases gets to large, switch is no longer feasible 
+    - if-else is better for:
+        - testing an expression for comparisons rather than equality 
+        - testing multiple conditions 
+        - determining whether a value is within a range 
+        - expression has a type that switch doesnt support 
+        - expression evaluates to a bool 
+    
+
+    - prefer a switch statement over if-else statements when testing a single expression with a non-bool integral type or an enumerated type for equality against a small set of values. 
+
+

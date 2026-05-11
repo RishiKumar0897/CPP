@@ -1,0 +1,24 @@
+- semantic error: logic errors, code that does not do what dev intends
+
+- conditional logic errors
+    - programmer incorrectly codes the logic of a conditional statement or a loop condition
+
+- infinite loops: loop condition resolves to true and runs forever 
+
+
+- off-by-one error: loop executes one too many or one too few times 
+
+- incorrect operator precedence 
+
+
+- floating point precision issues 
+
+- integer division produces results that may be unintended 
+
+- accidental null statements
+
+- not using a compounded statement when one is required 
+
+- using assignment instead of equality inside a conditional 
+
+- forgetting to use the function call operator when calling a function

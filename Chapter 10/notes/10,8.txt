@@ -1,0 +1,12 @@
+- type deduction: feature that allows compiler to deduce the type of an object from the object's initializer
+    - can be invoked by using the "auto" keyword in place of the variable's type 
+
+
+- won't work with empty initializers and void types 
+- type deduction drops const from the deduced type 
+
+- don't use for string literals 
+- you cannot type deduct constexpr, but if you do use "auto" it will drop the const 
+
+- use type deduction when type of the object doesn't matter
+- favor explicit typing when you require a specific type that differs from the type of the initializer or when object is used in a context where making the type obvious is useful 
