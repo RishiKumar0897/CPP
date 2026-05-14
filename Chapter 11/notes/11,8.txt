@@ -1,0 +1,141 @@
+#include <iostream>
+
+template <typename T>
+T max(T x, T y)
+{
+    return (x < y) ? y : x;
+}
+
+int main()
+{
+    std::cout << max(2, 3.5) << '\n';  // compile error
+
+    return 0;
+}
+
+
+- this program won't compile because we're passing args of 2 different types 
+- we make the call without brackets to specify a type, so the compiler will first look to see if there's a non-template match for max(int, double)
+- then it will check to see if it can find a function template match 
+- since it can't find either, the call fails to resolve and results in an error 
+
+
+- first solution is to put the burden on the caller to convert the args into matching types 
+
+#include <iostream>
+
+template <typename T>
+T max(T x, T y)
+{
+    return (x < y) ? y : x;
+}
+
+int main()
+{
+    std::cout << max(static_cast<double>(2), 3.5) << '\n'; // convert our int to a double so we can call max(double, double)
+
+    return 0;
+}
+
+
+
+- second solution is to provide an explicit type template argument
+
+#include <iostream>
+
+template <typename T>
+T max(T x, T y)
+{
+    return (x < y) ? y : x;
+}
+
+int main()
+{
+    // we've explicitly specified type double, so the compiler won't use template argument deduction
+    std::cout << max<double>(2, 3.5) << '\n';
+
+    return 0;
+}
+
+
+
+- best way to solve this problem is to rewrite our function template in such a way that the parameters can resolve to different types 
+
+#include <iostream>
+
+template <typename T, typename U>
+auto max(T x, U y) // ask compiler can figure out what the relevant return type is
+{
+    return (x < y) ? y : x;
+}
+
+int main()
+{
+    std::cout << max(2, 3.5) << '\n';
+
+    return 0;
+}
+
+
+- because T and U are indepedent template params, they resolve their types independently
+
+- abbreviated function demplate: when the auto keyword is used as a parameter type in a normal function, the compiler will automatically convert the function into a function template
+    with each auto parameter becoming an independent template type parameter 
+
+
+auto max(auto x, auto y)
+{
+    return (x < y) ? y : x;
+}
+
+is the same as 
+
+template <typename T, typename U>
+auto max(T x, U y)
+{
+    return (x < y) ? y : x;
+}
+
+
+
+- use abbreviated function templates with a single auto parameter, or where each auto parameter should be an independent type 
+
+
+- function templates can be overloaded 
+
+#include <iostream>
+
+// Add two values with matching types
+template <typename T>
+auto add(T x, T y)
+{
+    return x + y;
+}
+
+// Add two values with non-matching types
+// As of C++20 we could also use auto add(auto x, auto y)
+template <typename T, typename U>
+auto add(T x, U y)
+{
+    return x + y;
+}
+
+// Add three values with any type
+// As of C++20 we could also use auto add(auto x, auto y, auto z)
+template <typename T, typename U, typename V>
+auto add(T x, U y, V z)
+{
+    return x + y + z;
+}
+
+int main()
+{
+    std::cout << add(1.2, 3.4) << '\n'; // instantiates and calls add<double>()
+    std::cout << add(5.6, 7) << '\n';   // instantiates and calls add<double, int>()
+    std::cout << add(8, 9, 10) << '\n'; // instantiates and calls add<int, int, int>()
+
+    return 0;
+}
+
+
+

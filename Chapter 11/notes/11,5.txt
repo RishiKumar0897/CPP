@@ -1,0 +1,117 @@
+- default argument: default value provided for a function parameter 
+
+void print(int x, int y=10) // 10 is the default argument
+{
+    std::cout << "x: " << x << '\n';
+    std::cout << "y: " << y << '\n';
+}
+
+
+- caller can optionally provide an arg for any param that has a default arg 
+
+#include <iostream>
+
+void print(int x, int y=4) // 4 is the default argument
+{
+    std::cout << "x: " << x << '\n';
+    std::cout << "y: " << y << '\n';
+}
+
+int main()
+{
+    print(1, 2); // y will use user-supplied argument 2
+    print(3); // y will use default argument 4, as if we had called print(3, 4)
+
+    return 0;
+}
+
+
+
+
+
+- you must use the equal sign (=) to specify a default argument, brace initialization won't work 
+
+- default args are inserted by the compiler at site of the function call 
+
+
+
+- default args are an excellent option when a function needs a value that has a reasonable default value, but for which you want to let the calle roverride if possible 
+- also useful in cases where we need to add a new parameter to an existing function
+
+
+- a function can have multiple parameters with default args
+
+#include <iostream>
+
+void print(int x=10, int y=20, int z=30)
+{
+    std::cout << "Values: " << x << " " << y << " " << z << '\n';
+}
+
+int main()
+{
+    print(1, 2, 3); // all explicit arguments
+    print(1, 2); // rightmost argument defaulted
+    print(1); // two rightmost arguments defaulted
+    print(); // all arguments defaulted
+
+    return 0;
+}
+
+
+
+- in a function call, any explicitly provided args must be the leftmost args 
+
+void print(std::string_view sv="Hello", double d=10.0);
+
+int main()
+{
+    print();           // okay: both arguments defaulted
+    print("Macaroni"); // okay: d defaults to 10.0
+    print(20.0);       // error: does not match above function (cannot skip argument for sv)
+
+    return 0;
+}
+
+
+
+- if a parameter is given a default arg, all subsequent params must also be given default args 
+
+- if more than one param has a default arg, the leftmost parameter should be the one most likely to be explicitly set by the user 
+
+
+
+- default args cannot be redeclared an dmust be declared before use 
+
+- best practice is to declare the default arg in the forward declaration and not in the function definition 
+
+
+- functions with default args may be overloaded 
+
+#include <iostream>
+#include <string_view>
+
+void print(std::string_view s)
+{
+    std::cout << s << '\n';
+}
+
+void print(char c = ' ')
+{
+    std::cout << c << '\n';
+}
+
+int main()
+{
+    print("Hello, world"); // resolves to print(std::string_view)
+    print('a');            // resolves to print(char)
+    print();               // resolves to print(char)
+
+    return 0;
+}
+
+
+
+
+
+- 

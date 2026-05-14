@@ -1,0 +1,52 @@
+- function overloading: create multiple functions with the same name, so long as each one has different parameter types 
+    - each function sharing a name in the same scope is called an overloaded function 
+
+
+int add(int x, int y) // integer version
+{
+    return x + y;
+}
+
+double add(double x, double y) // floating point version
+{
+    return x + y;
+}
+
+int main()
+{
+    return 0;
+}
+
+
+
+- functions can be overloaded so long as each overloaded function can be differentiated by the compiler, otherwise there will be a compilation error 
+
+- overload resolution: when a function call is made to an overloaded function, the compiler will try to match the call to the appropriate overload based on the args in the call 
+
+#include <iostream>
+
+int add(int x, int y)
+{
+    return x + y;
+}
+
+double add(double x, double y)
+{
+    return x + y;
+}
+
+int main()
+{
+    std::cout << add(1, 2); // calls add(int, int)
+    std::cout << '\n';
+    std::cout << add(1.2, 3.4); // calls add(double, double)
+
+    return 0;
+}
+
+
+
+- in order for a program using overloaded functions to compiule, two things have to be true
+    1. each overloaded function has to be differentiated from the others 
+    2. each call to an overloaded function has to resolve to an overloaded function 
+

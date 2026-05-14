@@ -1,0 +1,67 @@
+- non type template parameters: fixed type that serves as a placeholder for a constexpr value passed in as a template argument 
+
+- a non type template parameter can be any of the following types 
+    - integral type
+    - enum 
+    - std::nullptr_t
+    - floating point type 
+    - pointer or reference to an object 
+    - pointer or reference to a function 
+    - pointer or reference to a member function 
+    - literal class type 
+
+
+
+#include <bitset>
+
+int main()
+{
+    std::bitset<8> bits{ 0b0000'0101 }; // The <8> is a non-type template parameter
+
+    return 0;
+}
+
+
+
+- can also declare your own 
+
+
+#include <iostream>
+
+template <int N> // declare a non-type template parameter of type int named N
+void print()
+{
+    std::cout << N << '\n'; // use value of N here
+}
+
+int main()
+{
+    print<5>(); // 5 is our non-type template argument
+
+    return 0;
+}
+
+
+
+
+
+- non type template parameters are used primarily when we need to pass constexpr values to functions or class types so they can be used in contexts that require a constant expression 
+
+
+- non type template parameters may use auto keyword to have compiler deduce the non type template parameter from the template argument 
+
+#include <iostream>
+
+template <auto N> // deduce non-type template parameter from template argument
+void print()
+{
+    std::cout << N << '\n';
+}
+
+int main()
+{
+    print<5>();   // N deduced as int `5`
+    print<'c'>(); // N deduced as char `c`
+
+    return 0;
+}

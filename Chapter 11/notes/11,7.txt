@@ -1,0 +1,114 @@
+- function templates have one job, generating functions that are compiled and executed 
+
+#include <iostream>
+
+template <typename T>
+T max(T x, T y)
+{
+    return (x < y) ? y : x;
+}
+
+int main()
+{
+    std::cout << max<int>(1, 2) << '\n'; // instantiates and calls function max<int>(int, int)
+
+    return 0;
+}
+
+
+
+
+- process of creating functions from function templates is called function template instantiation 
+- when a function is instantiated due to a function call, it's called implicit instantiation
+- a function that is instantiated from a template is called a function instance 
+
+
+
+#include <iostream>
+
+template <typename T>
+T max(T x, T y) // function template for max(T, T)
+{
+    return (x < y) ? y : x;
+}
+
+int main()
+{
+    std::cout << max<int>(1, 2) << '\n';    // instantiates and calls function max<int>(int, int)
+    std::cout << max<int>(4, 3) << '\n';    // calls already instantiated function max<int>(int, int)
+    std::cout << max<double>(1, 2) << '\n'; // instantiates and calls function max<double>(double, double)
+
+    return 0;
+}
+
+
+
+
+- you can also use template argument deduction  to let the compiler deduce the actual type that should be used from the arg types in the function call 
+
+- the normal function call syntax will prefer a non-template function over an eqully viable function instantiated from a template 
+
+
+- best practice: favor normal function call syntax when making calls to a function instantiated from a function template 
+
+- it's possible to create function templates that have both template parameters and non-template parameters. 
+
+// T is a type template parameter
+// double is a non-template parameter
+// We don't need to provide names for these parameters since they aren't used
+template <typename T>
+int someFcn(T, double)
+{
+    return 5;
+}
+
+int main()
+{
+    someFcn(1, 3.4); // matches someFcn(int, double)
+    someFcn(1, 3.4f); // matches someFcn(int, double) -- the float is promoted to a double
+    someFcn(1.2, 3.4); // matches someFcn(double, double)
+    someFcn(1.2f, 3.4); // matches someFcn(float, double)
+    someFcn(1.2f, 3.4f); // matches someFcn(float, double) -- the float is promoted to a double
+
+    return 0;
+}
+
+
+
+
+- the compiler will instantiate and compile function templates that do not make sense semantically as long they are syntactically valid 
+
+- function templates can have default arguments for non-template parameters 
+
+- when a static local variable is used in a function template, each function instantiated from that template will have a separate version of the static local variable 
+
+#include <iostream>
+
+// Here's a function template with a static local variable that is modified
+template <typename T>
+void printIDAndValue(T value)
+{
+    static int id{ 0 };
+    std::cout << ++id << ") " << value << '\n';
+}
+
+int main()
+{
+    printIDAndValue(12);
+    printIDAndValue(13);
+
+    printIDAndValue(14.5);
+
+    return 0;
+}
+
+
+- template types = generic types 
+
+
+- drawbacks
+    - compiler will create and compile a function for each function call with a unique set of arg types, can lead to code bloat and slow compile times 
+    - tend to produce crazy-looking, borderline unreadable error messages that are much harder to debug than regular functions 
+
+
+- good rule of thumb is to create normal functions first, then go back if you can use generic types

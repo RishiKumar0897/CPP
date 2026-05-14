@@ -1,0 +1,28 @@
+- constexpr/consteval functions can use non-const local variables 
+
+- constexpr/consteval functions can use function parameters and local variables as args in constexpr function calls 
+
+- a constexpr function can call a non-constexpr function only if the constexpr function is being evaluated in a non-constant context 
+    - avoid calling non-constexpr functions from within a constexpr function if possible 
+    - if constexpr function requires different behavior for constant and non-constant xontexts, conditionalize with an if statement 
+    - test constexpr functions in a constant context 
+        - they may work when called in a non-constant context but fail in a constant context 
+
+
+- if a function can be evaluated as part of a required constant expression, it should be made constexpr 
+
+- pure function is a function that meets the following criteria 
+    - the function always returns the same return result when given the same args 
+    - has no side effects
+
+- pure functions should be made constexpr 
+
+
+- a function that can be evaluated as part of a constant expression should be made constexpr 
+
+
+- reasons why you may not want to constexpr a function
+    1. signals that a function can be used in a constant expression
+    2. part of the interface of a function. one a function is made constexpr, it can be called by other constexpr functions or used in contexts that require constant expressions. removing the constexpr later will break this code 
+    3. constexpr functions can be harder to debug since you can't breakpoint or step through them in a debugger 
+
