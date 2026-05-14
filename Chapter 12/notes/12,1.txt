@@ -1,0 +1,29 @@
+- compound data types: types defined in terms of other existing data types 
+    - have additional properties and behaviors that make them useful for solving certain types of problems 
+
+
+- every data type is either a fundamental type or a compound type, C++ language explicitly defines which category each type falls into 
+
+- C++ supports the following compound types 
+    - functions
+    - C-style arrays 
+    - pointer types 
+        - pointer to object
+        - pointer to function 
+    - pointer to member types
+        - pointer to data member 
+        - pointer to member function 
+    
+    - reference types 
+        - lvalue references 
+        - rvalue references
+    
+    - enumerated types 
+        - unscoped enums 
+        - scoped enums 
+    
+    - class types 
+        - structs
+        - classes
+        - unions 
+    

@@ -1,0 +1,86 @@
+- you can't set a normal pointer to point at a const variable 
+
+- pointer to const value: is a non-const pointer that points to a const value 
+    - use const keyword before the pointer's data type 
+
+
+int main()
+{
+    const int x{ 5 };
+    const int* ptr { &x }; // ptr points to const int x
+
+    const int y{ 6 };
+    ptr = &y; // okay: ptr now points at const int y
+
+    return 0;
+}
+
+
+
+
+
+- a pointer to const can point to non-const variables too 
+
+int main()
+{
+    int x{ 5 }; // non-const
+    const int* ptr { &x }; // ptr points to a "const int"
+
+    *ptr = 6;  // not allowed: ptr points to a "const int" so we can't change the value through ptr
+    x = 6; // allowed: the value is still non-const when accessed through non-const identifier x
+
+    return 0;
+}
+
+
+
+
+
+- there are also const pointers, whose addresses cannot be changed after initialization
+
+int main()
+{
+    int x{ 5 };
+    int* const ptr { &x }; // const after the asterisk means this is a const pointer
+
+    return 0;
+}
+
+
+
+
+
+
+- you can also declare a const pointer to a const value by using const keyword both before the type and after the asterisk 
+    - a const pointer to a const value cannot have its address chaged nor the value it is pointing to through the pointer 
+    - it can only be dereferenced to get the value it is pointing at 
+
+
+int main()
+{
+    int value { 5 };
+    const int* const ptr { &value }; // a const pointer to a const value
+
+    return 0;
+}
+
+
+
+
+
+
+- 4 rules
+    1. a non-const pointer (int* ptr) can be assigned another address to change what it is pointing at 
+    2. a const pointer (int* const ptr) always points to the same address, and this address cannot be changed 
+    3. a pointer to a non-const value (int* ptr) can change the value it is pointing to, but cannot point to a const value 
+    4. a pointer to a const value (const int* ptr) treats the value as const when accessed through the pointer, and thus cannot change the value it is pointing to
+        - can be pointed to const or non-const lvalues (but not rvalues since they don't have an address)
+
+
+- a const before the asterisk (const int* ptr) is associated with the type being pointed to
+    - pointer to a const value, cannot be modified through the pointer 
+
+- const after the asterisk (int* const ptr) is associated with the pointer itself 
+    - this pointer cannot be assigned a new address 
+
+

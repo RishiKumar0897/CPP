@@ -1,0 +1,60 @@
+- there is a third way to pass values to a function: pass by address 
+    - instead of providing an object as an argument, the caller provides an address (pointer) 
+    - the pointer is copied into a pointer parameter of the called function 
+    - function dereferences the pointer to access the object whose address was passed 
+
+
+#include <iostream>
+#include <string>
+
+void printByValue(std::string val) // The function parameter is a copy of str
+{
+    std::cout << val << '\n'; // print the value via the copy
+}
+
+void printByReference(const std::string& ref) // The function parameter is a reference that binds to str
+{
+    std::cout << ref << '\n'; // print the value via the reference
+}
+
+void printByAddress(const std::string* ptr) // The function parameter is a pointer that holds the address of str
+{
+    std::cout << *ptr << '\n'; // print the value via the dereferenced pointer
+}
+
+int main()
+{
+    std::string str{ "Hello, world!" };
+
+    printByValue(str); // pass str by value, makes a copy of str
+    printByReference(str); // pass str by reference, does not make a copy of str
+    printByAddress(&str); // pass str by address, does not make a copy of str
+
+    return 0;
+}
+
+
+
+
+
+
+
+- pass by address does not make a copy of the object being pointed to 
+
+
+- pass by address allows the function to modify the arg's value 
+
+- prefer pointer-to-const function parameters over pointer-to-non-const function parameters 
+- do not make function parameters const pointers unless there is some specific reason to do so 
+
+
+
+
+- when passing a parameter by address, make sure the pointer is not a null pointer before you dereference the value 
+    - null checking 
+
+
+
+- prefer pass by const reference to pass by address 
+
+

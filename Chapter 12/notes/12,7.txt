@@ -1,0 +1,199 @@
+char x {};
+
+- when this code is executed, a piece of memory from RAM is assigned to the object 
+- for variables and references, we don't need to worry about what specific memory address it's assigned 
+- compiler takes care of addressing 
+
+
+- we can access the address information using the address-of operator "&"
+
+#include <iostream>
+
+int main()
+{
+    int x{ 5 };
+    std::cout << x << '\n';  // print the value of variable x
+    std::cout << &x << '\n'; // print the memory address of variable x
+
+    return 0;
+}
+
+
+
+
+
+
+- & symbol
+    - when following a type name, denotes an lvalue reference -> int&
+    - when used in a unary context in an expression, it's the address-of operator -> &x
+    - when used in a binary context in an expression, it's the bitwise AND operator -> x & y 
+
+
+
+
+- dereference operator *
+    - returns the value at a given memory address as an lvalue 
+
+#include <iostream>
+
+int main()
+{
+    int x{ 5 };
+    std::cout << x << '\n';  // print the value of variable x
+    std::cout << &x << '\n'; // print the memory address of variable x
+
+    std::cout << *(&x) << '\n'; // print the value at the memory address of variable x (parentheses not required, but make it easier to read)
+
+    return 0;
+}
+
+
+
+
+
+- given a memory address, we can use the dereference operator * to get the value at that address as an lvalue 
+- & and * work as opposites
+
+
+
+- a pointer is an object that holds a memory address as its value 
+    - allows us to store the address of some other object to use later 
+
+
+- a type that specifies a pointer is called a pointer type 
+
+int;  // a normal int
+int&; // an lvalue reference to an int value
+
+int*; // a pointer to an int value (holds the address of an integer value)
+
+
+
+
+int main()
+{
+    int x { 5 };    // normal variable
+    int& ref { x }; // a reference to an integer (bound to x)
+
+    int* ptr;       // a pointer to an integer
+
+    return 0;
+}
+
+
+
+
+
+- pointers are not initialized by default 
+    - a pointer that has not been initialzied is called a wild pointer 
+    - wild pointers contain a garbage address and dereferencing one can lead to undefined behavior 
+
+- always initialize pointers 
+
+- when you initialie or assign a value to a pointer, that value has to be an address 
+- pointers are typically used to hold the address of another variable 
+
+#include <iostream>
+
+int main()
+{
+    int x{ 5 };
+    std::cout << x << '\n'; // print the value of variable x
+
+    int* ptr{ &x }; // ptr holds the address of x
+    std::cout << *ptr << '\n'; // use dereference operator to print the value at the address that ptr is holding (which is x's address)
+
+    return 0;
+}
+
+
+
+
+
+- the type of a pointer has to match the type of the object being pointed to 
+
+- you can use assignment with pointers in 2 different ways
+    1. change what the pointer is pointing at by assigning it a new address
+    2. change the value being pointed at by assigning the dereferenced pointer a new value
+
+
+
+#include <iostream>
+
+int main()
+{
+    int x{ 5 };
+    int* ptr{ &x }; // initialize ptr with address of variable x
+
+    std::cout << x << '\n';    // print x's value
+    std::cout << *ptr << '\n'; // print the value at the address that ptr is holding (x's address)
+
+    *ptr = 6; // The object at the address held by ptr (x) assigned value 6 (note that ptr is dereferenced here)
+
+    std::cout << x << '\n';
+    std::cout << *ptr << '\n'; // print the value at the address that ptr is holding (x's address)
+
+    return 0;
+}
+
+
+
+
+
+
+- when we use a pointer without a dereference, we are accessing the address held by the pointer 
+    - modifying this (ptr = &y) changes what the pointer is pointing at 
+- when we dereference a pointer (*ptr), we are accessing the object being pointed at
+    - modifying this (*ptr = 6) changes the value of the object being pointed at 
+
+
+- pointers behave much like lvalue references 
+    - both provide a way to indirectly access another object 
+    - primary difference is that with pointers, we need to explicitly get the address to point at, and we have to explicitly dereference the pointer to get the value 
+    - with references, the address-of and dereference happens implicitly
+
+
+- differences btwn pointers and references 
+    - references must be initialized, pointers don't have to be (but should be) 
+    - references are not objects, pointers are 
+    - references cannot be changes to reference something else, but pointers can change what they are pointing at 
+    - references must always be bound to an object, pointers can point to nothing 
+    - references are safe, pointers are inherently dangerous 
+
+
+- the address-of operator returns a pointer 
+
+
+
+- dangling pointer: pointer that holds the address of an object that has been destroyed 
+    - dereferencing a dangling pointer will lead to undefined behavior, since you're trying to access an object that is no longer valid 
+
+
+
+#include <iostream>
+
+int main()
+{
+    int x{ 5 };
+    int* ptr{ &x };
+
+    std::cout << *ptr << '\n'; // valid
+
+    {
+        int y{ 6 };
+        ptr = &y;
+
+        std::cout << *ptr << '\n'; // valid
+    } // y goes out of scope, and ptr is now dangling
+
+    std::cout << *ptr << '\n'; // undefined behavior from dereferencing a dangling pointer
+
+    return 0;
+}
+
+
+
+
+
+
+- pointers are both more flexible than references and more dangerous 

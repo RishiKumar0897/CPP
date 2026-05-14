@@ -1,0 +1,87 @@
+- lvalue reference to const: use the consst keyword when declaring an lvalue reference to tell an lvalue reference to treat the object it is referencing as const 
+
+- const lvalue references can bind to non modifiable values 
+
+
+int main()
+{
+    const int x { 5 };    // x is a non-modifiable lvalue
+    const int& ref { x }; // okay: ref is a an lvalue reference to a const value
+
+    return 0;
+}
+
+
+
+- they can be used to access but not modify the value being referenced 
+
+#include <iostream>
+
+int main()
+{
+    const int x { 5 };    // x is a non-modifiable lvalue
+    const int& ref { x }; // okay: ref is a an lvalue reference to a const value
+
+    std::cout << ref << '\n'; // okay: we can access the const object
+    ref = 6;                  // error: we can not modify an object through a const reference
+
+    return 0;
+}
+
+
+
+
+- const lvalue references can also bind to modifiable lvalues 
+    - the object being referenced is treated as const when accessed through the rerference, even if the underlying object is not const 
+
+
+- favor using const lvalue references unless you need to modify the object being referenced 
+
+
+
+- const lvalue references can also bind to rvalues 
+    - a temp object is created and initialized with the rvalue and the const reference is bound to that temp object
+
+
+#include <iostream>
+
+int main()
+{
+    const int& ref { 5 }; // okay: 5 is an rvalue
+
+    std::cout << ref << '\n'; // prints 5
+
+    return 0;
+}
+
+
+
+
+- const lvalue references can bind to values of a different type (as long as those values can be implicitly converted to the reference type) 
+
+#include <iostream>
+
+int main()
+{
+    // case 1
+    const double& r1 { 5 };  // temporary double initialized with value 5, r1 binds to temporary
+
+    std::cout << r1 << '\n'; // prints 5
+
+    // case 2
+    char c { 'a' };
+    const int& r2 { c };     // temporary int initialized with value 'a', r2 binds to temporary
+
+    std::cout << r2 << '\n'; // prints 97 (since r2 is a reference to int)
+
+    return 0;
+}
+
+
+
+
+
+- const references bound to temp objects extend the lifetime of the temp object 
+    - when a const lvalue reference is directly bound to a temp object, the lifetime of the temp object is extended to match the lifetime of the reference 
+
+

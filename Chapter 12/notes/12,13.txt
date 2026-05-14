@@ -1,0 +1,94 @@
+- a function and its caller communicate via two mechanisms
+    - parameters 
+    - return values 
+
+
+- parameters used only for receiving input: in parameters 
+    - typically passed by value or const reference 
+
+#include <iostream>
+
+void print(int x) // x is an in parameter
+{
+    std::cout << x << '\n';
+}
+
+void print(const std::string& s) // s is an in parameter
+{
+    std::cout << s << '\n';
+}
+
+int main()
+{
+    print(5);
+    std::string s { "Hello, world!" };
+    print(s);
+
+    return 0;
+}
+
+
+
+
+
+
+
+- function parameter used only for the purpose of returning information back to the caller: out parameter 
+
+#include <cmath>    // for std::sin() and std::cos()
+#include <iostream>
+
+// sinOut and cosOut are out parameters
+void getSinCos(double degrees, double& sinOut, double& cosOut)
+{
+    // sin() and cos() take radians, not degrees, so we need to convert
+    constexpr double pi { 3.14159265358979323846 }; // the value of pi
+    double radians = degrees * pi / 180.0;
+    sinOut = std::sin(radians);
+    cosOut = std::cos(radians);
+}
+
+int main()
+{
+    double sin { 0.0 };
+    double cos { 0.0 };
+
+    double degrees{};
+    std::cout << "Enter the number of degrees: ";
+    std::cin >> degrees;
+
+    // getSinCos will return the sin and cos in variables sin and cos
+    getSinCos(degrees, sin, cos);
+
+    std::cout << "The sin is " << sin << '\n';
+    std::cout << "The cos is " << cos << '\n';
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+- out parameters have unnatural usage syntax 
+    - caller must instantiate and initialize objects and pass them as arguments 
+    - these objects must be able to be assigned to which means they can't be made const 
+    - caller must pass in objects, so these values can't be used as temporaries or easily used in a single expression 
+
+
+- out parameters by reference don't make it obvious that the arguments will be modified 
+
+- try to avoid using out-parameters 
+
+- in rare cases, function will actually use the value of an out-parameter before overwriting its value
+    - this is known as an in-out parameter 
+    - they work identically to out-parameters and have all the same challenges 
+
+
+- when to pass by non-const reference 
+    1. when a parameter is an in-out parameter 
+        - since we're already passing the object we need back out, it's more straightforward to just modify that object 
+    2. when a function would otherwise return an object by value to the caller, but making a copy of that object is expensive 
