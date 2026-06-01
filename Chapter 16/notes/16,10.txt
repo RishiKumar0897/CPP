@@ -1,0 +1,39 @@
+- fixed-length arrays: length of the array must be known at the point of instantiation and cannot be changed after 
+    - std::array and C-style array 
+
+- dynamic array: array whose size can be changed after instantiation 
+    - std::vector 
+
+
+- std::vector can be resized after instantiation by calling the resize() member function with the new length 
+    - existing elements are preserved 
+    - new elements are value initialized (default initialized for class types)
+
+- can also be resized to be smaller 
+
+
+
+
+
+- capacity of a std::vector is how many elements it has allocated storage for 
+- length of a std::vector is how many elements are currently being used 
+
+
+
+- you can get the capacity of a std::vector using capacity() member function 
+
+
+- when a std::vector changes the amount of storage it is managing, the process is called reallocation 
+    - std::vector acquires new memory with capacity for the desired number of elements 
+        - these elements are value initialized
+    - elements in the old memory are copied into the new memory 
+        - old memory is returned to system 
+    
+    - capacity and length of the std::vector are updated 
+
+
+- reallocation is expensive and should be avoided if not necessary 
+
+- resizing a vector to be smaller will only decrease it's length, not it's capacity 
+    - can use the member function shrink_to_fit to make a vector shrink it's capacity to match it's length 
+        - implementation can ignore it 

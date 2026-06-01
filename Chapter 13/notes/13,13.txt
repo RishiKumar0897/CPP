@@ -1,0 +1,74 @@
+- similar to function templates, you can also make templates for class types 
+
+#include <iostream>
+
+template <typename T>
+struct Pair
+{
+    T first{};
+    T second{};
+};
+
+int main()
+{
+    Pair<int> p1{ 5, 6 };        // instantiates Pair<int> and creates object p1
+    std::cout << p1.first << ' ' << p1.second << '\n';
+
+    Pair<double> p2{ 1.2, 3.4 }; // instantiates Pair<double> and creates object p2
+    std::cout << p2.first << ' ' << p2.second << '\n';
+
+    Pair<double> p3{ 7.8, 9.0 }; // creates object p3 using prior definition for Pair<double>
+    std::cout << p3.first << ' ' << p3.second << '\n';
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+- std::pair is in the <utility> header, defined as a Pair class template with multiple template types 
+
+#include <iostream>
+#include <utility>
+
+template <typename T, typename U>
+void print(std::pair<T, U> p)
+{
+    // the members of std::pair have predefined names `first` and `second`
+    std::cout << '[' << p.first << ", " << p.second << ']';
+}
+
+int main()
+{
+    std::pair<int, double> p1{ 1, 2.3 }; // a pair holding an int and a double
+    std::pair<double, int> p2{ 4.5, 6 }; // a pair holding a double and an int
+    std::pair<int, int> p3{ 7, 8 };      // a pair holding two ints
+
+    print(p2);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+- class templates are typically defined in header files so they can be included into any code file that needs them.
+

@@ -1,0 +1,77 @@
+- class type objects can also be made const by using the const keyword 
+    - must be initialized at the time of creation 
+
+
+struct Date
+{
+    int year {};
+    int month {};
+    int day {};
+};
+
+int main()
+{
+    const Date today { 2020, 10, 14 }; // const class type object
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+- you cannot modify the data members of const objects 
+    - includes changing member variables directly or thru member functions 
+
+
+- const objects also cannot call non-const member functions
+    - to address this, we can creat const member functions 
+        - const member function: guarantees that it will not modify the object or call any non-const member functions 
+        - a const member function that attempts to change a data member or call a non-const member function will cause a compiler error 
+    
+
+- const member functions may be called on non-const objects 
+
+#include <iostream>
+
+struct Date
+{
+    int year {};
+    int month {};
+    int day {};
+
+    void print() const // const
+    {
+        std::cout << year << '/' << month << '/' << day;
+    }
+};
+
+int main()
+{
+    Date today { 2020, 10, 14 }; // non-const
+
+    today.print();  // ok: can call const member function on non-const object
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+- make any member function that does not modify the state of the object a const member function 
+
+- more common way to get a const object is by passing an object to a function by const reference 
+

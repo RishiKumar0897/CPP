@@ -1,0 +1,88 @@
+- within the scope of a class, the unqualified name of the class is called an injected class name 
+- in a class template the injected class name served as a shorthand for the full template name 
+
+- any member function templates defined outside the class definition should be defined right under the class definition in the same file 
+
+
+- static member variables are shared by all objects of the class 
+
+#include <iostream>
+
+struct Something
+{
+    static int s_value; // declare s_value as static (initializer moved below)
+};
+
+int Something::s_value{ 1 }; // define and initialize s_value to 1 (we'll discuss this section below)
+
+int main()
+{
+    Something first{};
+    Something second{};
+
+    first.s_value = 2;
+
+    std::cout << first.s_value << '\n';
+    std::cout << second.s_value << '\n';
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+- static members are not associated with class objects 
+    - they exist even if no objects of the class have been instantiated 
+    - created at the start of the program and destroyed at the end 
+    - lifetime is not bound to a class object 
+
+- static members are global variables that live inside the scope of the class 
+- access static members using the class name and the scope resolution operator ::
+
+
+- static member variables must be defined and initialized outside of the class in the global scope 
+    - ex: int Something::s_value{ 1 }; // define and initialize s_value to 1
+
+
+
+
+- if you make static members "inline" or "constexpr" you can define and initialize inside the class definition 
+
+class Whatever
+{
+public:
+    static inline int s_value{ 4 }; // a static inline variable can be defined and initialized directly
+};
+
+
+
+#include <string_view>
+
+class Whatever
+{
+public:
+    static constexpr double s_value{ 2.2 }; // ok
+    static constexpr std::string_view s_view{ "Hello" }; // this even works for classes that support constexpr initialization
+};
+
+
+
+
+
+
+
+
+
+
+
+
+- use cases for static variables 
+    - assign a unique ID to every instance of the class 
+    - utilizing a lookup table 
+
+
+- static members can use "auto" for type deduction 

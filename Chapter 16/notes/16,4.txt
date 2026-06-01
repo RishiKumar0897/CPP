@@ -1,0 +1,16 @@
+- std::vector can be passed to a function just like any other object
+    - should be passed by const reference to avoid making unnecessarily expensive copies 
+    - must explicitly specify the element type 
+
+
+- you can use CTAD (auto) to deduce a vector element's type from initializers when it is defined 
+
+
+- CTAD does not work with function parameters 
+    - instead, we can create a function template that uses the same template parameter declaration 
+
+
+- avoid using std::vector in cases where you need to assert on array length 
+    - std::array is a better choice in these caes 
+
+

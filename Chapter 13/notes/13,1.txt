@@ -1,0 +1,49 @@
+- user-defined/program-defined types: new, custom types you can use in the program 
+- C++ has two different categories of compound types that can be used to create program-defined types 
+    1. enum types (unscoped and scoped enums)
+    2. class types (structs, classes, unions)
+
+
+- the definition for a prgam-defined type is called a type definition 
+
+- a program-defined type must have a name and a definition before it can be used. 
+
+- functions are not considered user-defined types because the function itself is being given a name and definition, not the function's type 
+
+
+
+example of a struct 
+
+// Define a program-defined type named Fraction so the compiler understands what a Fraction is
+// (we'll explain what a struct is and how to use them later in this chapter)
+// This only defines what a Fraction type looks like, it doesn't create one
+struct Fraction
+{
+	int numerator {};
+	int denominator {};
+};
+
+// Now we can make use of our Fraction type
+int main()
+{
+	Fraction f { 3, 4 }; // this actually instantiates a Fraction object named f
+
+	return 0;
+}
+
+
+
+
+
+
+- best practice is to name program-defined types starting with a capital letter and not to include a suffix 
+
+
+
+
+
+- every code file that uses a program-defined type needs to see the full type definition before it is used  
+    - forward declaration is not sufficient 
+
+- program-defined types are typically defined in header files and then #included into any code file that needs it 
+    - these header files are given the same name as the type (i.e. Fraction.h) 

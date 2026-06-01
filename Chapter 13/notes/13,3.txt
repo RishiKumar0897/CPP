@@ -1,0 +1,15 @@
+- when we define an enumeration, each enumerator is automatically associated with an int value based on its position in the enumerator list 
+
+- the first enumerator is given value 0 and so on 
+
+- best practice is to make the enumerator representing 0 the one that is teh default meaning for the enum 
+
+
+- unscoped enums will implicitly convert to integral values 
+    - the specific integral type used to represent the value of enums is called the enum's base 
+
+
+- you only need to specify the base type of an enum when absolutely necessary 
+
+
+- 

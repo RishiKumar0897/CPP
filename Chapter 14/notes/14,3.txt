@@ -1,0 +1,68 @@
+- class types can have their own functions 
+
+- functions that belong to a class type: member functions 
+    - basically just methods 
+
+
+- functions that are not member functions are called non-member functions or free functions 
+    - e.g. print 
+
+
+- member functions must be declared inside the class type definition, and can be defined in or out of the definition 
+
+- example 
+
+// Member function version
+#include <iostream>
+
+struct Date
+{
+    int year {};
+    int month {};
+    int day {};
+
+    void print() // defines a member function named print
+    {
+        std::cout << year << '/' << month << '/' << day;
+    }
+};
+
+int main()
+{
+    Date today { 2020, 10, 14 }; // aggregate initialize our struct
+
+    today.day = 16; // member variables accessed using member selection operator (.)
+    today.print();  // member functions also accessed using member selection operator (.)
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+- 3 key differences between non-member and member 
+    1. where to declare and define 
+    2. how to call 
+    3. how to access members inside the member function 
+
+
+
+
+
+- the object that a member function is called on is implicitly passed to the member function 
+    - implicit object 
+
+
+- member functions can be overloaded 
+- structs can also have member functions 
+    - should avoid defining constructor member functions 
+
+
+- if a class type does not have any data members, prefer using a namespace 

@@ -1,0 +1,74 @@
+- class types support nesting 
+
+    - to create a nested type, define the type inside of an existing class definition 
+
+
+#include <iostream>
+
+class Fruit
+{
+public:
+	// FruitType has been moved inside the class, under the public access specifier
+        // We've also renamed it Type and made it an enum rather than an enum class
+	enum Type
+	{
+		apple,
+		banana,
+		cherry
+	};
+
+private:
+	Type m_type {};
+	int m_percentageEaten { 0 };
+
+public:
+	Fruit(Type type) :
+		m_type { type }
+	{
+	}
+
+	Type getType() { return m_type;  }
+	int getPercentageEaten() { return m_percentageEaten;  }
+
+	bool isCherry() { return m_type == cherry; } // Inside members of Fruit, we no longer need to prefix enumerators with FruitType::
+};
+
+int main()
+{
+	// Note: Outside the class, we access the enumerators via the Fruit:: prefix now
+	Fruit apple { Fruit::apple };
+
+	if (apple.getType() == Fruit::apple)
+		std::cout << "I am an apple";
+	else
+		std::cout << "I am not an apple";
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+- define nested types at the top of the class type 
+- class types act as a scope region for names declared within (like namespaces) 
+
+
+- it is uncommon but syntactically valid for classes to have other classes as a nested type 
+    - a nested class does not have access to the this pointer of the outer class
+        - nested classes cannot directly acces the members of the outer class 
+        - nested class cnan be instantiated independently of the outer class 
+        - however, they can access any private members of the outer class that are in scope 
+    
+
+
+- a nested type can be forward declared within the class that encloses it 
+    - can be defined later either within the same class or outside of it 
+    - a nested tyep cannot be forward declared prior to the definition of the enclosing class 
+
+

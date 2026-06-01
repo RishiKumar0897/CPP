@@ -1,0 +1,35 @@
+- separating interface and implementation is useful because it allows us to use objects without having to understand how they work 
+    - reduces the complexity of using objects 
+    - increases number of objects we can interact with 
+
+
+- interface: defines how a user of the class type will interact with objects of the class type 
+    - implicit contract btwn author of a class and the user of a class 
+    - interfaces must be well-designed and stable 
+
+- the implementation of a class type consists of code that makes the class behave as intended 
+    - includes both the member variables that store the data, and the bodies of the member functions that manipulate member variables
+
+- data hiding/encapsulation: technique used to enforce the separation of interface and implementation by hiding the implementation of a program-defined data type from users 
+    - ensure data members are private 
+    - member functions are public 
+
+- class should use data hiding, while structs should not 
+
+- data hiding makes classes easier to use and reduces complexity 
+- data hiding allows us to maintain invariants 
+- data hiding allows for better error detection and handling 
+- data hiding makes it possible ot change implementation details without breaking programs 
+
+- classes with interfaces are easier to debug 
+
+- prefer non-member functions to member functions
+    - non-member functions are not part of the interface
+    - non member functions enforce encapsulation 
+    - non member functions do not need to be considered when making changes to the implementation of a class
+    - non member functions containing app specific data and logic can be separated from reusable portions of the code
+
+
+- order of class member declaration
+    - public members first, private second 
+    

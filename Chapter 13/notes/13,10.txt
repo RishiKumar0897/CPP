@@ -1,0 +1,138 @@
+- we can pass entire structs to a function that needs to work with the members 
+    - structs are typically passed by const reference to avoid making copies 
+
+
+#include <iostream>
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+void printEmployee(const Employee& employee) // note pass by reference here
+{
+    std::cout << "ID:   " << employee.id << '\n';
+    std::cout << "Age:  " << employee.age << '\n';
+    std::cout << "Wage: " << employee.wage << '\n';
+}
+
+int main()
+{
+    Employee joe { 14, 32, 24.15 };
+    Employee frank { 15, 28, 18.27 };
+
+    // Print Joe's information
+    printEmployee(joe);
+
+    std::cout << '\n';
+
+    // Print Frank's information
+    printEmployee(frank);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+- we can also pass temporary structs 
+    - created an initialized at the point of definition
+    - destroyed at the end of the full expression they are created in 
+    - evaluation of a temp object is a rvalue expression, and it can only be used in places where rvalues are accepted 
+    - when a temp object is used as a function argument, it will only bind to params that accept rvalues 
+
+
+#include <iostream>
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+void printEmployee(const Employee& employee) // note pass by reference here
+{
+    std::cout << "ID:   " << employee.id << '\n';
+    std::cout << "Age:  " << employee.age << '\n';
+    std::cout << "Wage: " << employee.wage << '\n';
+}
+
+int main()
+{
+    // Print Joe's information
+    printEmployee(Employee { 14, 32, 24.15 }); // construct a temporary Employee to pass to function (type explicitly specified) (preferred)
+
+    std::cout << '\n';
+
+    // Print Frank's information
+    printEmployee({ 15, 28, 18.27 }); // construct a temporary Employee to pass to function (type deduced from parameter)
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+- we can also return structs 
+    - structs defined inside functions are usually returned by value, so as to not return a dangling reference 
+
+#include <iostream>
+
+struct Point3d
+{
+    double x { 0.0 };
+    double y { 0.0 };
+    double z { 0.0 };
+};
+
+Point3d getZeroPoint()
+{
+    // We can create a variable and return the variable (we'll improve this below)
+    Point3d temp { 0.0, 0.0, 0.0 };
+    return temp;
+}
+
+int main()
+{
+    Point3d zero{ getZeroPoint() };
+
+    if (zero.x == 0.0 && zero.y == 0.0 && zero.z == 0.0)
+        std::cout << "The point is zero\n";
+    else
+        std::cout << "The point is not zero\n";
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- 

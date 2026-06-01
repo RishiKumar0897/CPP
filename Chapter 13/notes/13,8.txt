@@ -1,0 +1,235 @@
+- data members are not initialized by default 
+    - this is why common practice is when creating the member variables in the struct, initialize with empty curly braces 
+
+
+- aggregate: any type thst can contain multiple data members 
+    - some types allow members to have different types, like structs 
+    - some types allow members to only have one type, like arrays 
+
+
+- in C++, an aggregate is either a C-style array or a class type that has:
+    - no user-declared constructors 
+    - no private or protected non-static data members 
+    - no virtual functions 
+
+
+- aggregate initialization: allows us to directly initialize the members of the aggregates 
+    - provide an initializer list as an initializer
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+int main()
+{
+    Employee frank = { 1, 32, 60000.0 }; // copy-list initialization using braced list
+    Employee joe { 2, 28, 45000.0 };     // list initialization using braced list (preferred)
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+- if an aggregate is initialized but the number of initialization values is fewer than the number of members, each member without an explicit initializer is initialized as follows
+    - if the member has a default -> use that 
+    - otehrwise, the member is copy-initialized from an empty initializer list 
+
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage { 76000.0 };
+    double whatever;
+};
+
+int main()
+{
+    Employee joe { 2, 28 }; // joe.whatever will be value-initialized to 0.0
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+- we can overload the << operator to print a struct 
+
+#include <iostream>
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+std::ostream& operator<<(std::ostream& out, const Employee& e)
+{
+    out << e.id << ' ' << e.age << ' ' << e.wage;
+    return out;
+}
+
+int main()
+{
+    Employee joe { 2, 28 }; // joe.wage will be value-initialized to 0.0
+    std::cout << joe << '\n';
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+- variables of a struct type can be const or constexpr and must be initialized 
+
+struct Rectangle
+{
+    double length {};
+    double width {};
+};
+
+int main()
+{
+    const Rectangle unit { 1.0, 1.0 };
+    const Rectangle zero { }; // value-initialize all members
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+- designated initializers: allow you to explicitly define which initialization values map to which members 
+
+struct Foo
+{
+    int a{ };
+    int b{ };
+    int c{ };
+};
+
+int main()
+{
+    Foo f1{ .a{ 1 }, .c{ 3 } }; // ok: f1.a = 1, f1.b = 0 (value initialized), f1.c = 3
+    Foo f2{ .a = 1, .c = 3 };   // ok: f2.a = 1, f2.b = 0 (value initialized), f2.c = 3
+    Foo f3{ .b{ 2 }, .a{ 1 } }; // error: initialization order does not match order of declaration in struct
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+- you can also assign with an initializer list
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+int main()
+{
+    Employee joe { 1, 32, 60000.0 };
+
+    joe.age  = 33;      // Joe had a birthday
+    joe.wage = 66000.0; // and got a raise
+
+    return 0;
+}
+
+
+
+
+- and this can also use designated initializers too
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+int main()
+{
+    Employee joe { 1, 32, 60000.0 };
+    joe = { .id = joe.id, .age = 33, .wage = 66000.0 }; // Joe had a birthday and got a raise
+
+    return 0;
+}
+
+
+
+
+
+- you can initialize a struct with another struct of the same type 
+
+#include <iostream>
+
+struct Foo
+{
+    int a{};
+    int b{};
+    int c{};
+};
+
+std::ostream& operator<<(std::ostream& out, const Foo& f)
+{
+    out << f.a << ' ' << f.b << ' ' << f.c;
+    return out;
+}
+
+int main()
+{
+    Foo foo { 1, 2, 3 };
+
+    Foo x = foo; // copy-initialization
+    Foo y(foo);  // direct-initialization
+    Foo z {foo}; // direct-list-initialization
+
+    std::cout << x << '\n';
+    std::cout << y << '\n';
+    std::cout << z << '\n';
+
+    return 0;
+}
+
+
+
+
+

@@ -1,0 +1,52 @@
+- when defining a struct, we can provide a default initialization value for each member as part of the definition 
+    - for members no tmarked as static, this process is sometimes called non-static member initialization
+    - initialization value is called a default member initializer 
+
+
+struct Something
+{
+    int x;       // no initialization value (bad)
+    int y {};    // value-initialized by default
+    int z { 2 }; // explicit default value
+};
+
+int main()
+{
+    Something s1; // s1.x is uninitialized, s1.y is 0, and s1.z is 2
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+- using default initializers, structs and classes can self-initialize even if no explicit initializers are given 
+
+
+- explicit initialization takes precedence over defaults
+
+- for missing initializers, the default values will be assigned 
+
+
+
+
+- initialization possibilities 
+    - if an aggregate is defined with an initialization list 
+        - if an explicit initialization exists, explicit value is used 
+        - if an initializer is missing and a default initialization exists, default is used 
+        - if an initializer is missing and no default initialization exists, value initialization occurs 
+
+    - if an aggregate is defined with no initialization list
+        - if a default initialization exists, default is used 
+        - if no default initialization exists, member remains uninitialized
+
+    
+- best practice is to always provide default values for members 
+
+- for aggregates, prefer value initialization with an empty braces initializer to default initialization with no braces 
+
+

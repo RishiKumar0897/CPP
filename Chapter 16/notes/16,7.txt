@@ -1,0 +1,21 @@
+- use signed loop variables 
+    - 3/4 good options
+        1. int is typically fine 
+        2. for very large arrays (or more defensive) use std::ptrdiff_t 
+        3. can use your own type alias for std::ptrdiff_t 
+    
+
+
+- use std::ssize() to get the length of an array as a signed value 
+
+
+- once you get the signed loop variable, need to convert it to an unsigned value wherever we intend to use it as an index 
+    - use a custom view 
+
+
+
+
+
+- another option is to index the underlying C-style array instead 
+
+- should avoid indexing altogether 

@@ -1,0 +1,23 @@
+- you CAN erturn a std::vector by value 
+
+
+- copy semantics: the rules that determine how copies of objects are made 
+    - if a type supports copy semantics, objects of that type are copyable 
+    - suboptimal when making a potentially expensice copy only to destroy it almost instantly after 
+
+
+- move semantics: rules that determine how the data from one object is moved to another 
+    - move: ownership of data is transferred from one object to another 
+    - any data member that can be moved is moved, and any data member that cannot be moved is copied 
+    - more efficient than copy semantics 
+
+
+- move semantics is invoked when 
+    - the type of the object supports move semantics 
+    - object is being initialized/assigned an rvalue object of the same type 
+    - move isn't elided 
+
+
+- std::vector and std::string both support move semantics 
+
+- you can return move-capable types by value 

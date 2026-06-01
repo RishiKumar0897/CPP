@@ -1,0 +1,74 @@
+- struct: program-defined data type that allows us to bundle multiple variables together into a single type 
+    - makes management of related sets of variables much easier 
+
+
+- structs are class types 
+
+- example struct definition 
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+
+
+
+- struct keyword is used to tell compiler that we're defining a struct 
+- name in this case is Employee 
+- inside the curly braces, we define variables that every Employee object will have 
+    - in this case, every Employee will have an id, age, and wage 
+
+- the variables part of a struct are called data members or member variables 
+
+- we use empty curly braces after each member variable to ensure that they are value initialized when an Employee object is created 
+
+
+
+
+
+
+
+- to use the struct, define a variable of the type 
+
+Employee joe {}; // Employee is the type, joe is the variable name
+
+
+
+
+
+
+
+
+- to access a specific member variable, use "." operator 
+
+#include <iostream>
+
+struct Employee
+{
+    int id {};
+    int age {};
+    double wage {};
+};
+
+int main()
+{
+    Employee joe {};
+
+    joe.age = 32;  // use member selection operator (.) to select the age member of variable joe
+
+    std::cout << joe.age << '\n'; // print joe's age
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+

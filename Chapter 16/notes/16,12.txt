@@ -1,0 +1,6 @@
+- std::vector<bool> tradeoffs 
+    1. fairly high amount of overhead 
+    2. performance is highly dependent upon the implementation 
+    3. it's not a vector and does not hold bool values 
+
+- AVOID USING

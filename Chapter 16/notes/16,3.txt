@@ -1,0 +1,20 @@
+- copy initialization allows narrowing conversions, which can be dangerous 
+- GCC and Clang will both produce warnings 
+
+- however if the value that needs to be sign converted is made constexpr and can be converted into an equivalent value, the sign conversion isn't considered narrowing 
+
+
+
+- size_type is a nested typedef defined in standard library container classes 
+    - used as the type for the length of the container class
+    - size_type defaults to std::size_t
+
+
+- can get the length of a std::vector using size() member function or std::size() 
+    - be sure to static_cast it to avoid a signed/unsigned conversion warning or error 
+
+
+- std::ssize() returns the length as a large signed integral type 
+
+- [] does not do bounds checking, but is faster 
+- at() does do bounds checking, but it's slower 

@@ -1,0 +1,28 @@
+- structs have a number of deficiencies when it comes t building large and complex programs 
+    - they do not provide an effective way to document and enforce class invariants 
+        - class invariant: condition that must be true throughout the lifetime of an object in order for the object to remain in a valid state 
+        - an object that has violated a class invariant is said to be in an invalid state 
+        - leads to undefined behavior if used after 
+    
+    - structs do not have the mechanics to bulletproof themselves such that an object either cannot be put into an invalid state or can signal immediately if it is
+
+
+
+- class: program-defined compound type that can have many member variables with different types 
+    - almost identical to struct technically, but used in different circumstances 
+
+
+- definining a class
+
+class Employee
+{
+    int m_id {};
+    int m_age {};
+    double m_wage {};
+};
+
+
+
+
+
+

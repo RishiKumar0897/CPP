@@ -1,0 +1,39 @@
+- a container is a data type that provides storage for a collection of unnamed objects (elements)
+
+- we typically use containers when we need to work with a set of related values 
+    - strings are containers for characters 
+
+    - elements of a container are unnamed 
+    - the container can have as many elements as we want 
+    - no. of elements in a container is often called it's length 
+
+
+- container operations 
+    - create 
+    - access 
+    - insert 
+    - get length 
+
+
+- containers are homogenous 
+    - elements in a container must be the same type 
+
+- containers library 
+    - part of C++ std library 
+    - contains various class types that implement some common types of containers 
+    - a class type that implements a container is called a container class 
+    - most common containers: std::vector and std::array 
+
+
+
+
+- array: container data type that stores a sequence of values contiguously 
+    - each element is placed in an adjacaent memory loc 
+    - fast, direct access to any element 
+
+- 3 primary array types 
+    - C-style arrays
+    - std::vector 
+    - std::array 
+
+

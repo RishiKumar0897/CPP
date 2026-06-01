@@ -1,0 +1,81 @@
+- each member of a class type has a property called an access level that determines who can access it 
+
+- C++ has 3 different access levels 
+    - private 
+    - public 
+    - protected 
+
+
+- members of a struct are public by default 
+- public members do not have any restrictions on how they can be accessed 
+- can be accessed by anyone as long as they are in scope 
+
+- members of a class are private by default 
+- private members can only be accessed by other members of the same class 
+- a class with private members is no longer an aggregate and thus can no longer use aggregate initialization 
+
+
+- common convention in C++ to name private data members starting with "m_"
+
+
+
+
+- you can explicitly set the access level of members using an access specifier 
+
+class Date
+{
+// Any members defined here would default to private
+
+public: // here's our public access specifier
+
+    void print() const // public due to above public: specifier
+    {
+        // members can access other private members
+        std::cout << m_year << '/' << m_month << '/' << m_day;
+    }
+
+private: // here's our private access specifier
+
+    int m_year { 2020 };  // private due to above private: specifier
+    int m_month { 14 }; // private due to above private: specifier
+    int m_day { 10 };   // private due to above private: specifier
+};
+
+int main()
+{
+    Date d{};
+    d.print();  // okay, main() allowed to access public members
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+- classes should generally make members private or protected and functions public 
+- structs should keep everything public 
+
+
+
+- access levels work on a per class basis 
+
+
+
+
+
+
+- use struct when all of the following are true, and class otherwise:
+    - simple collection of data that doesn't benefit from restricting access 
+    - aggregate initialization is sufficient 
+    - no class invariants, setup needs, or cleanup needs 
+
+

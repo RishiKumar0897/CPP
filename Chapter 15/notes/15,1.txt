@@ -1,0 +1,80 @@
+- in every member function, the keyword "this" is a const pointer that holds the address of the current implicit object 
+    - usually, it's not mentioned explicitly 
+
+- all non-static member functions have a this const pointer that holds the address of the implicit object
+
+- "this" always points to the object being operated on 
+
+- each member function has a single this pointer parameter that points to the implicit object 
+
+- you may need to explicitly reference "this" if you have a member function that has a parameter with the same name as a data member 
+
+- you can also exlpicitly return the implicit object as a return value 
+    - allows member functions to be chained together  
+
+class Calc
+{
+private:
+    int m_value{};
+
+public:
+    Calc& add(int value) { m_value += value; return *this; }
+    Calc& sub(int value) { m_value -= value; return *this; }
+    Calc& mult(int value) { m_value *= value; return *this; }
+
+    int getValue() const { return m_value; }
+};
+
+
+
+
+#include <iostream>
+
+int main()
+{
+    Calc calc{};
+    calc.add(5).sub(3).mult(4); // method chaining
+
+    std::cout << calc.getValue() << '\n';
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- also helpful in resetting a class back to default state 
+    - create a reset() function that creates a new object using the default constructor and assign that new object to the current implicit object 
+
+#include <iostream>
+
+int main()
+{
+    Calc calc{};
+    calc.add(5).sub(3).mult(4); // method chaining
+
+    std::cout << calc.getValue() << '\n';
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+- 

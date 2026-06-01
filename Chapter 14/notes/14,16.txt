@@ -1,0 +1,16 @@
+- user-defined function: compiler looks to see if dev has defined a function that performs a non numeric-conversion/promotion conversion 
+
+- converting constructor: a constructor that can be used to perform an implicit conversion 
+    - by default, all constructors are converting constructors 
+
+
+- "explicit" keyword: tells compiler that a constructor should not be used as a converting constructor 
+
+- making a constructor "explicit" has 2 notable consequences 
+    - cannot be used to do copy initialization or copy list initialization 
+    - cannot be used to do implicit conversions 
+
+- explicit constructors can be used for direct and direct list initialization 
+
+- best uses for explicit constructors 
+    - constructors that take a single argument 
