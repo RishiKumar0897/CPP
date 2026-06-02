@@ -1,0 +1,14 @@
+- pointer arithmetic: feature that allows us to apply certain integer arithmetic operators to a pointer to produce a new memory address 
+
+- pointer arithmetic returns the address of the next/previous object, not the next/previous address 
+
+- favor subscripting when indexing from the start of the array 
+- favor pointer arithmetic when doing relative positioning from a given element 
+
+
+
+
+- pointer arithmetic can be used to traverse an array 
+    - very common for C style arrays 
+
+

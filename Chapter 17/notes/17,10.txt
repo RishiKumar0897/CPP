@@ -1,0 +1,4 @@
+- C style strings are just C style arrays whose element type is char or const char 
+
+- fallen out of favor in modern C++ because they are hard to use and dangeorous 
+    - modern replacements are std::string and std::string_view 

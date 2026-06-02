@@ -1,0 +1,38 @@
+- the C++ standard library comes equipped with a bunch of functions to do these things in just a few lines of code 
+    - these functions come pre-tested, are efficient, work on a variety of different container types, and support parallelization 
+
+- functionality provided in the algorithms library fall into one of three categories 
+    1. inspectors: used to view but not modify a container (searching and counting)
+    2. mutators: used to modify data in a container (sorting and shuffling)
+    3. facilitators: used to generate a result based on values of the data members (multiply values, determine what order pairs of elements should be sorted in)
+
+
+- std::find will find an element by value 
+    - takes 3 parameters: iterator to the starting element, iterator to the ending element, value to search for 
+    - returns an iterator pointing to the element if it is found or the end of the container if the element is not found 
+
+
+- std::find_if will find an element that matches some condition 
+    - instead of passing in a specific value to search for, we pass in a callable object, such as a function pointer, lambda, etc 
+
+
+- std::count and std::count_if works similarly, but will count how many occurrences there are 
+
+- std::sort can do custom sorting 
+    - there is a version that taakes a function as its third parameter that allows us to customize the sort 
+    - function takes two params to compare and returns true of the first argument should be ordered before the second 
+    - by default, sorts in ascending order 
+
+
+- std::for_each allows us to perform some action to all elements in a container 
+    - takes a list as input and applies a custom function to every element 
+    - useful when we want to perform the same operation to every element in a list 
+    - better for large projects and big data than a for-each loop 
+
+
+
+- many of the algorithms in the std library make some kind of guarantee for how they will execute 
+    - these are either performance guarantees or guarantees about the order they will execute 
+    - most algorithms will provide some kind of performance guarantee but fewer have order of execution guarantees 
+
+

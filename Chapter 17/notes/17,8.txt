@@ -1,0 +1,34 @@
+- when a C style array is used in an expression, the array will be implicitly converted into a pointer to the element type 
+    - initialized with the address od the first element 
+    - this is called array decay 
+
+
+- there are a few cases where a C style array does not decay 
+    1. when its used as an argument to sizeof() or typeid() 
+    2. when taking the address of the array using &
+    3. when passed as a member of a class type
+    4. when passed by reference 
+
+
+- a decayed array poiter does not know how long the array it is pointing to i  
+
+- there are lots of issues with array decay
+    1. sizeof() returns different values for arrays and decayed arrays
+    2. array decay can make refactoring difficult 
+        - code that works as expected with a non-decayed array may not compile when the same code is using a decayed array 
+    3. not having length info creates several programmatic challenges 
+        - without length info, its difficult to sanity check the length of the array 
+        - users can easily pass in arrays that are shorter than expected which could lead to undefined behavior 
+    
+
+- there are workarounds to these, but it just adds to the complexity and fragility 
+
+- AVOID USING C style arrays in most cases 
+
+
+- when are C style arrays used in modern C++ 
+    1. to store constexpr global program data 
+        - these arrays can be accessed directly from anywhere in the program so we do not need to pass the array (avoidind decay related issues)
+    2. as parameters to functions or classes that want to handle non-constexpr C-style string arguments directly 
+
+

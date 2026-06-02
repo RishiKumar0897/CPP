@@ -1,0 +1,12 @@
+- dimension of an array is the number of indices needed to select an element 
+- array containing only one dimension is a single dimensional array 
+
+
+
+- we can create matrices in C++ 
+    - int a[3][5]; // a 3-element array of 5-element arrays of int
+
+
+- C++ uses row-major order, elements are sequentially placed in memory row by row from L to R, T to B 
+
+
