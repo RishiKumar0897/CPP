@@ -1,0 +1,81 @@
+- structs can have members that are other progrma-defined types 
+    - 2 ways to do this 
+        1. define one program-defined type in the global scope and use it as a member of another program defined type 
+
+        #include <iostream>
+
+        struct Employee
+        {
+            int id {};
+            int age {};
+            double wage {};
+        };
+
+        struct Company
+        {
+            int numberOfEmployees {};
+            Employee CEO {}; // Employee is a struct within the Company struct
+        };
+
+        int main()
+        {
+            Company myCompany{ 7, { 1, 32, 55000.0 } }; // Nested initialization list to initialize Employee
+            std::cout << myCompany.CEO.wage << '\n'; // print the CEO's wage
+
+            return 0;
+        }
+
+
+
+
+
+        2. types can be nested inside other types 
+
+
+
+        #include <iostream>
+
+        struct Company
+        {
+            struct Employee // accessed via Company::Employee
+            {
+                int id{};
+                int age{};
+                double wage{};
+            };
+
+            int numberOfEmployees{};
+            Employee CEO{}; // Employee is a struct within the Company struct
+        };
+
+        int main()
+        {
+            Company myCompany{ 7, { 1, 32, 55000.0 } }; // Nested initialization list to initialize Employee
+            std::cout << myCompany.CEO.wage << '\n'; // print the CEO's wage
+
+            return 0;
+        }
+    
+
+
+
+
+
+
+
+- structs that are owners should have data members that are owners as well 
+    - owners manage their own data and control when they are destroyed 
+    - we want our structs and classes to be owners of the data they contain 
+        - data members will be valid for as long as the struct or class is
+        - value of those data members won't change unexpectedly 
+    
+    - easiest way to do this is to make all the members of a struct owners as well 
+        - example of this is using std::string instead of std::string_view 
+
+
+- size of a struct is typically the added sum of the size of its members, but not always 
+    - this is the minimum case, it could be larger due to padding 
+    - minimize padding by defining members in decreasing order of size 
+
+
+- 

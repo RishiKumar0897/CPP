@@ -1,0 +1,25 @@
+- variables defined inside the body of a function are called local variables
+    - function parameters are also considered to be local variables
+
+- local variables are created and initialized at the point of definition
+- local variables are destroyed in the OPPOSITE ORDER of creation at the end of the function
+
+- an object's lifetime is the time between its creation and destruction
+    - variable creation and destruction happen when program is running, not at compile time
+    - therefore, liftetime is a runtime property
+
+- when an object is destroyed, it becomes invalid to reference
+    - any use of the object after it has been destroyed results in undefined behavior
+    - at some point afterdestruction the memory that the objects took up will be deallocated 
+
+- an identifier's scope determines where it can be seen and used within the code 
+- scope is a compile-time property
+- an identifier with local scope is usable from point of definition to the end of the innermost pair of curly braces containing the identifier
+- ensures that local variables cannot be used or accessed before the point of definition, or after destruction
+
+- out of scope -> identifier cannot be accessed within the code
+- going out of scope -> applied to objects rather than identifiers, happens at the end of the scope in which object was instantiated
+
+
+
+- a temporary object is an unnamed object that is used to hold a value only needed for a short period of time

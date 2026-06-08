@@ -1,0 +1,27 @@
+- an object of type std::array can be passed to a function 
+    - if we pass by value, an expensive copy will be made 
+    - prefer to pass by const reference 
+    - must specify the element type and array length 
+
+
+- we can create a function template to pass std::array of different element types and lengths 
+    - can use "auto" in a template parameter declaration to have a non-type template parameter deduce its type from the argument 
+
+
+- you can return an std::array by value when all of the following are true 
+    - array isn't huge 
+    - element type is cheap to copy or move 
+    - code isn't being used in a performance-sensitive context 
+
+
+
+- so for me, I should return std::arrays via an out parameter 
+    - a copy is never made 
+
+    - downsides
+        - non-conventional not easy to tell that the function is modifying the argument 
+        - can only use this method to assign values to the array, not initialize it 
+        - cannot be used to produce temp objects 
+    
+
+

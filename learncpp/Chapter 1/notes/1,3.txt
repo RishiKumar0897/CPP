@@ -1,0 +1,56 @@
+Data and values
+    - Data is any information that can be moved, processed, or stored by a computer
+
+    - a program can acquire data in many ways
+        - from a file
+        - from a database
+        - over a network
+        - from user input
+    - A single piece of data is called a value
+    - Examples of values include
+        - numbers
+        - characters
+        - text
+    
+
+    - Values placed directly into the source code are called literals
+
+
+
+
+Random Access Memory
+    - main memory in a computer is called Random Access Memory (RAM)
+    - When a program is run, the OS loads program into the RAM
+    - any data that is hardcoded into the program is loaded at this point
+    - the OS also reserves a portion of the RAM for the program to use while it is running
+    - Common uses for this memory are
+        - store values entered by user
+        - store data read in from a file or network
+        - store values calculated during program runtime
+
+
+
+Objects 
+
+    - an object represents a region of storage that can hold a value.
+    - objects also have associated properties
+    - an object with a name is called a variable
+    - objects are used to store a value in memory
+
+    - a definition statement can be used to tell the compiler we want to use a variable in our program
+        - int x;
+
+    - at compile-time, compiler makes a note to itself that we want a variable with the name x, and that the data type is int
+
+
+Variable Creation
+    - at runtime, each object is given an actual storage location that it uses to store values
+    - process of reservings torage for an object's future use is called allocation
+    - an object is create once actual storage has been relegated for object's use
+
+
+
+Data Types 
+    - determines what kind of value the object will store
+    - in C++ the type of an object must be known at compile-time
+    

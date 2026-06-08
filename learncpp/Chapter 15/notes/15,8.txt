@@ -1,0 +1,98 @@
+- a friend declaration (friend keyword) is used to tell the compiler that some other class or function is now a friend 
+
+- a friend is a class or function that has been granted full access to the private and protected members of another class 
+    - a class can selectively give other classes or functions full access to their members without impacting anything else 
+
+
+- friendship is always granted by the class whose members will be accessed 
+
+- a friend function is one that can access the private and protected members of a class as though it were a member of that class 
+    - literally a normal function 
+    - useful if you want to use it for a function that isn't a member function of that class 
+
+
+#include <iostream>
+
+class Accumulator
+{
+private:
+    int m_value { 0 };
+
+public:
+    void add(int value) { m_value += value; }
+
+    // Here is the friend declaration that makes non-member function void print(const Accumulator& accumulator) a friend of Accumulator
+    friend void print(const Accumulator& accumulator);
+};
+
+void print(const Accumulator& accumulator)
+{
+    // Because print() is a friend of Accumulator
+    // it can access the private members of Accumulator
+    std::cout << accumulator.m_value;
+}
+
+int main()
+{
+    Accumulator acc{};
+    acc.add(5); // add 5 to the accumulator
+
+    print(acc); // call the print() non-member function
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+- friend non-member functions can be defined inside a class 
+
+#include <iostream>
+
+class Accumulator
+{
+private:
+    int m_value { 0 };
+
+public:
+    void add(int value) { m_value += value; }
+
+    // Friend functions defined inside a class are non-member functions
+    friend void print(const Accumulator& accumulator)
+    {
+        // Because print() is a friend of Accumulator
+        // it can access the private members of Accumulator
+        std::cout << accumulator.m_value;
+    }
+};
+
+int main()
+{
+    Accumulator acc{};
+    acc.add(5); // add 5 to the accumulator
+
+    print(acc); // call the print() non-member function
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+- a friend function should perfer to use the class interface over direct access 
+- prefer to implement a function as a non-friend when possible 
+
+

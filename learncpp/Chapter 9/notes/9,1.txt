@@ -1,0 +1,16 @@
+- scope creep: added new capabilities that were not accounted for
+
+- software testing is the process of determining whether or not the software actually works as expected 
+
+- unit testing: testing a small part of your code in isolation to ensure that "unit" of code is correct 
+    - each unit test is designed to ensure that a particular behavior of the unit is correct 
+
+
+- best practice is to write your program in small, well-defined units, compile often, and test as you go
+
+- informal testing: test as you write, erase tests as they pass 
+
+- use unit testing frameworks designed to help simplify the process of writing, maintaining, and executing unit tests 
+
+- integration testing: integrating units once they've been tested in isolation 
+

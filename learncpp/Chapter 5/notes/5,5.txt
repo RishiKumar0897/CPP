@@ -1,0 +1,42 @@
+- by default, expressions evaluate at runtime
+
+- however, the compiler may choose to evaluate certain expressions at compile-time for optimization purposes
+
+- the use of language features that result in compile-time evaluation is caleld compile-time programming
+
+These features help improve software in a number of areas
+    - performance -> programs become smaller and faster
+    - versatility -> we can always use such code in places that require a compile-time value
+    - predictability -> we can use the compiler to halt compilation if it determines that code cannot be executed at compile time
+    - quality -> compiler reliably detects certain kinds of programming errors at compile-time
+    - undefined behavior is not allowed at compile-time
+
+the following features are the most foundational to compile-time programming
+    - constexpr variables
+    - constexper functions
+    - templates
+    - static_assert
+
+
+-  a constant expression is a non-empty sequence of literals, constant variables, operators, and function calls, all of which must be evaluatable at compile-time
+
+- in a constant expression, each part of the expression must be evaluatable at compile-time
+
+- an expression that is not a constant expression is a runtime expression
+
+What can be in a constant expression
+    - literals
+    - most operators with constant expression operands (3 + 4, 2 * sizeof(int))
+    - const integral variables with a constant expression initializer (const int x {5};)
+    - constexpr variables
+    - constexpr function calls with constant expression arguments
+
+- the compiler is only required to evaluate constant expressions at compile-time in contexts that require a constant expression
+
+Likelihood that an expression is fully evaluated at compile time
+    Never - runtime expression where compiler is not able to determine all values at compile time
+    possibly - runtime expression where compiler is able to determine all values at compile time
+    likely - constant expression used in a context that doesn't require a constant expression
+    always - a constant expression used in a context that requires a constant expression 
+
+

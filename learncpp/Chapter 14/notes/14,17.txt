@@ -1,0 +1,8 @@
+- member functions can be made constexpr 
+- aggregates can be made constexpr 
+- for class objects, we need to make the constructor constexpr as well  
+    - if we want class to be able to be evaluated at compile-time, make member functions and constructor constexpr 
+
+
+- constexpr members may be needed with non-constexpr/non-const objects 
+- constexpr member functions may be const or non-const 

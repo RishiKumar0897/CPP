@@ -1,0 +1,22 @@
+- numeric conversion have 5 basic types
+    1. converting an integral type to any other integral type (excluding integral promotions)
+    2. converting a float to any other float type (excluding float promotions)
+    3. converting a float to an int
+    4. converting an int to any float type 
+    5. converting an int/float to a bool 
+
+- unsafe conversion: at least one value of the source type cannot be converted into an equal value of the destination type 
+
+
+- value-preserving conversions are a safe numeric conversion type where the destinate type can exactly represent all possible values in the source type 
+- reinterpretive conversions are unsafe conversions where the converted value may be different than the source value, but no data is lost
+    - signed/unsigned conversions fall into this category 
+- lossy conversions are unsafe conversions where data may be lost during the conversion 
+
+
+- things to remember when using unsafe conversions
+    - constrain the values to be converted to just those that can be converted into equal values 
+        - int -> unsigned int when int is non-negative 
+    
+    - use if you don't mind that some data is lost because it's not relevant.
+        - int -> bool 

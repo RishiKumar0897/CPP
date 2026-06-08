@@ -1,0 +1,17 @@
+- variables declared outside of a function are called global variables
+- these variables have global namespace scope
+    - visible from the point of declaration until the end of the file they are declared in
+
+- best practice is to define global variables in a namespace rather than in the global namespace
+
+- global variables have static duration
+    - created when program starts and destroyed when it ends
+    - variables with static duration are also called static variables
+
+
+- convention is to prefix global variables with "g" or "g_" to indicate global nature
+    - avoids naming collisions with other identifiers in global name space
+    - prevents inadvertent name shadowing
+    - emphasizes that any change to the value of the variables will persist to the whole file
+
+- variables with static duration are zero-initialized by default

@@ -1,0 +1,17 @@
+- class types cannot be initialized using aggregate initialization 
+    - they use constructors 
+
+
+- a constructor: special member function that is automatically called after a non-aggregate class type object is created 
+    - compiler looks to see if it can find an accessible constructor that is a match for the object being created 
+        - if a valid constructor found, memory is allocated and then constructor func is called 
+
+
+- constructors perform 2 functions 
+    - initializate any member variables 
+    - perform other setup functions 
+
+
+- constructors have the same name as the class 
+- constructors should never be const 
+

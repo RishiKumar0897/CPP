@@ -1,0 +1,56 @@
+- the memory a program uses is divided into segments 
+    - code segment: where the compiled program sits in memory, typically read-only 
+    - bss segment: where zero-initialized global and static variables are stored 
+    - data segment: where initialized global and static variables are stored 
+    - heap: where dynamically allocated variables are allocated from 
+    - call stack: where function parameters, local variables, and other function-related information are stored 
+
+
+- the heap segment keeps track of memory used for dynamic memory allocation 
+
+- heap details
+    - allocating memory on the heap is comparatively slow 
+    - allocated memory stays allocated until it is specfically deallocated or the application ends 
+        - careful of memory leaks 
+    - dynamically allocated memory must be accessed through a pointer, dereferencing a pointer is slower than accessing a variable directly 
+    - because the heap is a big pool of memory, large arrays, structures, or classes can be allocated here 
+
+
+- call stack keeps track of all active functions from the start of the program to current point of execution 
+    - handles allocation of all function parameters and local variables 
+
+
+- call stack is implemented as a stack data structure 
+
+- call stack sequence of steps for every function call 
+    1. program encounters function call 
+    2. stack frame constructed and pushed onto the stack.
+        - the stack frame has:
+            - address of the instruction after the function call is the return address where the CPU remembers to return to 
+            - all function args 
+            - memory for any local variables 
+            - saved copies of any registers modified by the function that need to be restored when the function returns 
+        
+    3. CPU jumps to function start point 
+    4. instructions in the function execute 
+
+- when function terminates 
+    1. registers are restored from the call stack 
+    2. stack frame is popped off the stack, freeing memory for all local variables and arguments 
+    3. return value is handled 
+    4. CPU resumes execution at return address 
+
+
+- stack overflow occurs when all the memory in the stack has been allocated, and further allocations begin overflowing into other sections of memory 
+
+
+- stack details 
+    - allocating memory on the stack is relatively fast 
+    - memory allocated on the stack stays in scope as long as it is on the stack. it is destroyed when it is popped off 
+    - all memory allocated on the stack is known at compile time 
+        - this memory can be accessed directly through a variable 
+    - because stack is small, generally not a good idea to do anything that eats up a lot of stack space 
+        - includes allocating or copying large arrays or other memory intensive structures 
+
+
+

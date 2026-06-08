@@ -1,0 +1,139 @@
+- scoped enums are different to unscoped for 2 primary reasons 
+    1. they don't implicitly convert to integers
+    2. enumerators are only placed into the scope region of the enumeration 
+
+
+- to make a scoped enum, use keywords enum class (the rest of the scoped enum definition is the same as an unscoped)
+
+#include <iostream>
+int main()
+{
+    enum class Color // "enum class" defines this as a scoped enumeration rather than an unscoped enumeration
+    {
+        red, // red is considered part of Color's scope region
+        blue,
+    };
+
+    enum class Fruit
+    {
+        banana, // banana is considered part of Fruit's scope region
+        apple,
+    };
+
+    Color color { Color::red }; // note: red is not directly accessible, we have to use Color::red
+    Fruit fruit { Fruit::banana }; // note: banana is not directly accessible, we have to use Fruit::banana
+
+    if (color == fruit) // compile error: the compiler doesn't know how to compare different types Color and Fruit
+        std::cout << "color and fruit are equal\n";
+    else
+        std::cout << "color and fruit are not equal\n";
+
+    return 0;
+}
+
+
+
+
+
+
+- scoped enums define their own scope regions 
+    - they act like a namespace for their enumerators 
+    - helps reduce global namespace pollution and potential name conflicts 
+
+
+- to access a scoped enum, do so as if it was in a namespace having the same name as the scoped enum 
+
+#include <iostream>
+
+int main()
+{
+    enum class Color // "enum class" defines this as a scoped enum rather than an unscoped enum
+    {
+        red, // red is considered part of Color's scope region
+        blue,
+    };
+
+    std::cout << red << '\n';        // compile error: red not defined in this scope region
+    std::cout << Color::red << '\n'; // compile error: std::cout doesn't know how to print this (will not implicitly convert to int)
+
+    Color color { Color::blue }; // okay
+
+    return 0;
+}
+
+
+
+
+
+
+
+- scoped enums don't implicitly convert to integers 
+
+#include <iostream>
+int main()
+{
+    enum class Color
+    {
+        red,
+        blue,
+    };
+
+    Color shirt { Color::red };
+
+    if (shirt == Color::red) // this Color to Color comparison is okay
+        std::cout << "The shirt is red!\n";
+    else if (shirt == Color::blue)
+        std::cout << "The shirt is blue!\n";
+
+    return 0;
+}
+
+
+
+
+
+
+- using enum: keywords that import all of the enumerators from an enum into the current scope 
+    - when used with an enum class type, allows us to access the enum class enumerators without having to prefix each with the name of the enum class 
+
+
+#include <iostream>
+#include <string_view>
+
+enum class Color
+{
+    black,
+    red,
+    blue,
+};
+
+constexpr std::string_view getColor(Color color)
+{
+    using enum Color; // bring all Color enumerators into current scope (C++20)
+    // We can now access the enumerators of Color without using a Color:: prefix
+
+    switch (color)
+    {
+    case black: return "black"; // note: black instead of Color::black
+    case red:   return "red";
+    case blue:  return "blue";
+    default:    return "???";
+    }
+}
+
+int main()
+{
+    Color shirt{ Color::blue };
+
+    std::cout << "Your shirt is " << getColor(shirt) << '\n';
+
+    return 0;
+}
+
+
+
+
+
+
+
+- 

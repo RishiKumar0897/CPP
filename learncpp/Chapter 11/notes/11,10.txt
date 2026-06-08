@@ -1,0 +1,83 @@
+- put template code in a header (.h) file 
+
+#ifndef ADD_H
+#define ADD_H
+
+template <typename T>
+T addOne(T x) // function template definition
+{
+    return x + 1;
+}
+
+#endif
+
+
+#include "add.h" // import the function template definition
+#include <iostream>
+
+int main()
+{
+    std::cout << addOne(1) << '\n';
+    std::cout << addOne(2.3) << '\n';
+
+    return 0;
+}
+
+
+
+- any files that need access to the template can #include the header file and the template definition will be copied by the preprocessor into the source file 
+
+- template definitions are exempt from the ODR rule that requires one definition per program 
+
+
+another example 
+
+
+
+#ifndef MAX_H
+#define MAX_H
+
+template <typename T>
+T max(T x, T y)
+{
+    return (x < y) ? y : x;
+}
+
+#endif
+
+
+
+
+
+#include "max.h" // import template definition for max<T>(T, T)
+#include <iostream>
+
+void foo()
+{
+	std::cout << max(3, 2) << '\n';
+}
+
+
+
+
+
+
+#include "max.h" // import template definition for max<T>(T, T)
+#include <iostream>
+
+void foo(); // forward declaration for function foo
+
+int main()
+{
+    std::cout << max(3, 5) << '\n';
+    foo();
+
+    return 0;
+}
+
+
+
+
+
+
+- templates that are needed in multiple files should be defined in a header file and then #included wherever needed 

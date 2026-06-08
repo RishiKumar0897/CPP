@@ -1,0 +1,23 @@
+- sometimes, we only want one function to service two different cases 
+    - one where our implicit object is an lvalue
+    - one where implicit object is an rvalue 
+
+- ref-qualifier: allows us to overload a member function based on whether it is being called on an lvalue or an lvalue 
+
+const std::string& getName() const &  { return m_name; } //  & qualifier overloads function to match only lvalue implicit objects, returns by reference
+std::string        getName() const && { return m_name; } // && qualifier overloads function to match only rvalue implicit objects, returns by value
+
+
+
+
+
+
+- for a given function, you must pick either non-ref-qualified overloads OR ref-qualified, you can't use both at the same time 
+- if only a const lvalue-qualified function exists, it will accept either lvalue or rvalue implicit objects 
+- either qualified overload can be explicitly deleted using = delete 
+    - prevents calls to that function 
+    - ex: deleting the rvalue version prevents the use of the functino with rvalue implicit objects 
+
+
+- best practice: DONT USE 
+

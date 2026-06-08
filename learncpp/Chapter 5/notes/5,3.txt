@@ -1,0 +1,9 @@
+- there are different numerical systems used by C++
+    - i.e decimal, binary, hexadecimal
+
+- decimal -> 0-9
+- binary 0 and 1
+- octal -> 0-7
+- hexadecimal -> 0-F 
+
+- you may ned to convert between these systems as it pertains to your projects and programs

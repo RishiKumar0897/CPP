@@ -1,0 +1,9 @@
+- general approach to debugging
+    1. find root cause of the problem
+    2. understand WHY the issue is occurring
+    3. determine fix to the issue
+    4. fix the issue
+    5. retest
+    6. if new problems emergem, fix those using steps 1-5
+
+

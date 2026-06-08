@@ -1,0 +1,23 @@
+- an iterator is an object designed to traverse through a container, providing access to each element along the way 
+    - a container provides different kinds of iterators 
+        - e.g. an array container may offer a forwards iterator that walks through the array in a forward order, and a reverse iterator that walks backwards
+    - once the appropriate type of iterator is created, we can use the interface provided by said iterator to traverse and access elements
+
+- simplest kind of iterator is a pointer 
+    - uses pointer arithmetic 
+    - works for data stored sequentially in memory 
+
+- all standard library containers offer direct support for iteration 
+    - we can ask the container for begin and end points via member functions begin() and end() 
+
+
+- iterators can be left "dangling" if the elements being iterated over change address or are destroyed 
+    - the iterator then becomes invalidated 
+    - accessing an invalidated iterator produces undefined behavior 
+
+- operations that modify containers can have the side effect of causing elements in the container to change addresses 
+    - existing iterators to those elements will be invalidated 
+
+- invalidated iterators can be revalidated by assigning a valid iterator back to them
+
+

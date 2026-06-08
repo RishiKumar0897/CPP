@@ -1,0 +1,21 @@
+- 2 ways to incremenet/decrement
+    1. pre -> ++x, --x 
+    2. post -> x++, x--
+
+- pre
+    - operand is incremented or decremented, then the expression evaluates to the value of the operand
+
+- post
+    - a copy of the operand is made
+    - the operand (not the copy) is incremented/decremented
+    - then the COPY is evaluated
+
+
+- when to use pre vs post
+    - prefer pre, use post when it produces more concise of understandable code
+
+- side effect: when a function or expression has some observable effect beyond producing a return value
+    - examples: changing the value of objects, I/O, updating GUI
+    - usually useful
+    - side effects can cause order of eval issues
+

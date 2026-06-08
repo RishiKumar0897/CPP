@@ -1,0 +1,27 @@
+- most objects will take up more than 1 byte of memory
+- the amount of memory that an object uses is based on its data type
+
+-the more memory can object uses, the more information it can hold
+
+- an object with n bits can hold 2^n unique values (0 or 1)
+
+- primitive data type sizes:
+    -  an object must occupy at least 1 byte
+    - a byte must be at least 8 bits
+    - char, short, int, long, long long -> 8, 16, 16, 32, 64 bits
+    - char is exactly 1 byte
+
+
+- bool = 1 byte
+- char = 1 byte
+- short = 2 bytes
+- int = 4 bytes
+- long = 4 bytes
+- long long = 8 bytes
+- float = 4 bytes
+- double = 8 bytes
+- std::nullptr_t = 4 bytes 
+
+
+- sizeof() is a unary operator that takes a type or a variable and returns the size of it in bytes
+- sizeof() does not account for dynamically allocated memory

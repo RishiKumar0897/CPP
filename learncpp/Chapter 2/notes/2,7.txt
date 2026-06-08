@@ -1,0 +1,38 @@
+- compiler compiles the contents of a file sequentially
+    - that is, variables and functions must be defined before they are called
+
+- alternatively, we can use a forward declaration to tell the compiler about the existence of an identifier before actually defining it
+    - this way, when the compiler encounters the function, it understands that we're making a function call
+
+- to make a forward declaration, we use a function declaration statement
+    - this consists of the header followed by a semicolon (no body)
+
+- example function declaration: int add(int x, int y);
+
+
+int add (int x, int y);
+
+int main() {
+    std::cout << "The sum of 3 and 4 is: " << add(3, 4) << '\n'
+}
+
+int add(int x, int y) {
+    return x + y;
+}
+
+
+- we use forward declarations gdnerally to tell the compiler about the existence of a function that has been defined in a different code file.
+    - in this case, reordering isn't possible
+
+
+- forward declarations can also be used to define our functions in an order-agnostic manner, allowing us to define functions in whatever order maximizes Organization
+
+- declaration vs definition
+    - declaration: tells the compiler about the existence of an identifier and it's type information
+    - definition: a declaration that actually implements or instantiates the identifier
+
+- one definition rule (ODR)
+    - within a file, each function, variable, type, or template in a given scope can only have one definition
+    - within a program, each function or variable in a given scope can only have one definition
+    - Types, templates, inline functions, and inline variables are allowed to have duplicate definitions in different files, so long as each definition is identical
+    

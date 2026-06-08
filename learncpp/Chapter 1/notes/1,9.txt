@@ -1,0 +1,24 @@
+- literals are fixed values that have been inserted directly into the source code
+- literals and variables both have a value and type
+    - value of a literal is fixed and cannot be changed
+
+- literal == constant
+- a literal's value is placed directly into the executable, and thus since the executable can't be changed after it's created, neither can the literal's value
+- a variable's value is placed in memory, and the value of memory can be changed while executable is running
+
+
+- an operation is a process involving zero or more input values (operands) that produce an output value
+- specific operation to be performed is denoted by an operator
+
+
+- the output value of an operation is called the return value
+
+- number of operands that an iperator takes as input is called the operator's arity
+    - unary takes one
+    - binary takes two
+    - ternary takes 3 (only one is conditional operator)
+    - nullary takes 0 (only one is the throw operator)
+
+- operators can be chained together (works like PEMDAS)
+
+- an operator that has an observable effect beyond producing a return value is said to have a side effect

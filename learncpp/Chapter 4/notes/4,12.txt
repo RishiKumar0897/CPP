@@ -1,0 +1,22 @@
+- in most cases, C++ automatically converts values of one fundamental type to another fundamental type
+    - for example, if a double parameter has an int passed to it, it will auto convert
+
+- when the compiler does type conversion on our behalf, we call it implicit type conversion
+
+- the type conversion of a value to another type behaves like a call to a function whos return type matches the target type of the conversion
+    - data to be converted is passed in as an argument, and converted result is returned to be used by the caller
+
+- you may get warnings from compiler if implicit type conversion occurs
+
+- some type conversions always preserve the valuebeing converted (i.e. char to int)
+- others like double to int will result in the value being changed (like 5.5 to 5)
+
+
+- we can also type convert using explicit type conversion
+    - this lets the programmer explicitly tell sht ecompiler to convert a value from one type to another
+    - we use the static_cast<> operator 
+
+syntax
+    static_cast<new_type>(expression)
+    ex: print (static_cast<int>(5.5))
+

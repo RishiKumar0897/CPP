@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/rishikumar/Desktop/C++/Chapter 1/code/HelloWorld'
+relocations:     []
+...

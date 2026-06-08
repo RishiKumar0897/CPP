@@ -1,0 +1,15 @@
+- logical operators provide devs with the capability to test multiple conditions simultaneously
+- C++ has 3 logical operators
+    1. logical NOT !
+    2. logical AND &&
+    3. logical OR ||
+
+- short circuit evaluation
+    - for AND
+        - if left operand evaluates to false, logical AND knows it must return false
+    - for OR
+        - similarly for OR, if left operand is true, logical OR knows it must return true
+    
+- best practice: when mixing AND and OR in a single expression, explicitly parenthesize each operation to make sure there's no unintended evaluations
+
+

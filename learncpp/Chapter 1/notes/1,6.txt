@@ -1,0 +1,18 @@
+- inlike some programming languages, C++ does not automatically initialize most variables to a given value
+- when a variable that is not initialized is given a memory address to use to store data, the default value of that variable is whatever value is already in that memory address
+- a variable that has not been given a KNOWN value is called an uninitialized variable
+
+- using the value from an uninitialized variable is an example of undefined behavior
+    - undefined behavior is the result of executing code whose behavior is not well-defined by C++
+    - i.e.  C++ does not have any rules determining what happens if you perform some action
+
+- a specific compiler and associated standard library it comes with are called an implementation
+- behaviors that are defined by the implementation is called implementation-defined behaviors
+    - must be documented and consistent for each given implementation
+
+- unspecified behavior is almost identical to implementation-defined behavior 
+    - behavior is left up to implementation to handle, but not required to be documented
+
+- we generally want to avoid using implementation-defined and unspecified behaviors
+    - means our program may not work as expected if compiled on a different compiler
+

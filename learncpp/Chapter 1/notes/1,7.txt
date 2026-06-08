@@ -1,0 +1,16 @@
+- C++ reserves a set of words (92 as of C++23) for its own use. 
+    - these are called keywords
+    - each of these hold special meaning to C++ language
+
+- the name of a variable is called an identifier
+    - naming rules
+        - 1. cannot be a keyword
+        - 2. can only consist of letters, numbers, and underscore
+        - 3. must begin with a letter or underscore
+        - 4. case sensitive
+- convention in C++ is to begin variable names with a lowercase letter. 
+    - i.e. int value
+
+- if it's multiple words, use camel case or underscores
+    - i.e. myVariableName or my_variable_name
+

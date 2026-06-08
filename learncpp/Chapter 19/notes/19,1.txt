@@ -1,0 +1,70 @@
+- C++ supports three basic types of memory allocation 
+    1. static memory allocation: for static and global variables. memory for these types is allocated once program is run and persists throughout life of program
+    2. automatic memory allocation: for function parameters and local variables. memory for these types is allocated when relevant block is entered and freed when exited 
+    3. dynamic memory allocation 
+
+
+- static and automatic allocation have 2 things in common 
+    1. size of variable/array must be known at compile time 
+    2. memory allocation is deallocation happens automatically 
+
+
+- these can cause issues when dealing with external input 
+    - can lead to wasted memory if variables aren't actually used 
+    - hard to tell which bits of memory are actually used 
+    - most normal variables are allocated on the stack 
+        - amount of stack memory for a program is quite small 
+        - if exceeded, stack overflow and OS shuts down program 
+    
+
+- dynamic memory allocation is a way for running programs to request memory from the OS when needed 
+    - memory comes from a much larger pool of memory managed by the OS: the heap 
+
+
+- to allocate a single variable dynamically, use the scalar form of the "new" operator 
+    - new int;
+
+- more often, we'll assign the return value to our own pointer variable so we can access the allocated memory later 
+    - int* ptr{ new int }; // dynamically allocate an integer and assign the address to ptr so we can access it later
+    - then dereference the pointer to access the memory 
+        - *ptr = 7; // assign value of 7 to allocated memory
+
+
+
+
+- when we are done with a dynamically allocated variable, we need to explicitly tell C++ to free the memory for reuse 
+    - use delete operator 
+
+// assume ptr has previously been allocated with operator new
+delete ptr; // return the memory pointed to by ptr to the operating system
+ptr = nullptr; // set ptr to be a null pointer
+
+
+- using the delete operator simply returns the memory being pointed to back to the OS 
+    - OS is then free to reassign that memory to another application (or this one again)
+
+
+- a pointer that is pointing to deallocated memory is a dangling pointer 
+    - dereferencing or deleting a dangling pointer leads to undefined behavior 
+    - set deleted pointers to nullptr 
+
+
+- new operator can fail 
+    - if OS doesn't have any memory to grant request with 
+    - if new fails, a bad_alloc exception is thrown 
+    - can avoid this by doing: int* value { new (std::nothrow) int }; // value will be set to a null pointer if the integer allocation fails
+
+
+- nullptrs are particularly useful when dealing with dynamic memory allocation 
+    - basically says "no memory has been allocated to this pointer" 
+    - allows us to conditionally allocate memory 
+    - we can delete a nullptr 
+
+
+- memory leaks happen when program loses the address of some dynamically allocated memory bit before giving it back to OS 
+    - when this happens, program can't delete the dynamically allocated memory 
+    - OS can't use it because that memory is still in use by program 
+
+- memory leaks eat up free memory while program is running
+
+

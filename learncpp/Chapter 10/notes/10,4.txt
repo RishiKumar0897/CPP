@@ -1,0 +1,37 @@
+- narrowing conversion: potentially unsafe conversion where the destination type may not be abl eto hold all the values of the source type 
+    float -> int 
+    float -> narrower/lesser ranked float 
+        - unless value being converted is constexpr and in range of destination type 
+    int -> float 
+        - unless value being converted is constexpr and the value can be stored exactly in the destination type 
+    int -> another int type that cannot represent all values of the original type
+        - unless value being converted is constexpr and value can be stored exactly in destination type 
+
+    
+- avoid using narrowing conversions whenever possible, if needed, use static_cast and make it an explicit conversion 
+
+- brace initialization disallows narrowing conversions
+
+- when the source value of a narrowing conversion isn't known until runtimem the result of the conversion also can't be determined until runtime 
+    - when the source value is constexpr, the specific value to be converted must be known to the compiler 
+
+- conversion from a constexpr floating point type to a narrower floating point type is not considered narrowing 
+
+- list initialization with constexpr initializers
+
+int main()
+{
+    // We can avoid literals with suffixes
+    unsigned int u { 5 }; // okay (we don't need to use `5u`)
+    float f { 1.5 };      // okay (we don't need to use `1.5f`)
+
+    // We can avoid static_casts
+    constexpr int n{ 5 };
+    double d { n };       // okay (we don't need a static_cast here)
+    short s { 5 };        // okay (there is no suffix for short, we don't need a static_cast here)
+
+    return 0;
+}
+ 
+
+

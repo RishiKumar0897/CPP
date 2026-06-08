@@ -1,0 +1,47 @@
+Summary of Chapter 1
+
+
+    - a statement is a type of instruction that causes the program to perform some actions
+        - statements end with semicolons
+
+    - a function is a collection of statements that execute sequentially.
+        - every C++ program has a "main" function
+    - name of a function, object, type, etc is called an identifier
+    - rules that govern how elements in the C++ language are structured is called syntax
+    - comments let you leave notes about the code and what it does
+    - data is any information that can be moved, processed, or stored by the computer
+        - a value is a single piece of data
+    
+
+    - a variable is a named piece of memory that we use to store values
+        - to create variables, we use definition statements
+        - when the program is run, each defined variable is instantiated
+    
+    - a data type tells the compiler how to interpret a piece of data into a meaningful value
+        - an integer is a number that can be written without a decimal
+    
+    - copy assignment (using '=') is used to assign values to variables
+
+    - specifiying an initial value for an object is called initialization
+
+
+    - std::cout << lets us output the result of an expression to the console
+    - std::cin >> lets us read input from the keyboard
+
+
+    - a variable that hasn't been given a value is called an uninitialized variable
+        - trying to get the value of an uninitialized variable results in undefined behavior
+    
+    - C++ reserves a set of words called keywords, which have special meaning for the language
+    - a literal (constant) is a fixed value directly inserted into the source code
+
+    - an operation is a process involving 0 or more input values (operands)
+        - Types: nullary, unary, binary, ternary
+    
+    - an expression is a sequence of literals, variables, operators, and function calls that are evaluated to produce a single output value
+        - the calculation of this output value is called evaluation
+        - the value produced is the return value
+    
+
+    - an expression statement is an expression that has been turned into a statement by placing a semicolon at the end
+    

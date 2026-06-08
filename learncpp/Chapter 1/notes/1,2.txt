@@ -1,0 +1,17 @@
+Comments
+    - a comment is a programmer-readable note that lies in the source code
+    - ignored by compiler
+
+    - Single line Comments
+        - //This is a single line comment
+
+    - Multi line Comments
+        - /* This
+           * is
+           * A
+           * Multi
+           * line
+           * comment
+           */
+
+- Comment code liberally and write them so that other people can understand your code

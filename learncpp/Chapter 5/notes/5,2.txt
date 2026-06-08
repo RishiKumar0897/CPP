@@ -1,0 +1,33 @@
+- literals are values that are inserted directly into the code
+    - return 5;
+    - bool myNameIsRishi {true};
+    - double d {3.4};
+    std::cout << "HelloWorld"; 
+
+- literals are also known as literal constants because their meaning cannot be redefined
+
+- just like objects, all literals have a type
+    - type of a literal is deduced from the value of the literal
+    - types: int, bool, float, char, string
+
+- by default, floating point literals have a type of double
+    - to make them float literals instead, we can add a suffix -> float f {4.1f}
+
+- a string is a collection of sequential characters used to represent text
+
+- in C++, strings are not a fundamental type
+    - they are called C strings or C-style strings, since they are inherited from the C-language
+
+
+- all strings have an implicit null terminator
+    - basically, "hello" seems to have 5 chars, but really has 6, as there is a hidden null terminator char at the end 
+
+- string literals are const objects that are created at the start of the program and are GUARANTEED to exist until the end of the program
+
+- std::string and std::string_view literals create temporary objects
+    - destroyed at the end of the full expression in which they are created
+
+- a magic number is a literal (usually a number) that either has an unclear meaning or may need to be changed later
+    - using magic numbers is generally considered bad practice because it adds ambiguity and complexity to program
+
+

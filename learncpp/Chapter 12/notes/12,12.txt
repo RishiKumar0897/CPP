@@ -1,0 +1,50 @@
+- when returning from a function, the return value is actually a copy 
+    - this can be expensive if the return type of the function is a class type
+
+
+- return by reference: returns a reference bound to the object being returned 
+    - avoids making a copy of the return value 
+    - simply define the return value of the function to be a reference type 
+
+
+#include <iostream>
+#include <string>
+
+const std::string& getProgramName() // returns a const reference
+{
+    static const std::string s_programName { "Calculator" }; // has static duration, destroyed at end of program
+
+    return s_programName;
+}
+
+int main()
+{
+    std::cout << "This program is named " << getProgramName();
+
+    return 0;
+}
+
+
+
+
+
+- the object being returned by reference must exist after the function returns 
+    - otherwise the reference being returned will be left dangling 
+
+
+- lifetime extension does not work across function boundaries 
+
+
+- don't return non-const static local variables by reference 
+
+- assigning/initializing a normal variable with a returned reference makes a copy 
+- it's okay to return reference parameters by reference 
+- its okay for an rvalue passed by const reference to be returned by const reference 
+
+- the caller can modify values through reference 
+
+- return by address works almost identically, but the pointer to an object is returned instead of a reference to an object 
+    - prefer return by reference over return by address unless the ability to return "no object" is important 
+
+
+

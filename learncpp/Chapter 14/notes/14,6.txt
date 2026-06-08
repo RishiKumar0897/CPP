@@ -1,0 +1,19 @@
+- an access function is a trivial public member function whose job is to retrieve or change the value of a private member variable 
+
+- access functions come in 2 versions: getters and setters 
+    - getters: return the value of a private member 
+    - setters: change the value of a private member 
+
+
+- getters are typically made const and setters are non-const 
+
+- naming convention dictates that you should name getters starting with "get" and setters starting with "set"
+
+- getters should return by value or by const lvalue reference 
+
+- access function concerns 
+    - if class has no invariants and requires a lot of access functions, use a struct instead 
+    - prefer implementing behaviors or actions instead of access functions 
+    - only provide access functions in cases where the public would reasonably need to get/set the value of a member 
+
+

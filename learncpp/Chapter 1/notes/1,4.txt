@@ -1,0 +1,37 @@
+Variable Initialization
+
+    - process of specifying an initial value for an object is called Initialization
+    - syntax used to initialize an object is called an initializer
+
+    - Copy Initialization
+        - int width = 5;
+        - a little older, but behaves the same way
+    
+
+    - Direct Initialization
+        - int width (5);
+        - more efficient
+
+    
+    - List Initialization
+        - int width {5};
+        - most modern version of Initialization
+        - introduced to provide a syntax that works in almost all cases, behaves consistently
+        - disallows narrowing conventions
+            - if you try to initialize a variable using an invalid value, compiler will raise an error
+
+- you should initialize your variables upon creation
+
+- list initialization is preferred in modern C++
+
+- instantion means a variable has been created and initialized (usually used for class type objects)
+
+- you can initialize multiple variables on the same line
+    - int e {9}, f{10};
+
+
+- modern compilers will generate warnings if a variable is initialized but never used
+    - you can avoid using [[maybe_unused]] to bypass This
+
+
+

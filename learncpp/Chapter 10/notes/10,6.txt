@@ -1,0 +1,56 @@
+- casts: explicit type conversion 
+
+- C++ supports 5 different type casts 
+    1. static_cast: compile-time type conversions between related types (safe)
+    2. dynamic_cast: runtime type conversion on pointers/references in a polymorphic hierarchy (safe)
+    3. const_cast: adds or removes const (only safe for adding const)
+    4. reinterpret_cast: reinterprets the bit level representation of one type as if it were another type 
+    5. C-style casts: some combination of static_cast, const_cast, or reinterpret_cast
+
+
+- avoid using const_cast and reinterpret_cast 
+
+- C-style cast
+
+#include <iostream>
+
+int main()
+{
+    int x { 10 };
+    int y { 4 };
+
+    std::cout << (double)x / y << '\n'; // C-style cast of x to double
+
+    return 0;
+}
+
+
+    - there's also a function-style cast 
+
+    std::cout << double(x) / y << '\n'; //  // function-style cast of x to double
+
+
+- in general, avoid using C-style casts 
+
+
+- the most used cast in C++ is the static_cast operator, which is accessed via the static_cst keyword 
+    - used when we want to explicitly convert from one type into another type 
+
+
+
+#include <iostream>
+
+int main()
+{
+    int x { 10 };
+    int y { 4 };
+
+    // static cast x to a double so we get floating point division
+    std::cout << static_cast<double>(x) / y << '\n'; // prints 2.5
+
+    return 0;
+}
+
+
+- use static_cast over initializating a temp object when a conversion is desired 
+

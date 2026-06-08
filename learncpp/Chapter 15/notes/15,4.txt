@@ -1,0 +1,73 @@
+- classes that use a resource often need to be explicitly sent or closed before the class object using them is destroyed 
+
+- the term clean-up is often used to refer to any set of tasks that a class must perform before an object of the class is destroyed in order to behave as expected
+
+- a destructor is called automatically when an object of a non-aggregate class type is destroyed 
+
+- destructor naming 
+    - must have the same name as the class preceded by a ~
+    - cannot take args 
+    - no return type 
+    - one per class 
+    - should not be called explicitly 
+
+
+#include <iostream>
+
+class Fruit
+{
+public:
+	// FruitType has been moved inside the class, under the public access specifier
+        // We've also renamed it Type and made it an enum rather than an enum class
+	enum Type
+	{
+		apple,
+		banana,
+		cherry
+	};
+
+private:
+	Type m_type {};
+	int m_percentageEaten { 0 };
+
+public:
+	Fruit(Type type) :
+		m_type { type }
+	{
+	}
+
+	Type getType() { return m_type;  }
+	int getPercentageEaten() { return m_percentageEaten;  }
+
+	bool isCherry() { return m_type == cherry; } // Inside members of Fruit, we no longer need to prefix enumerators with FruitType::
+};
+
+int main()
+{
+	// Note: Outside the class, we access the enumerators via the Fruit:: prefix now
+	Fruit apple { Fruit::apple };
+
+	if (apple.getType() == Fruit::apple)
+		std::cout << "I am an apple";
+	else
+		std::cout << "I am not an apple";
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+- if a non-aggregate class type object has no user-declared destructor, the compiler will generate one with an empty body 
+    - this is an implicit destructor (it's effectively just a placeholder)
+
+- if your class does not need to do any cleanup on destruction, it's fine to not define a destructor at all and let the compiler generate an implicit destructor for your class 
+
+

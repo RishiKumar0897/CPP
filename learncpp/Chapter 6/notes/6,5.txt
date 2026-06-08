@@ -1,0 +1,22 @@
+- comma operator allows you to evaluate multiple expressions wherever a single expression is allowed
+    - evaluates the left operand, and then the right operand, and then returns the result of the right operand
+
+
+#include <iostream>
+
+int main()
+{
+    int x{ 1 };
+    int y{ 2 };
+
+    std::cout << (++x, ++y) << '\n'; // increment x and y, evaluates to the right operand
+
+    return 0;
+}
+
+- first left operand is evaluated, then right operand is evaluated, and the value of y (right operand) is printed
+
+- comma has the lowest precedence of all operators
+
+- avoid using comma operator except within for loops
+

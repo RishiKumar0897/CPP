@@ -1,0 +1,16 @@
+- remainder operator (modulo/modulus)
+    - returns remainder after doing integer division
+    - works with negative numbers too
+
+
+
+- prefer to compare the result of modulo with 0
+    - return (x%2) !=0
+
+
+- to do exponentiation in C++, #include <cmath> header and use pow() function
+    - double x{ std:: pow(3.0, 4.0)}; -> 3^4
+
+
+- to do integer exponentiation, you need to create your own function
+

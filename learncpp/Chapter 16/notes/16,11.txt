@@ -1,0 +1,15 @@
+- in C++ stack operations are added to existing std container classes that support efficient insertion and removal of elements at one end 
+
+- std::vector stack ops 
+    push_back() -> push
+    pop_back() -> pop 
+    back() -> peek 
+    emplace_back() -> also push, can be more efficient though
+
+- you get extra capacity from pushing 
+- use reserve() when accessing a vector using stack ops 
+    - adds capacity without changing the length of the vector 
+
+
+- use embplace_back() when creating a new temp object to add to the container or need to access an explicit constructor 
+

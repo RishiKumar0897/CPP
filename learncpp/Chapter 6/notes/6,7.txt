@@ -1,0 +1,23 @@
+- relational operators are operators that let you compare two values
+- 6 types
+    1. greater than >
+    2. less than <
+    3. greater than or equals >=
+    4. less than or equals <=
+    5. equal ==
+    6. inequality !=
+
+
+- conditions in an if statement or conditional operator evaluate as boolean values
+- best practice: avoid == != in conditions, makes it harder to read
+
+- avoid using == and != to compare floating point values if there is any chance those values have been calculated
+
+
+- comparing floating points:
+    - most common method to compare floating point values involves using a function to see if two numbers are almost the same 
+    - if they are close enough, consider them equal
+    - value used to represent "close enough" is called epsilon, which is generally a super small positive number
+    - common practice for devs is to write your own func for this
+
+

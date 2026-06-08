@@ -1,0 +1,71 @@
+- precondition: any condition that must be true prior to th execution of some section of code (usually the body of a function) 
+
+- an invariant is a condition that must be true while some section of code is executing
+        - often used with loops 
+
+- postcondition: something that must be true after the execution of some code
+
+
+- assertion: an expression that will be true unless there is a bug in the program 
+    - used to detect errors while developing and debugging 
+    - if an assertion evaluates to false, your program is immediately stopped 
+    - gives you an opportunity to use debugging tools to examine state of your program and determine why the assertion failed 
+
+
+#include <cassert> // for assert()
+#include <cmath> // for std::sqrt
+#include <iostream>
+
+double calculateTimeUntilObjectHitsGround(double initialHeight, double gravity)
+{
+  assert(gravity > 0.0); // The object won't reach the ground unless there is positive gravity.
+
+  if (initialHeight <= 0.0)
+  {
+    // The object is already on the ground. Or buried.
+    return 0.0;
+  }
+
+  return std::sqrt((2.0 * initialHeight) / gravity);
+}
+
+int main()
+{
+  std::cout << "Took " << calculateTimeUntilObjectHitsGround(100.0, -9.8) << " second(s)\n";
+
+  return 0;
+}
+
+
+
+- asserts are better than comments because they have both document and enforce a condition 
+- comments can become stale when code changes and the comment isnt updated, whereas an obsolete assert is a code correctness issue so devs are more likely to fic them
+
+- use NDEBUG to disable the assert macro 
+     - #define it at the top
+
+    
+- static_assert: an assertion that is checked at compile-time rather than at runtime 
+    - static_assert(condition, diagnostic_message)
+
+    - condition must be a constexpr 
+    - can be placed anywhere in teh code file 
+    - not deativated in release builds (normal assert is)
+    - no runtime cost 
+
+    - favor over assert() when possible 
+
+
+- use assertions to detect programming errors, incorrect assumptions, or conditions that should never occur in correct code
+    - it is programmer's responsibility to fix these, so catch them early 
+
+- use error handling for issues that we expect will occur during the normal operation of your program 
+- use both in cases where something isnt supposed to occur but we want to fail gracefully if it does 
+
+
+- limitations on assert 
+    - assert itself can be improperly written 
+    - assert expressions should have no side effects 
+    - abort() function terminates the program immediately 
+
+

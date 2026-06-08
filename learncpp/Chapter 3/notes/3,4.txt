@@ -1,0 +1,9 @@
+- many tactics to help shorten the search of finding the issue
+    1. commenting out code (or blocks of code)
+    2. validate code flow
+        - place print statements at the top of functions so you can see when (and how many times) they are called
+    3. printing values
+        - same deal as tactic 2, except printing intermediate values to ensure everything is working smoothly
+
+- debug statements can clutter your code, so it's important to cleanup before pushing to prod
+    

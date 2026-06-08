@@ -1,0 +1,75 @@
+- syntax for creating a non const function pointer 
+
+// fcnPtr is a pointer to a function that takes no arguments and returns an integer
+int (*fcnPtr)();
+
+
+- syntax for creating a const function pointer 
+
+int (*const fcnPtr)();
+
+
+
+
+
+
+- assigning a function to a function pointer 
+
+int foo()
+{
+    return 5;
+}
+
+int goo()
+{
+    return 6;
+}
+
+int main()
+{
+    int (*fcnPtr)(){ &foo }; // fcnPtr points to function foo
+    fcnPtr = &goo; // fcnPtr now points to function goo
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+- you can call a function through the function pointer  
+    - generally should just call the function directly though 
+
+
+- default args do not work for functions called through function pointers 
+
+
+- we can now pass functions as arguments to other functions 
+- functions used as args to other functions are called callback functions 
+
+
+- we can use std::function to define a function pointer 
+
+#include <functional>
+bool validate(int x, int y, std::function<bool(int, int)> fcn); // std::function method that returns a bool and takes two int parameters
+
+
+
+
+
+
+
+
+- auto keyword (CTAD) works to infer the type of a function parameter 
+
+- function pointers are primarly useful when you want to store functions in an array or another structure, or when you need to pass a function into another function
+
+- recommended to use std::function 
+

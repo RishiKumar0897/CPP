@@ -1,0 +1,22 @@
+- implicit type conversion: performed automatically by the compiler when an expression of some type is supplied in a context where some other type is required 
+- vast majority of type conversions in C++ are implicit type conversions 
+
+    -cases 
+        - initializing a variable with a value of a different type (double d{3;})
+        - when the type of a return value is different from the function's declared return type 
+        - when using certain binary operators with operands of different types 
+        - when using a non-Boolean value in an if-statement 
+        - when an argument passed to a function is a different type than the function parameter 
+    
+
+- standard conversions: specify how various fundamental types conver to other types within tha same group, with 5 general categories:
+    1. Numeric Promotions: conversions of small integral types to int/unsigned int and float to double 
+    2. Numeric conversions: other integral and floating point conversions that aren't promotions 
+    3. Qualification conversions: conversions that add or remove const or volatile 
+    4. Value transformation: conversions that change the value category of an expression 
+    5. Pointer conversions: conversions from std::nullptr to pointer types or pointer types to other pointer types. 
+
+
+- type conversion can fail if compiler can't find an acceptable conversion 
+
+- 

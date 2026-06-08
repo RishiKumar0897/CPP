@@ -1,0 +1,18 @@
+- we can also use an integrated debugger, which is provided with most IDEs
+
+- a program state tracks:
+    1. values of the variables you're using
+    2. which functions have been called
+    3. current point of execution within the program
+
+
+- a debugger is a computer program that allows the programmer to control how a program executes
+    - lets you examine different points of the program state while it's running
+
+- integrated debuggers use the same interface as the IDE
+
+- stepping refers to the feature of debuggers that lets us step through our code statement by statement
+    - step into -> executes next statement in normal execution path
+    - step over -> executes next statement in normal execution path, but it will execute an entire function without stopping, returning control only after function has been executed
+    - step out -> executes all remaining code in the function CURRENTLY being executed, then returns control once function has returned
+    - step back -> rewind to last step, so as to return the program to a prior state

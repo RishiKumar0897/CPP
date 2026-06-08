@@ -1,0 +1,18 @@
+- a destructor is a special kind of class member function when an object of that class is destroyed 
+    - designed to help clean up 
+    - if a class object is holding any resources or if theres any kind of maintenance needed before it is destroyed, destructor is where you do it 
+
+
+- Destructor naming rules 
+    1. must have same name as class preceded by a tilde ~ 
+    2. cannot take any args 
+    3. no return type 
+
+
+
+- RAII (Resource Acquisition Is Initialization)
+    - programming technique where resource use is tied to the lifetime of objects with automatic duration 
+    - In C++, RAII is implemented via classes with constructors and destructors 
+    - a resource is typically acquired in the object's constructor, which can be used while object is alive 
+    - resource is released in the destructor when object is destroyed 
+    - primary advantage of RAII is that it helps prevent resource leaks 

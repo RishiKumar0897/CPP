@@ -1,0 +1,22 @@
+- the number of bits a data type uses is called its width 
+- a wider data type is one that uses more bits, a narrower data type uses less bits 
+
+
+- numeric promotion: type conversion of certain narrower numeric types to certain wider numeric types that can be processed efficiently 
+    - all numeric promotions are value-preserving: every possible source value can be converted into an equal value of the destination type 
+
+    - numeric promotion reduces redundancy
+        - can write functions that have int and/or double parameters, which can be called with arguments of types that can be numerically promoted to match the types of the function parameters 
+    
+
+- numerical promotion rules are divided into 2 subcategories 
+    1. integral promotions: 
+        - signed char or signed short -> int, unsigned char, char8_t, 
+        - unsigned short -> int (if entire range of type can be held) else unsigned int
+        - if char signed by default, followed signed char conversion rules. 
+        - if char is unsigned it follows unsigned conversion rules 
+        - bool can be converted to int: false = 0, true = 1
+    2. floating point promotions: float -> double 
+
+
+- not all widening conversions are numeric promotions, rather considered numeric conversions instead 

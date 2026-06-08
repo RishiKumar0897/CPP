@@ -1,0 +1,61 @@
+- one challenge to constant expressions is that function calls to a normal function are not allowed in constant expressions 
+    - we can't use such function calls anywhere we need a constexpr 
+
+
+- a constexpr function is one that is allowed to be called in a constant expressions
+- to create a constexpr function, use the constexpr keyword in front of the function's return type 
+
+- the constexpr keyword signals the compiler and other developers that a function can be used in a constant expression 
+
+
+#include <iostream>
+
+constexpr double calcCircumference(double radius) // now a constexpr function
+{
+    constexpr double pi { 3.14159265359 };
+    return 2.0 * pi * radius;
+}
+
+int main()
+{
+    constexpr double circumference { calcCircumference(3.0) }; // now compiles
+
+    std::cout << "Our circle has circumference " << circumference << "\n";
+
+    return 0;
+}
+
+
+
+
+- constexpr functions can be evaluated at compile time, but only if:
+    - the call to the constexpr function has arguments that are known at compile time (basically they also need to be constexprs)
+    - all statements and expressions within the constexpr function must be evaluatable at compile time 
+
+
+- constexpr functions can also be evaluated at runtime 
+    - but if this happens, they return a non-constexpr result 
+
+
+#include <iostream>
+
+constexpr int greater(int x, int y)
+{
+    return (x > y ? x : y);
+}
+
+int main()
+{
+    int x{ 5 }; // not constexpr
+    int y{ 6 }; // not constexpr
+
+    std::cout << greater(x, y) << " is greater!\n"; // will be evaluated at runtime
+
+    return 0;
+}
+
+
+
+
+
+- when a constexpr function evaluates at runtime, it evaluates just like a normal function would 

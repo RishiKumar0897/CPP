@@ -1,0 +1,57 @@
+- to have a constructor initialize members, we do so using a member initializer list 
+
+#include <iostream>
+
+class Foo
+{
+private:
+    int m_x {};
+    int m_y {};
+
+public:
+    Foo(int x, int y)
+        : m_x { x }, m_y { y } // here's our member initialization list
+    {
+        std::cout << "Foo(" << x << ", " << y << ") constructed\n";
+    }
+
+    void print() const
+    {
+        std::cout << "Foo(" << m_x << ", " << m_y << ")\n";
+    }
+};
+
+int main()
+{
+    Foo foo{ 6, 7 };
+    foo.print();
+
+    return 0;
+}
+
+
+
+
+
+
+
+- member initializer list is defined after the constructor parameters 
+- begins with a colon, then list each member to initializer along with initialization value for that variable, separated by comma 
+- must use direct initialization 
+- does not end with semicolon 
+
+
+
+
+- members in a member initializer list are initilized in the order in which they are declare in the class 
+
+
+- members can be initialized in 3 different ways
+    - if a member is listed in the member initializer list, that initialization value is used 
+    - otherwise if the member has a default member initializer, that initialization value is used 
+    - lastly, the member is default initialized 
+
+
+
+- body of a constructor is generally empty 
+- however you can add statements in the body that are used to do any other setup tasks required 

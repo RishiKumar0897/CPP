@@ -1,0 +1,65 @@
+- C style arrays were inherited from the C language 
+    - built into the core language of C++ so no header files need to be included to use them. 
+
+
+- C style array declaration
+
+int testScore[30] {};
+
+
+
+
+- length of a C style array must be at least 1
+    - C-style arrays dynamically allocated on the heap are allowed to have length 0 
+
+
+
+- length of the array must be a constant expression (like std::array)
+
+- can be indexed using brackets [] 
+    - C style arrays are no tsubject to all of the sing conversion indexing issues that std::vectors and std::arrays are 
+
+
+- C style arrays can be initialized using aggregate initialization
+    int fibonnaci[6] = { 0, 1, 1, 2, 3, 5 };
+
+
+
+
+
+- CTAD does not work on C style arrays  
+    - the element type MUST be specified EXPLICITLY 
+
+
+- you can and SHOULD omit the length of a C style array when explicitly initializing every array element with a value 
+
+- C style arrays can be const and constexpr (like std::arrays)
+
+
+- sizeof() operator returns the number of bytes used by the entire array 
+    - no overhead in a C style array
+        - it contains it's elements and nothing more 
+
+
+- you can use std::ssize() to get array length 
+
+
+- C style arrays do not support assignment 
+
+int main()
+{
+    int arr[] { 1, 2, 3 }; // okay: initialization is fine
+    arr[0] = 4;            // assignment to individual elements is fine
+    arr = { 5, 6, 7 };     // compile error: array assignment not valid
+
+    return 0;
+}
+
+
+
+
+
+- if we need to assign a new list of values to a C style arrays, best to use a std::vector instead 
+- you can also use std::copy to copy an existing C style array 
+
+

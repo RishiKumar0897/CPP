@@ -1,0 +1,213 @@
+#include <iostream>
+
+int main()
+{
+    int x { 5 }; // x makes a copy of its initializer
+    std::cout << x << '\n';
+
+    return 0;
+}
+
+- when definition for x is executed, 5 is copied into the memory allocated for int x
+- x makes a copy of its initializer
+- this is fast for fundamental types
+
+----------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s{ "Hello, world!" }; // s makes a copy of its initializer
+    std::cout << s << '\n';
+
+    return 0;
+}
+
+- in this example, C-style string literal is copied into the memory allocated for std::string s
+- this is slow, bc string is not a fundamental type
+
+
+- this issue is addressed by using std::string_view
+- #include <string_view>
+
+- std::string_view provides read-only ccess to an existing string (either std::string or another std::string_view) without making a copy
+    - this means we can access but cannot modify the value
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+#include <string_view> // C++17
+
+// str provides read-only access to whatever argument is passed in
+void printSV(std::string_view str) // now a std::string_view
+{
+    std::cout << str << '\n';
+}
+
+int main()
+{
+    std::string_view s{ "Hello, world!" }; // now a std::string_view
+    printSV(s);
+
+    return 0;
+}
+
+- no copies of "Hello, world!" are made
+- prefer using std::string_view when you need a read-only string (i.e. function params)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+int main()
+{
+    std::string_view s1 { "Hello, world!" }; // initialize with C-style string literal
+    std::cout << s1 << '\n';
+
+    std::string s{ "Hello, world!" };
+    std::string_view s2 { s };  // initialize with std::string
+    std::cout << s2 << '\n';
+
+    std::string_view s3 { s2 }; // initialize with std::string_view
+    std::cout << s3 << '\n';
+
+    return 0;
+}
+
+
+- an std::string_view obj can be initialized via a C-style string, an std::string, or another std::string_view
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+void printSV(std::string_view str)
+{
+    std::cout << str << '\n';
+}
+
+int main()
+{
+    printSV("Hello, world!"); // call with C-style string literal
+
+    std::string s2{ "Hello, world!" };
+    printSV(s2); // call with std::string
+
+    std::string_view s3 { s2 };
+    printSV(s3); // call with std::string_view
+
+    return 0;
+}
+
+- an std::string_view param will accept arguments of type C-style string, std::string, or std::string_view
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+- std::string_view will not implicitly conver to std::string
+    - 2 options
+        1. explicitly create a std::string with a std::string_view initializer
+        2. convert an existing std::string view to a std::string using static_cast
+
+
+
+examples
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+void printString(std::string str)
+{
+	std::cout << str << '\n';
+}
+
+int main()
+{
+	std::string_view sv{ "Hello, world!" };
+
+	// printString(sv);   // compile error: won't implicitly convert std::string_view to a std::string
+
+	std::string s{ sv }; // okay: we can create std::string using std::string_view initializer
+	printString(s);      // and call the function with the std::string
+
+	printString(static_cast<std::string>(sv)); // okay: we can explicitly cast a std::string_view to a std::string
+
+	return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------
+
+- std::string is a sole owner
+    - upside: doesn't have to worry about what happens to the initializer after initialization is finished
+    - downside: independence comes with the cost of making an expensive copy
+    - its responsbile for acquiring its string data from the initializer, managing access to the data, and properly disposing of the string data when the std::string object is destroyed
+
+- std::string_view is a viewer
+    - creates an inexpensive view of the initialization string, which can then be used whenever access to the string is required
+    - it views an object that already exists elsewhere and cannot modify that object. 
+    - when the view is destroyed, the object being viewed is not affected.
+    - however, it remains dependent on the initializer throughout its lifetime
+
+- std::string_view is best used as a read-only function parameter
+
+-KEY: modifying a std::string is likely to invalidate all views into that std::string
+    - you can revalidate by assigning the invalidated std::string_view into a valid string to view
+
+
+- returning a std::string_view is dangerous and should be avoided
+    - 2 cases where it can be returned safely
+        1. you can return C-style string literals from a function that has a return type of std::string_view
+        2. it's okay to return a function param of type std::string_view
+
+--------------------------------------------------------------------------------------------------------------------
+
+- view modification functions
+    - remove_prefix() removes chars from left side of the view
+    - remove_suffix() removes chars from right side of the view
+
+- std::string_view can view a substring
+- std::string_view may or may not be null-terminated
+    - C style string literal and std::string is always null-terminated, but a std::string_view may or may not be
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+Variables
+
+    Use a std::string variable when:
+
+        You need a string that you can modify.
+        You need to store user-inputted text.
+        You need to store the return value of a function that returns a std::string.
+        
+        
+    Use a std::string_view variable when:
+
+        You need read-only access to part or all of a string that already exists elsewhere and will not be modified or destroyed before use of the std::string_view is complete.
+        You need a symbolic constant for a C-style string.
+        You need to continue viewing the return value of a function that returns a C-style string or a non-dangling std::string_view.
+
+
+
+Function parameters
+
+    Use a std::string function parameter when:
+
+        The function needs to modify the string passed in as an argument without affecting the caller. This is rare.
+        You are using language standard C++14 or older and aren’t comfortable using references yet.
+    
+    Use a std::string_view function parameter when:
+
+        The function needs a read-only string.
+        The function needs to work with non-null-terminated strings.
+

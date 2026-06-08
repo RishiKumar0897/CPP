@@ -1,0 +1,17 @@
+- when we write a user-defined function, we get to determine whether function will return a value back or not
+- first, set the function's return type
+- second, inside the function, we have a return statement that indicates the specific value/object we are returning to the caller
+    - when it's executed, the return expression is evaluated, the value produced is copied and returned to the caller, and the function exits, returning control to the caller
+
+- for the main() function, there are two special requirements
+    1. main is required to return an int
+    2. explicit function calls to main() are not allowed
+
+- the return value from main() is called a status code
+    - signals whether program was successful or not
+    - status code of 0 means program ran successfully
+    - a non-zero status code means there was some kind of failure
+
+- a value-returning function that does not return a value will produce undefined behavior
+- the main() function will implicitly return 0 if you don't provide a return statement
+- functions can only return a single value

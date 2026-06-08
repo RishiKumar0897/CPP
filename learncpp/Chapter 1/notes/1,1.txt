@@ -1,0 +1,46 @@
+Statements
+
+    - a statement is a type of instruction that causes the program to perform some action
+    - by far the most common type of instruction in a C++ program
+    - smallest independent unit of computation in C++
+    - most statements in C++ end in a semicolon
+
+    - many different kinds of Statements
+        - declaration
+        - jump
+        - expression
+        - compound
+        - selection
+        - iteration
+        - try blocks
+
+
+
+Functions 
+    - statements are typically grouped into units called functions
+    - a function is a collection of statements that get executed sequentially 
+    - Every C++ program must have a special function named main 
+        - when a program is run, statements inside main are executed in sequential order
+        - programs terminate after the last statement in the main function
+
+    - functions are typically created to do a specific job
+    - the name of a function is called its identifier
+
+
+Characters and text
+    - a character is a written symbol or mark
+        - i.e. letter, digit, punctuation
+    - a sequence of characters is text (String)
+
+
+#include <iostream>
+
+int main()
+{
+   std::cout << "Hello world!";
+   return 0;
+}
+
+- #include is a preprocessor directive tha tindicates that we want to use the iostream library
+- std::cout << lets us display information on the console
+

@@ -1,0 +1,55 @@
+- calling a constructor in the body of a function creates a temp object 
+    - thus, avoid calling it directly in the body of another function 
+
+
+- instead, constructors are allowed to delegate initialization to another constructor from the same class type 
+    - this is known as constructor chanining 
+    - constructors that do this are known as delegating constructors 
+
+
+#include <iostream>
+#include <string>
+#include <string_view>
+
+class Employee
+{
+private:
+    std::string m_name { "???" };
+    int m_id { 0 };
+
+public:
+    Employee(std::string_view name)
+        : Employee{ name, 0 } // delegate initialization to Employee(std::string_view, int) constructor
+    {
+    }
+
+    Employee(std::string_view name, int id)
+        : m_name{ name }, m_id { id } // actually initializes the members
+    {
+        std::cout << "Employee " << m_name << " created\n";
+    }
+
+};
+
+int main()
+{
+    Employee e1{ "James" };
+    Employee e2{ "Dave", 42 };
+}
+
+
+
+
+
+
+
+
+
+
+- a constructor that delegates to another constructor is not allowed to do any member initialization itself 
+- it's possible for one constructor to delegate to another constructor that delegates back to the first constructor 
+    - this will lead to an infinite loop and cause you to run out of stack space 
+    - way to avoid this is by ensuring all constructors resolve to a non-delegating constructor 
+
+
+- you can use default arguments to reduce the number of constructors needed 

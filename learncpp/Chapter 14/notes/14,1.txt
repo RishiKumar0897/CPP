@@ -1,0 +1,5 @@
+- object oriented programming: focus on creating program-defined data types that contain both properties and a set of well-defined behaviors 
+    - because the properties and behaviors are no longer separate, objects are easier to modularize
+    - makes programs easier to write and understand, and provides higher code reusability 
+
+

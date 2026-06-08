@@ -1,0 +1,8 @@
+- watching a variable is the process of inspecting the value of a variable while the program is executing in debug mode.
+- the watch window is a window where you can add variables you want to watch and inspect
+    - the values of these variables are updated as you step through the program
+
+
+- some debuggers will allow you to set a breakpoint on a watched variable rather than a line, causing the program to stop execution wheever the value of that variable changes
+
+- the watch window can evaluate expressions too

@@ -1,0 +1,43 @@
+- you can also make static member functions 
+
+#include <iostream>
+
+class Something
+{
+private:
+    static inline int s_value { 1 };
+
+public:
+    static int getValue() { return s_value; } // static member function
+};
+
+int main()
+{
+    std::cout << Something::getValue() << '\n';
+}
+
+
+
+
+
+
+
+
+
+- they can be called directly using the class name and the scope resolution operator :: 
+
+- static member functions have no "this" pointer 
+    - not attached to an object 
+    - they can directly access other static members but not non-static members 
+
+
+- static member functions can also be defined outside of the class declaration 
+
+
+- downsides of classes with ALL static members (monostates)
+    - all static members are only instantiated once, no way to have multiple copies of a monostate 
+    - a monostate is essentially equivalent to declaring functions and global vars in a globally accessible namespace 
+
+
+- prefer a namespace unless you have static data members or have certain access control settings 
+

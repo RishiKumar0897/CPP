@@ -1,0 +1,39 @@
+- in order to evaluate expressions, compiler does 2 things
+    1. at compile time, compiler parses expression and determines how operands are grouped with operators
+        - done via precedence and associativity rules
+    2. at compile/run time, operands are evaluated and operations are executed, returning a result
+
+- Operator precedence
+    - operators with a higher precedence are grouped with operands first
+    - i.e. PEMDAS
+
+- Operator associativity
+    - tells compuler whether to evaluate operators from left to right or right to left
+
+- precednce level goes from 1-17 (17 is the lowest)
+    1. global scope and namespace scope -> ::name, class_name::member_name
+    2. parentheses, function call, functional cast, array subscript [], member access from object, member object from ptr, 
+        post increment ++. post decrement --, runtime type info, cast away const, dynamic cast, static cast, sizeof
+    3. +, -, ++ pre increment, -- pre decrement, NOT (! or not), bitwise NOT -, C-style cast (type). sizeof, address of (&),
+        dereference (*), dynamic memory alloc (new), dynamic array alloc (new[]), dynamic mem delete (delete), dynamic array delete (delete[])
+    4. member pointer selector, member object selector
+    5. multiplication, division, remainder
+    6. addition, subtraction
+    7. bitwise shifts (<<, >>)
+    8. 3 way comparison (<==>)
+    9. Comparisons, (<, >, ==, <=, >=)
+    10. equality and inequality (==, !=)
+    11. bitwise AND (&)
+    12. bitwise XOR (^)
+    13. bitwise OR (|)
+    14. logical AND (&&) or (and)
+    15. logical OR (|| or or)
+    16. throw, conditional ?:, assignment (=, *=, /=, +=, -=), bitwise shift assignment (<<=, >>=), bitwise AND/OR/XOR assignment (&=, |=. ^=)
+    17. comma 
+
+- value computation: execution of operators in an expression to produce a value using precedence and association rules
+- evaluation: evaluation of operands 
+- diff compilers evaluate differently
+    - clang compiler evaluates arguments L ->R, GCC does R -> left
+
+

@@ -1,0 +1,46 @@
+- overload resolution: process of matching function calls to a specific overloaded function 
+
+- when a function call is made to an overloaded function, the compiler steps through a sequence of rules to determine which of the overloaded functions is the best match
+    - the result is one of 3 outcomes
+        1. no matching functions found, compiler moves to next step in sequence 
+        2. single matching function found, considered to be best match and the sequence is ended 
+        3. multiple matches found, compiler will issue an ambiguous match compile error 
+    
+
+- argument matching sequence 
+    1. compiler tries to find an exact match
+        - first compiler will see if there is an overloaded function where the type of the args in the call exactly matches the type of the args in the overloaded functions 
+        - then it will applu a number of trivial conversions to the args in the call.
+            - lvalue to rvalue
+            - qualification conversions (e.g. non const to const)
+            - non reference to reference conversions 
+        
+            - matches made via the trivial conversions are considered exact matches 
+        
+    2. if no exact match found, compiler tries to find a match by applying numeric promotion to the args 
+        - if after numeric promotion a match is found, call is resolved 
+    
+    3. if no match found after numeric promotion, compiler tries to find a match by applying numeric conversions 
+
+    4. if no match found via numeric conversion, compiler tries to find a match through any user-defined conversions 
+
+    5. if no match found via user-defined conversion, compiler will look for a matching function that uses ellipses 
+
+    6. if no match found now, compiler issues an error 
+
+
+- ambiguous match: when the compuler finds two or more functions that can be made to match in the same step 
+
+- if compiler finds multiple matches in a given step, an ambiguous function call will be the result
+    - no match from a given step is better than any other match from the same step 
+
+
+- resolving ambiguous matches 
+    - best way is to define a new overloaded function that takes params of exactly the type you need 
+    - another way is to explicitly cast the ambiguous args to match the type of the function you want to call 
+    - if arg is a literal, use the literal suffix to ensure literal is interpreted correctly 
+
+- if there are multiple args, compiler applies the matchign rules to each argument in turn. 
+    - function chosen is the one for which each arg matches at least as well as all the other functions, with at least one arg matching better than all the other functions 
+
+

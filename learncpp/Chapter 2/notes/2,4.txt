@@ -1,0 +1,40 @@
+- it's useful to be able to pass information TO a function being called
+    - we do this via function parameters/arguments
+
+- a function parameter is a variable used in the header
+    - work almost identically to variables defined inside the function, but they are initialized with a value provided by the caller
+    - they are defined in the function header after the function name, separated by commas
+    - i.e. -> void printValue(int x, int y)
+
+
+- an argument is a vzlue passed from the caller to the function when a call is made
+    - i.e. -> printValue(6);
+
+- when a functino is caled, all of the parameters of the function are created as variables
+- the value of each of the arguments is copied into the matching parameter
+    - this process is called pass by value
+    - function parameters that use pass by value are called value parameters
+
+    - example
+    void printValues(int x, int y) {
+        std::cout << x << '\n';
+        std::cout << y << '\n';
+
+    }
+
+    int main() {
+        printValues(6, 7)
+    }
+
+
+    - the function parameters of printValues -> int x and int you
+    - they have values passed to them via the function call inside main
+    - thus their values become 6 and 7 respectively
+
+
+- by using both parameters and return values, we can create functions that take data as input, manipulate that data, and return a new value to the caller
+- unreferenced parameters are paraneters that are not used in the body of the function
+- name of a function parameter is optional
+    - in cases where a function parameter needs to exist but isn't actually used in the function, you can omit a name
+    - these parameters are known as unnamed parameters
+

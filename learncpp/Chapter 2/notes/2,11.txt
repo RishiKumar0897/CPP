@@ -1,0 +1,66 @@
+- header files have a .h extension
+- they allow us to put declarations in one place, and then import them wherever we need to use them
+
+
+- when you #include a file, the content of the included file is inserted at the point of inclusion
+
+- header files consists of two parts
+    1. header guard
+    2. actual content of the header file, which are the forward declarations for all the identifiers we want other files to be able to serve
+
+
+
+example
+
+add.h
+
+    int add(int x, int y);
+
+main.cpp
+
+    #include "add.h"
+    #include <iostream>
+
+    int main() {
+        std::cout << "The sum of 3 and 4 is " << add(3,4) << '\n';
+        return 0;
+    }
+
+
+add.cpp
+
+    #include "add.h"
+    int add(int x, int y) {
+        return x + y;
+    }
+
+
+- do not put function and variable definitions in your header files
+    - doing so is a violation of the one-definition rule
+
+
+- source files should include their paired header
+    - this allows the compiler to catch certain kinds of errors at compiler time instead of link time
+
+
+- do not #include .cpp files
+    - causes naming collisions between source files
+    - makes it hard to avoid ODR violations
+    - any change to a .cpp file will cause both that file and other .cpp files that includes it to recompile which takes a long time
+
+- use double quotes to include header files that we've written ourselves or are found in the current directory
+- use angled brackets to include headers that come with your compiler, OS< or third-party libraries
+
+
+- when we #include a header file, we also include any other header files that are #included by that header
+- these additional header files are known as transitive includes
+
+
+- best practice is to explicity #include all header filesneeded for program to compile
+
+- order of inclusion for header files 
+    1. paired header file for this code file (add.cpp should #include add.h)
+    2. other headers from the same project
+    3. 3rd party library headers
+    4. standard library headers 
+

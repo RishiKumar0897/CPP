@@ -1,0 +1,31 @@
+- smallest addressable unit of memory is a byte
+- since all objects need to have unique memory addresses, all objects must be at least 1 byte in size
+- for majority types, this is fine, but for Booleans they only take up 1 bit, wasting 7
+- modiyfing individual bits within an object is called bit manipulation
+
+
+- bit manipulation is used in programming contexts such as: graphics, encryption, compression, optimization
+
+- bit flags: instead of viewing objects as holding a single value, we treat each bit in the object as an independent boolean variable, each bit is a bit flag
+    - a bit holding value 0 -> false, off, or not set
+    - a bit holding value 1 -> true, on, or set
+    - when a bit is changed we say it has been flipped
+
+
+- to define a set of bit flags, use an unsigned integer of the appropriate size or std::bitset
+    #include <bitset>
+    std::bitset<8> mybitset {};
+
+
+- bit manipulation is one of the only times where we use unsigned integers or std::bitset
+
+
+- std::bitset
+    - provides 4 key member functions
+        1. test() -> query whether a bit is 0 or 1
+        2. set() -> allows us to turna bit on
+        3. reset() -> turn a bit off
+        4. flip() -> flip a bit
+
+    - useful when we desire convenience, not for memory saving
+    

@@ -1,0 +1,71 @@
+- to compare performances, we can time how long it takes for our code to run 
+
+#include <chrono> // for std::chrono functions
+
+class Timer
+{
+private:
+	// Type aliases to make accessing nested type easier
+	using Clock = std::chrono::steady_clock;
+	using Second = std::chrono::duration<double, std::ratio<1> >;
+
+	std::chrono::time_point<Clock> m_beg { Clock::now() };
+
+public:
+	void reset()
+	{
+		m_beg = Clock::now();
+	}
+
+	double elapsed() const
+	{
+		return std::chrono::duration_cast<Second>(Clock::now() - m_beg).count();
+	}
+};
+
+
+
+
+
+
+
+#include <iostream>
+
+int main()
+{
+    Timer t;
+
+    // Code to time goes here
+
+    std::cout << "Time elapsed: " << t.elapsed() << " seconds\n";
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- things that can impact the performance of a program   
+    - make sure you're using a release build target 
+    - timing results can be influenced by other things your system may be doing in the background 
+        - make sure system isn't doing anything CPU, memory, or hard drive intensive 
+    - if program uses a random number generator, the particular sequence of random numbers generated may impact timing 
+    - make sure you're not timing waiter for user input 
+
+
+- when measuring performance, gather at least 3 results 
+    - if all results are similar, they likely represent actual performance
+    - if results have alot of variance, program is likely either being significantly affected by other things happening on the system 

@@ -1,0 +1,85 @@
+- naming collision: when two identical identifiers are introduced into the same scope, and compiler cannot decide which to use
+
+- best way to avoid collisions is to put your functions into your own namespace
+- C++ allows devs to define their own namespaces via "namespace" keyword
+
+- namespaces created in your own program are called user-defined namespaces
+
+- syntax:
+
+namespace NamespaceIdentifier
+{
+    // content of namespace here
+}
+
+
+- namespace naming convention says to start with a capital letter
+
+- example namespace
+
+namespace Foo // define a namespace named Foo
+{
+    // This doSomething() belongs to namespace Foo
+    int doSomething(int x, int y)
+    {
+        return x + y;
+    }
+}
+
+
+- to access the namespace, use namespace::method
+
+#include <iostream>
+
+namespace Foo // define a namespace named Foo
+{
+    // This doSomething() belongs to namespace Foo
+    int doSomething(int x, int y)
+    {
+        return x + y;
+    }
+}
+
+namespace Goo // define a namespace named Goo
+{
+    // This doSomething() belongs to namespace Goo
+    int doSomething(int x, int y)
+    {
+        return x - y;
+    }
+}
+
+int main()
+{
+    std::cout << Foo::doSomething(4, 3) << '\n'; // use the doSomething() that exists in namespace Foo
+    return 0;
+}
+
+
+- namespace blocks in different files even with the same name are different declarations
+
+- you can also nest namespaces inside other namespaces
+
+- namespace aliases:
+
+#include <iostream>
+
+namespace Foo::Goo
+{
+    int add(int x, int y)
+    {
+        return x + y;
+    }
+}
+
+int main()
+{
+    namespace Active = Foo::Goo; // active now refers to Foo::Goo
+
+    std::cout << Active::add(1, 2) << '\n'; // This is really Foo::Goo::add()
+
+    return 0;
+} // The Active alias ends here
+
+
+

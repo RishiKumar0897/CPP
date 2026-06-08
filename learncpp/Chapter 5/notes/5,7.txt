@@ -1,0 +1,41 @@
+- easiest way to work with strings and string objects in C++ is with std::string
+
+- gotta #include <string>
+
+int main() {
+    std::string name{}; //empty string
+    return 0;
+}
+
+- you can initialize values also
+    - std::string name {"alex"};
+    - name= "John";
+
+- you can output it with std::cout
+    std::string name {"Rishi};
+    std::cout << "My name is: " << name << "\n";
+
+
+- empty strings will print nothing
+
+- std::string can handle strings of different length
+    - you can change the value of it to different-length strings
+    - i.e. Alex to Jason
+
+- use std::getline() to input text
+
+    std::cout << "Enter your full name: ";
+    std::string name{};
+    std::getline(std::cin >> std::ws, name);
+
+
+- std::ws is an input manipulator that tells std::cin to ignore any leading whitespace before extraction
+
+- .length() works for std::strings
+
+- passing std::string by value is expensive and should be avoided
+    - most cases will use std::string_view param instead
+
+
+
+

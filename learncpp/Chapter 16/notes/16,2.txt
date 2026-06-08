@@ -1,0 +1,74 @@
+- std::vector is defined in the <vector> header as a class template 
+    - ex: std::vector<int> declares a std::vector whose elements are of type int 
+
+- instantiating a std::vector 
+
+#include <vector>
+
+int main()
+{
+	// Value initialization (uses default constructor)
+	std::vector<int> empty{}; // vector containing 0 int elements
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+- containers typucally have a special constructor called a list constructor 
+    - allows devs to construct an instance of the container using an initializer list 
+    - list constructor does 3 things 
+        - ensure container has enough storage to hold all initialization values if needed 
+        - sets length of container to the number of elements in the initializer list 
+        - initializes elements to the values in the initializer list 
+
+
+- arrays in C++ are zero-based 
+    - first element is element 0
+
+- arrays are contiguous in memory 
+    - elements are all adjacent with no gaps btwn them 
+
+
+
+- arrays allow for random access 
+    - any element in the container can be accessed dierctly 
+    - very efficient
+
+
+
+
+
+
+
+- constructing a std::vector of specific length 
+    - std::vector<int> data{ 10 };
+
+
+
+
+
+- if initializer list is empty, use default constructor over list constructor 
+    - if initializer list is non-empty, a matching list constructor is preferred over other matching constructors
+
+
+
+
+- you can create const std::vector 
+    - the array and its elements cannot be modified 
+
+- you cannot make std::vector constexpr 
+    - need to use std::array for that 
+
+
+
+- 

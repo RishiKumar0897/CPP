@@ -1,0 +1,23 @@
+- a default constructor is one that accepts no arguments 
+    - typically, a constructor that has been defined with no parameters 
+
+
+- value vs default initialization
+
+Foo foo{}; // value initialization, calls Foo() default constructor
+Foo foo2;  // default initialization, calls Foo() default constructor
+
+
+
+
+
+
+- prefer value initializationover default initialization for all class types 
+
+
+- constructors can have default arguments 
+- constructors can be overloaded 
+- implicit default constructor: if a non-aggregate class tyep object has no user-defined definition, compiler will declare a public deefalt constructor 
+
+
+- use "= default" to explicitly define default constructor 

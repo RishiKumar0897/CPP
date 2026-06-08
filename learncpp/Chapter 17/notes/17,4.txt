@@ -1,0 +1,8 @@
+- std::array isn't limited to elements of fundamental types 
+    - can be any object type including compound types 
+
+
+- when initializing an std::array with a struct, class, or array, and not providing the element type with each initializer, you need an extra pair of braces 
+    - this is so the compiler will properly interpret what to initialize
+
+

@@ -1,0 +1,39 @@
+- internal linkage: can be seen and used within a single translation unit, but not accessible from other translation units
+    - if 2 source files have identically name identifiers with internal linkage, those identifiers will be treated as independent
+
+- global variables and function identifiers can have either internal linkage or external linkage
+
+- global variables with internal linkage are sometimes called internal variables
+    - to make a non-constant global var internal, we use static keyword
+
+#include <iostream>
+
+static int g_x{}; // non-constant globals have external linkage by default, but can be given internal linkage via the static keyword
+
+const int g_y{ 1 }; // const globals have internal linkage by default
+constexpr int g_z{ 2 }; // constexpr globals have internal linkage by default
+
+int main()
+{
+    std::cout << g_x << ' ' << g_y << ' ' << g_z << '\n';
+    return 0;
+}
+
+- const and constexpr global variables have internal linkage by default (static keyword ignored if used)
+
+- function identifiers can also be set using static keyword
+
+// This function is declared as static, and can now be used only within this file
+// Attempts to access it from another file via a function forward declaration will fail
+[[maybe_unused]] static int add(int x, int y)
+{
+    return x + y;
+}
+
+- nowadays, using unnamed namespace is more convention instead of usign static keyword
+
+- why give internal linkage
+    - make sure this identifier isn't accessible to other files
+    - be pedantic about avoiding naming collisions
+
+

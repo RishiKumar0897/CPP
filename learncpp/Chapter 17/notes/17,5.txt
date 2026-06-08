@@ -1,0 +1,21 @@
+- you can create arrays of pointers, but not an array of references 
+
+- you can use std::reference_wrapper if you need to create an array of references 
+    - takes a type template argument T, and then behaves like a modifiable lvalue reference to T 
+
+
+- things to note about std::reference_wrapper
+    - "=" will change which object is being referenced 
+    - implicitly converts to T& 
+    - the get() member function can be used to get a T& 
+        - useful when updating the value of the object being referenced 
+    
+
+- you can use CTAD to deduce the type 
+
+
+std::reference_wrapper ref1 { x };        // C++17
+auto ref2 { std::reference_wrapper{ x }}; // C++17
+
+
+

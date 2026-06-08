@@ -1,0 +1,3 @@
+- we can convert between decimal and binary numbers in a multitude of ways
+
+- not much else here worth writing down

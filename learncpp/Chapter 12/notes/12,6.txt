@@ -1,0 +1,31 @@
+- passing by const reference offers the same benefit as non const while also guaranteeing that the function cannot change the value being referenced 
+
+- with pass by reference, ensure the type of the argument matches the type of the reference, or it will result in an unexpected conversion 
+
+- you can mix passing by value and by reference 
+
+#include <string>
+
+void foo(int a, int& b, const std::string& c)
+{
+}
+
+int main()
+{
+    int x { 5 };
+    const std::string s { "Hello, world!" };
+
+    foo(5, x, s);
+
+    return 0;
+}
+
+
+
+
+- rule of thumb when deciding to pass by value or by reference 
+    - fundamental types and enums are cheap to copy, so pass by value
+    - class types are expensive to copy, so pass by reference 
+
+
+- for function parameters, prefer std::string_view over const std::string& 

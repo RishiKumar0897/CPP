@@ -1,0 +1,13 @@
+- stepping is useful when you want to examine each individual line of your code in isolation
+
+- for larger programs, it takes a long time to step through
+
+- run to cursor -> runs the program normally until it reaches the statement selected by your cursor
+- continue -> continues running the program normally until it terminates or something triggers control to return back to user again
+    - start -> like continue, but only invoked when not already in a debug session
+
+- breakpoint -> special marker that tells the debugger to stop execution at the line that has a breakpoint
+
+
+- set next statement -> allows us to change the point of executino to some other statement, letting us jump the point of execution forwards and skip some code
+

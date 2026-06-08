@@ -1,0 +1,9 @@
+- void = no type
+
+- void is an example of an incomplete type 
+    - an incomplete type is a type that has been declared but hasn't been defined
+    - compiler knows of these types' existence, but not enough info to determine how much memory to allocate or how to treat int
+
+- incomplete types cannot be instantiated
+- void is most commonly used to indicate that a function does not return a value
+

@@ -1,0 +1,10 @@
+- conditional statement: specifies whether some associated statement should be executed or not 
+
+- most basic kind of conditional statement in C++ is the if statement 
+
+if (condition)
+    true_statement;
+else
+ false_statement;
+
+

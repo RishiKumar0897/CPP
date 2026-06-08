@@ -1,0 +1,85 @@
+- returning data members by value can be expensive 
+    - better alternative is to return by const lvalue reference 
+
+
+#include <iostream>
+#include <string>
+
+class Employee
+{
+	std::string m_name{};
+
+public:
+	void setName(std::string_view name) { m_name = name; }
+	const std::string& getName() const { return m_name; } //  getter returns by const reference
+};
+
+int main()
+{
+	Employee joe{}; // joe exists until end of function
+	joe.setName("Joe");
+
+	std::cout << joe.getName(); // returns joe.m_name by reference
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+- return type of a member function returning a reference to a data member should match the data member's type 
+    - member function returning a reference should return a reference of the same type as the data member being returned 
+
+#include <iostream>
+#include <string>
+
+class Employee
+{
+	std::string m_name{};
+
+public:
+	void setName(std::string_view name) { m_name = name; }
+	const auto& getName() const { return m_name; } // uses `auto` to deduce return type from m_name
+};
+
+int main()
+{
+	Employee joe{}; // joe exists until end of function
+	joe.setName("Joe");
+
+	std::cout << joe.getName(); // returns joe.m_name by reference
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- for getters, using auto to deduce the return type is a useful way to ensure no conversions occur 
+
+- using member functions that return by reference safely 
+    - prefer to use return value of a member function that returns by reference immediately 
+    - don't save a returned reference to use later unless you're sure the implicit object is an lvalue 
+    - if you don't need to persist a returned reference for use later and aren't sure if the implicit object is an lvalue, use the returned reference as the initializer for a non-reference local variable 
+
+
+- don't return non-const references to private data members 
+- const member functions can't return non-const references to data members 

@@ -1,0 +1,11 @@
+- length of a std::array has type size_t 
+- length and indices of std::array have type size_type which is always std::size_t 
+
+- get the length of a std::array using std::size() 
+
+
+- to get compile-time bounds checking with constexpr indices, use the std::get() function template
+    - takes the index as a non-type template argument
+    - std::cout << std::get<3>(prime);
+
+- can use the at() member function to index with runtime bounds checking 

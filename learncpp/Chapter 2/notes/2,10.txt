@@ -1,0 +1,48 @@
+- prior to compilation, each .cpp file goes through a preprocessing phase.
+- in this phase, a program called the preprocessor makes various changes to the text of the code file
+- the preprocessor does not actually modify the original code
+
+- preprocessor strips out comments, and ensures each code file ends in a newline
+- the preprocessor's most important job is processing the #include directives at the top of our code files
+
+- when the preprocessor has finished processing a file, the result is called a translation unit
+
+- the entire process of preprocessing, compiling, and linking is called translation
+
+- preprocessor directives are instructions that start with a # symbol and end with a newline
+    - these directives tell the preprocessor to perform certain text manipluation tasks
+
+
+- preprocessor does not understand C++ syntax
+
+- #include is an example of a directive.
+    - the preprocessor replaces #include with the contents of the included file, which are then preprocessed, after which the rest of your file is preprocessed
+
+
+- a macro is a rule that defines how input text is converted into replacement output text
+- we use #define to create a macro
+
+
+- function-like macros act like functions and serve a similar purpose (NEVER USE THESE)
+- object-like macros are defined in one of two ways
+    - #define IDENTIFIER 
+    - #define IDENTIFIER substitution_text
+
+- the identifier for a macro uses the same naming rules as normal identifiers: letters, numbers, underscores
+    - macro names should be written in all uppercase letters
+
+
+- conditional compilation preprocessor directives allow you to specify under what conditions something will or won't compile
+
+
+- #ifdef allows preprocessor to check whether an identifier has been previously defined via #define
+    - if so, the block of code between #ifdef and #endif is compiled
+
+
+- #ifndef is the opposite of #ifdef
+
+- #if 0 excludes a block of code from being compiled
+    - #if 1 makes sure a block is ALWAYS compiled
+
+
+- directives are resolved before compulation from top to bottom

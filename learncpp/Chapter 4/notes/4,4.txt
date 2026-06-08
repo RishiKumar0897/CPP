@@ -1,0 +1,21 @@
+- an integer is an integral type that represents positive and negative whole numbers (including 0)
+
+- C++ has 4 primitive integer types
+    - short int
+    - int
+    - long int
+    - long long int
+
+
+- integers in C++ are signed by default (pos, neg, or 0)
+
+- an n-bit signed variable has a range of -(2^n-1) to 2(n-1) - 1
+    - assumes two's complement binary representation (which is standard for modern architecture)
+
+
+- if we try to assign a value that is outside the range of an n-bit integer, it results in undefined behavior (overflow)
+
+- overflow generally results in information being lost
+- when doing integer division, C++ always produces an integer results
+    - any fractional portion is dropped (not rounded)
+

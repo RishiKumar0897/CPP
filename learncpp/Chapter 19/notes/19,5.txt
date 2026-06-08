@@ -1,0 +1,59 @@
+- void pointer: special type of pointer that can be pointed at objects of any data type 
+
+- void* ptr {}; // ptr is a void pointer
+
+
+int nValue {};
+float fValue {};
+
+struct Something
+{
+    int n;
+    float f;
+};
+
+Something sValue {};
+
+void* ptr {};
+ptr = &nValue; // valid
+ptr = &fValue; // valid
+ptr = &sValue; // valid
+
+
+
+
+
+
+
+
+- because void pointer does not know what type of object it is pointing to, dereferencing a void pointer is illegal 
+    - instead, it must first be cast to another pointer type before the dereference can be performed 
+
+int value{ 5 };
+void* voidPtr{ &value };
+
+// std::cout << *voidPtr << '\n'; // illegal: dereference of void pointer
+
+int* intPtr{ static_cast<int*>(voidPtr) }; // however, if we cast our void pointer to an int pointer...
+
+std::cout << *intPtr << '\n'; // then we can dereference the result
+
+
+
+
+
+
+
+
+
+- deleting a void pointer will result in undefined behavior 
+    - if you need to delete it, static_cast it back to the appropriate type first 
+
+- it's not possible to do pointer arithmetic on a void pointer 
+
+- no such thing as a void reference 
+
+
+
+
+- avoid using void pointers unless necessary 

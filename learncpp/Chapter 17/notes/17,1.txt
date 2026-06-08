@@ -1,0 +1,54 @@
+- tradeoffs (downsides) for dynamic arrays 
+    - std::vector is slightly less performant than fixed-size arrays 
+    - std::vector only supports constexpr in limited contexts 
+
+- use std::array for constexpr arrays and std::vector for non-constexpr 
+
+
+
+- std::array is defined in the <array> header 
+- works similarly to std::vector 
+
+- how to declare a std::array 
+    -std::array<int, 5> a {};
+
+
+- length of a std::array must be a constant expression 
+    - non-const variables and runtime constants cannot be used for length 
+
+
+- std::array is an aggregate 
+    - no constructors, initiailzed using aggregate initialization 
+
+
+- std::array should be value initialized using empty braces when defined with no initializers 
+
+
+
+- an std::array can be const 
+- an std::array can also be constexpr 
+
+
+
+- can have compiler deduce both element type and array length 
+
+#include <array>
+#include <iostream>
+
+int main()
+{
+    constexpr std::array a1 { 9, 7, 5, 3, 1 }; // The type is deduced to std::array<int, 5>
+    constexpr std::array a2 { 9.7, 7.31 };     // The type is deduced to std::array<double, 2>
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+- 

@@ -1,0 +1,16 @@
+- for all types of initialization
+    - when initializing a class type 
+        - set of constructors for that class are examined 
+        - overload resolution is used to determine the best matching constructor 
+        - may involve implicit conversion of arguments 
+    
+    - when initializing a non-class type 
+        - implicit conversion rules are used to determine whether an implicit conversion exists 
+    
+
+
+- copy elision: compiler optimization technique that allows compiler to remove unnecessary copying of objects 
+    - in cases where compiler would normally call a copy constructor, compiler can rewrite the code to avoid this altogether 
+    - when compiler does this, we say constructor has been elided 
+
+- 

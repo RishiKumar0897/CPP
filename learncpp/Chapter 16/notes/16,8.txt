@@ -1,0 +1,23 @@
+- C++ supports for-each loop 
+    - avoids explicit indexing 
+    - simpler, safer, work with all common array types in C++ 
+
+
+- use auto with for-each loops to have compiler deduce the type of the array element 
+
+- avoid element copies using references
+    - make the element declaration a const reference 
+    - e.g. -> for (const auto& word : words)
+
+
+- use auto when you want to modify copies of the elements 
+- use auto& when you want to modify the original elements 
+- use const auto& if you just need to view the original elements 
+
+
+
+
+- for-each loops work with C-style arrays, std::array, std::vector, linked list, trees, and maps 
+
+
+- can use std::views::reverse to create a reverse view of the elements that can be traversed 

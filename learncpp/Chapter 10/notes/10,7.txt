@@ -1,0 +1,42 @@
+- type alias: keyword using, creates an alias for an existing data type 
+
+#include <iostream>
+
+int main()
+{
+    using Distance = double; // define Distance as an alias for type double
+
+    Distance milesToDestination{ 3.4 }; // defines a variable of type double
+
+    std::cout << milesToDestination << '\n'; // prints a double value
+
+    return 0;
+}
+
+
+- name type aliases using a capital letter and do not use a suffix 
+
+- type aliases are not distinct types 
+
+- aliases are not type safe
+
+- scoping rules are the same as for variable identifiers 
+
+
+
+- typedef: older way of creating an alias for a type 
+    - largely have been replaced by "using" in modern C++
+
+
+- why use
+    - hide platform specific details 
+    - make complex types easier to read 
+    - to document the meaning of a value 
+    - easier code maintenance 
+
+- downsides
+    - introduce another identifier into your code that needs to be understood 
+    - poorly utilized type aliases can take afamiliar type and hide it behind a custom name that needs to be looked up 
+
+
+- use type aliases when they provide a clear benefit to code readability or code maintenance 
